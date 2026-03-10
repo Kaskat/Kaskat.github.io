@@ -1,0 +1,18 @@
+# Drafts and experiments
+Site/
+
+# Office files (source docs, not for web)
+*.docx
+*.pdf
+
+# OS
+Thumbs.db
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Claude local settings
+.claude/settings.local.json

@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio — Yevhenii Hladkykh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    /* ══════════════════════════════════
+       THEME VARS — EMBER
+    ══════════════════════════════════ */
+    :root, [data-theme="dark"] {
+      --bg:       #0c0906;
+      --bg2:      #130f0a;
+      --surface:  #1a140e;
+      --border:   #2a1f15;
+      --accent:   #ff6b2b;
+      --accent2:  #e05520;
+      --glow:     rgba(255,107,43,0.35);
+      --glow2:    rgba(255,107,43,0.12);
+      --text:     #f0ddd0;
+      --text-dim: #7a5a45;
+      --muted:    #2a1f15;
+      --crown:    #f0b429;
+    }
+    [data-theme="light"] {
+      --bg:       #faf5f0;
+      --bg2:      #f5ede5;
+      --surface:  #ffffff;
+      --border:   #e0cdc0;
+      --accent:   #cc4400;
+      --accent2:  #aa3300;
+      --glow:     rgba(204,68,0,0.25);
+      --glow2:    rgba(204,68,0,0.08);
+      --text:     #1a0f08;
+      --text-dim: #6a4030;
+      --muted:    #c0a090;
+      --crown:    #b07d10;
+    }
+
+    /* ══════════════════════════════════
+       RESET & BASE
+    ══════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+      transition: background .35s, color .35s;
+      overflow-x: hidden;
+    }
+
+    /* ══════════════════════════════════
+       TOP BAR
+    ══════════════════════════════════ */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 300;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .35s, border-color .35s;
+    }
+
+    .topbar-left {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+    }
+
+    .topbar-right { display: flex; align-items: center; gap: 12px; }
+
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .toggle {
+      position: relative;
+      width: 40px; height: 22px;
+      cursor: pointer;
+    }
+    .toggle input { display: none; }
+    .toggle-track {
+      position: absolute; inset: 0;
+      background: var(--muted);
+      border-radius: 11px;
+      transition: background .3s;
+    }
+    .toggle input:checked ~ .toggle-track { background: var(--accent); }
+    .toggle-thumb {
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 16px; height: 16px;
+      background: var(--bg);
+      border-radius: 50%;
+      transition: transform .3s;
+    }
+    .toggle input:checked ~ .toggle-thumb { transform: translateX(18px); }
+
+    /* ══════════════════════════════════
+       LAYOUT
+    ══════════════════════════════════ */
+    .page { padding-top: 48px; }
+
+    /* ══════════════════════════════════
+       HERO — full viewport, sticky
+    ══════════════════════════════════ */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Radial glow bg */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -150px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--glow2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp .5s .1s forwards;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    h1.htitle {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 11vw, 9.5rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp .5s .2s forwards;
+    }
+    h1.htitle em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      max-width: 460px;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.85;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp .5s .3s forwards;
+    }
+    .hero-desc strong { color: var(--text); font-weight: 400; }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .5s .4s forwards;
+    }
+
+    .btn-primary {
+      padding: 12px 28px;
+      background: var(--accent);
+      color: var(--bg);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-primary:hover { opacity: .85; transform: translateY(-2px); }
+
+    .btn-ghost {
+      padding: 12px 28px;
+      background: transparent;
+      color: var(--text-dim);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color .2s, color .2s, transform .2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 48px; right: 64px;
+      display: flex;
+      gap: 28px;
+      opacity: 0;
+      animation: fadeUp .5s .55s forwards;
+    }
+    .stat { text-align: right; }
+    .stat-n {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      line-height: 1;
+      color: var(--text);
+    }
+    .stat-n em { font-style: normal; color: var(--accent); }
+    .stat-l {
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    /* ══════════════════════════════════
+       TICKER — fixed loop
+    ══════════════════════════════════ */
+    .ticker-wrap {
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      background: var(--bg2);
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: ticker-scroll 28s linear infinite;
+    }
+    /* Two identical sets for seamless loop */
+    .ticker-set {
+      display: flex;
+      flex-shrink: 0;
+    }
+    .ti {
+      font-size: 0.63rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      padding: 0 24px;
+      white-space: nowrap;
+    }
+    .ti b { color: var(--accent); font-weight: 300; margin-right: 4px; }
+
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ══════════════════════════════════
+       PROJECTS SECTION — split layout
+    ══════════════════════════════════ */
+    .projects-section {
+      padding: 80px 0;
+    }
+
+    .sec-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 64px;
+      margin-bottom: 48px;
+    }
+    .sec-num { font-size: 0.6rem; letter-spacing: 0.22em; color: var(--accent); }
+    .sec-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      letter-spacing: 0.05em;
+    }
+    .sec-line { flex: 1; height: 1px; background: var(--border); }
+
+    /* Split: sticky preview left, list right */
+    .projects-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: start;
+    }
+
+    /* LEFT — sticky preview */
+    .proj-preview-col {
+      position: sticky;
+      top: 60px;
+      padding: 0 40px 0 64px;
+    }
+
+    .preview-frame {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color .3s;
+    }
+
+    .preview-frame .pf-img {
+      position: absolute;
+      inset: 0;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+      transition: opacity .4s ease;
+    }
+
+    /* Accent top bar on preview */
+    .preview-frame::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--accent);
+      transition: width .4s ease;
+      z-index: 2;
+    }
+    .preview-frame.active::before { width: 100%; }
+
+    .preview-meta {
+      margin-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .preview-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      transition: color .3s;
+    }
+    .preview-role {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 3px;
+    }
+    .preview-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .ptag {
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      background: var(--muted);
+      padding: 3px 8px;
+    }
+
+    /* RIGHT — accordion list */
+    .proj-list-col {
+      padding: 0 64px 0 0;
+      border-left: 1px solid var(--border);
+    }
+
+    /* Track (category) */
+    .track {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .track-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      cursor: pointer;
+      transition: background .2s;
+      user-select: none;
+    }
+    .track-header:hover { background: var(--surface); }
+
+    .track-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .track-badge {
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      transition: border-color .2s;
+    }
+    .track-header:hover .track-badge { border-color: var(--accent); }
+
+    .track-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .track-count {
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+    }
+
+    .track-arrow {
+      width: 14px; height: 14px;
+      border-right: 1px solid var(--text-dim);
+      border-bottom: 1px solid var(--text-dim);
+      transform: rotate(45deg) translateY(-3px);
+      transition: transform .3s, border-color .2s;
+      margin-right: 4px;
+    }
+    .track.open .track-arrow { transform: rotate(-135deg) translateY(-3px); border-color: var(--accent); }
+
+    /* Peek — shows 1-2 items blurred when closed */
+    .track-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .track.open .track-body {
+      max-height: 800px;
+    }
+
+    /* Individual project row */
+    .proj-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      border-top: 1px solid var(--border);
+      cursor: pointer;
+      transition: background .15s, padding-left .2s;
+      position: relative;
+    }
+    .proj-item:hover { background: var(--surface); padding-left: 32px; }
+    .proj-item.selected { background: var(--surface); }
+    .proj-item.selected::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--accent);
+    }
+
+    .proj-item-left { display: flex; flex-direction: column; gap: 2px; }
+
+    .proj-item-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      transition: color .2s;
+    }
+    .proj-item:hover .proj-item-name,
+    .proj-item.selected .proj-item-name { color: var(--accent); }
+
+    .proj-item-sub {
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .proj-item-tag {
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      white-space: nowrap;
+    }
+
+    /* ══════════════════════════════════
+       CROWN / GLOW — featured projects
+    ══════════════════════════════════ */
+    .proj-item.featured {
+      /* Subtle bg glow */
+      background: linear-gradient(90deg, var(--glow2) 0%, transparent 60%);
+    }
+
+    .proj-item.featured .proj-item-name {
+      color: var(--text);
+    }
+
+    /* Crown icon */
+    .crown-icon {
+      font-size: 0.75rem;
+      margin-left: 6px;
+      color: var(--crown);
+      animation: crownPulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes crownPulse {
+      0%, 100% { opacity: 0.7; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-1px); }
+    }
+
+    /* Animated border — CSS lines technique */
+    .proj-item.featured {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .proj-item.featured::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      pointer-events: none;
+    }
+
+    /* Animated glow border via pseudo + box-shadow pulse */
+    .proj-item.featured {
+      animation: featuredGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes featuredGlow {
+      0%, 100% { box-shadow: inset 0 0 0 1px rgba(255,107,43,0.15), 0 0 0 0 transparent; }
+      50%       { box-shadow: inset 0 0 0 1px rgba(255,107,43,0.45), 0 0 8px 0 rgba(255,107,43,0.08); }
+    }
+
+    /* Particles — tiny dots floating */
+    .particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: 0;
+      animation: particleFloat var(--dur, 4s) var(--delay, 0s) ease-in-out infinite;
+    }
+
+    @keyframes particleFloat {
+      0%   { opacity: 0; transform: translateY(0) translateX(0); }
+      20%  { opacity: 0.4; }
+      80%  { opacity: 0.2; }
+      100% { opacity: 0; transform: translateY(-20px) translateX(var(--dx, 5px)); }
+    }
+
+    /* ══════════════════════════════════
+       CONTACT SECTION
+    ══════════════════════════════════ */
+    .contact-section {
+      padding: 80px 64px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .contact-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: 0.04em;
+      line-height: 0.95;
+      margin-bottom: 12px;
+    }
+    .contact-heading em { font-style: normal; color: var(--accent); }
+
+    .contact-sub {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      max-width: 340px;
+      line-height: 1.75;
+    }
+
+    .contact-icons {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .contact-icon {
+      width: 44px; height: 44px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text-dim);
+      transition: border-color .2s, color .2s, transform .2s, background .2s;
+      position: relative;
+    }
+    .contact-icon:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-3px);
+      background: var(--glow2);
+    }
+
+    .contact-icon svg { width: 18px; height: 18px; fill: currentColor; }
+
+    .contact-icon .ic-tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 3px 8px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s;
+    }
+    .contact-icon:hover .ic-tooltip { opacity: 1; }
+
+    /* ══════════════════════════════════
+       FOOTER
+    ══════════════════════════════════ */
+    footer {
+      padding: 16px 64px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+    }
+    footer span { color: var(--accent); }
+
+    /* ══════════════════════════════════
+       MOBILE
+    ══════════════════════════════════ */
+    @media (max-width: 768px) {
+      .hero { padding: 72px 24px 50px; }
+      .hero-stats { position: static; margin-top: 40px; justify-content: flex-start; }
+      .sec-header { padding: 0 24px; }
+      .projects-body { grid-template-columns: 1fr; }
+      .proj-preview-col { position: static; padding: 0 24px; margin-bottom: 32px; }
+      .proj-list-col { padding: 0; border-left: none; border-top: 1px solid var(--border); }
+      .contact-section { padding: 60px 24px; flex-direction: column; align-items: flex-start; }
+      .contact-icons { flex-wrap: wrap; }
+      footer { padding: 14px 24px; flex-direction: column; gap: 4px; }
+    }
+
+    /* ══════════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════════ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-left">YH_</div>
+    <div class="topbar-right">
+      <label class="toggle-wrap">
+        <span>Dark</span>
+        <label class="toggle">
+          <input type="checkbox" id="theme-toggle"/>
+          <div class="toggle-track"></div>
+          <div class="toggle-thumb"></div>
+        </label>
+        <span>Light</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-tag">Unity / C# Developer</div>
+      <h1 class="htitle">
+        Building<br/><em>mobile games</em><br/>that ship.
+      </h1>
+      <p class="hero-desc">
+        5+ years in mobile F2P — <strong>16+ shipped titles</strong>,
+        from hypercasual prototypes to production bingo platforms with real users,
+        payments, and LiveOps. Exploring <strong>AI-assisted rapid development</strong>.
+      </p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="document.querySelector('.projects-section').scrollIntoView({behavior:'smooth'})">See My Projects</button>
+        <button class="btn-ghost">More About Me</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-n">16<em>+</em></div>
+          <div class="stat-l">Shipped Titles</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">5<em>yr</em></div>
+          <div class="stat-l">Experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">2<em>d</em></div>
+          <div class="stat-l">Ball Sorting</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker-wrap">
+      <div class="ticker-track">
+        <div class="ticker-set">
+          <span class="ti"><b>✦</b>Unity / C#</span>
+          <span class="ti"><b>✦</b>Mobile F2P</span>
+          <span class="ti"><b>✦</b>LiveOps</span>
+          <span class="ti"><b>✦</b>IAP & Subscriptions</span>
+          <span class="ti"><b>✦</b>AI-Assisted Dev</span>
+          <span class="ti"><b>✦</b>Analytics & Funnels</span>
+          <span class="ti"><b>✦</b>Android & iOS</span>
+          <span class="ti"><b>✦</b>Claude Code</span>
+          <span class="ti"><b>✦</b>Addressables</span>
+          <span class="ti"><b>✦</b>Jenkins CI/CD</span>
+        </div>
+        <div class="ticker-set" aria-hidden="true">
+          <span class="ti"><b>✦</b>Unity / C#</span>
+          <span class="ti"><b>✦</b>Mobile F2P</span>
+          <span class="ti"><b>✦</b>LiveOps</span>
+          <span class="ti"><b>✦</b>IAP & Subscriptions</span>
+          <span class="ti"><b>✦</b>AI-Assisted Dev</span>
+          <span class="ti"><b>✦</b>Analytics & Funnels</span>
+          <span class="ti"><b>✦</b>Android & iOS</span>
+          <span class="ti"><b>✦</b>Claude Code</span>
+          <span class="ti"><b>✦</b>Addressables</span>
+          <span class="ti"><b>✦</b>Jenkins CI/CD</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <section class="projects-section reveal">
+
+      <div class="sec-header">
+        <span class="sec-num">01 /</span>
+        <h2 class="sec-title">Projects</h2>
+        <div class="sec-line"></div>
+      </div>
+
+      <div class="projects-body">
+
+        <!-- LEFT: sticky preview -->
+        <div class="proj-preview-col">
+          <div class="preview-frame" id="pframe">
+            <div class="pf-img" id="pf-img">← Select a project</div>
+          </div>
+          <div class="preview-meta">
+            <div>
+              <div class="preview-name" id="pname">—</div>
+              <div class="preview-role" id="prole"></div>
+            </div>
+          </div>
+          <div class="preview-tags" id="ptags"></div>
+        </div>
+
+        <!-- RIGHT: accordion -->
+        <div class="proj-list-col" id="proj-list">
+
+          <!-- TRACK: Professional -->
+          <div class="track open" data-track="pro">
+            <div class="track-header" onclick="toggleTrack(this)">
+              <div class="track-header-left">
+                <span class="track-badge">Professional</span>
+                <span class="track-name">Work</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <span class="track-count">8 projects</span>
+                <div class="track-arrow"></div>
+              </div>
+            </div>
+            <div class="track-body">
+              <div class="proj-item featured" data-name="Freelance Games" data-role="Full-cycle owner" data-tags="Unity,Hypercasual,Android,iOS,2020" onclick="selectProject(this)">
+                <div class="particles"></div>
+                <div class="proj-item-left">
+                  <span class="proj-item-name">Freelance Games <span class="crown-icon">♛</span></span>
+                  <span class="proj-item-sub">5 hypercasual prototypes · 2+ released</span>
+                </div>
+                <span class="proj-item-tag">Full-cycle</span>
+              </div>
+              <div class="proj-item featured" data-name="War Machines 3D" data-role="Primary developer — built from scratch" data-tags="Unity,Hypercasual,Android,iOS,Built from scratch" onclick="selectProject(this)">
+                <div class="particles"></div>
+                <div class="proj-item-left">
+                  <span class="proj-item-name">War Machines 3D <span class="crown-icon">♛</span></span>
+                  <span class="proj-item-sub">Playcus · built from scratch</span>
+                </div>
+                <span class="proj-item-tag">Primary dev</span>
+              </div>
+              <div class="proj-item featured" data-name="Groomer Run 3D" data-role="Primary developer — built from scratch" data-tags="Unity,Hypercasual,Android,iOS,Built from scratch" onclick="selectProject(this)">
+                <div class="particles"></div>
+                <div class="proj-item-left">
+                  <span class="proj-item-name">Groomer Run 3D <span class="crown-icon">♛</span></span>
+                  <span class="proj-item-sub">Playcus · built from scratch</span>
+                </div>
+                <span class="proj-item-tag">Primary dev</span>
+              </div>
+              <div class="proj-item" data-name="Cats Run 3D" data-role="Primary developer" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
+                <div class="proj-item-left">
+                  <span class="proj-item-name">Cats Run 3D</span>
+                  <span class="proj-item-sub">Playcus · built from scratch</span>
+                </div>
+                <span class="proj-item-tag">Primary dev</span>
+              </div>
+              <div class="proj-item" data-name="Animals Merge" data-role="Primary developer" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
+                <div class="proj-item-left">
+                  <span class="proj-item-name">Animals Merge</span>
+                  <span class="proj-item-sub">Playcus · built from scratch</span>
+                </div>
+                <span class="proj-item-tag">Primary dev</span>
+              </div>
+              <div class="proj-item" data-name="Casual Features" data-role="Feature developer" data-tags="Unity,Casual,Music,Word,Hidden Object" onclick="selectProject(this)">
+                <div class="proj-item-left">
+                  <span class="proj-item-name">Casual Features</span>
+                  <span class="proj-item-sub">Groove Masters, Word Ways, Find the Difference…</span>
+                </div>
+                <span class="proj-item-tag">Feature dev</span>
+              </div>
+              <div class="proj-item featured" data-name="Bingo Platform ×6" data-role="Features + support · IAP refactor · Analytics redesign" data-tags="Unity,Client-Server,IAP,LiveOps,Analytics,Android,iOS,Windows" onclick="selectProject(this)">
+                <div class="particles"></div>
+                <div class="proj-item-left">
+                  <span class="proj-item-name">Bingo Platform ×6 <span class="crown-icon">♛</span></span>
+                  <span class="proj-item-sub">Playcus · client-server · 6 variations</span>
+                </div>
+                <span class="proj-item-tag">Features + support</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TRACK: Independent -->
+          <div class="track" data-track="indie">
+            <div class="track-header" onclick="toggleTrack(this)">
+              <div class="track-header-left">
+                <span class="track-badge">Independent</span>
+                <span class="track-name">Projects</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <span class="track-count">4 projects</span>
+                <div class="track-arrow"></div>
+              </div>
+            </div>
+            <div class="track-body">
+              <div class="proj-item featured" data-name="Ball Sorting Puzzle" data-role="Solo build · AI-assisted · 2 days" data-tags="Unity,C#,Claude Code,Android,AI Pipeline,2 days" onclick="selectProject(this)">
+                <div class="particles"></div>
+                <div class="proj-item-left">
+                  <span class="proj-item-name">Ball Sorting Puzzle <span class="crown-icon">♛</span></span>
+                  <span class="proj-item-sub">AI-assisted · built in 2 days</span>
+                </div>
+                <span class="proj-item-tag">Solo</span>
+              </div>
+              <div class="proj-item" data-name="AI Pipeline R&D" data-role="Bingo clone via AI agents" data-tags="Claude Code,AI Agents,Unity,R&D" onclick="selectProject(this)">
+                <div class="proj-item-left">
+                  <span class="proj-item-name">AI Pipeline R&D</span>
+                  <span class="proj-item-sub">Bingo reproduction via agent orchestration</span>
+                </div>
+                <span class="proj-item-tag">R&D</span>
+              </div>
+              <div class="proj-item" data-name="Physics Engine" data-role="Pet project · in progress" data-tags="C#,Unity,Physics,In Progress" onclick="selectProject(this)">
+                <div class="proj-item-left">
+                  <span class="proj-item-name">Physics Engine</span>
+                  <span class="proj-item-sub">Custom physics · in progress</span>
+                </div>
+                <span class="proj-item-tag">Experiment</span>
+              </div>
+              <div class="proj-item" data-name="Windows Overlay" data-role="Pet project · in progress" data-tags="C#,Windows,Overlay,In Progress" onclick="selectProject(this)">
+                <div class="proj-item-left">
+                  <span class="proj-item-name">Windows Overlay</span>
+                  <span class="proj-item-sub">Desktop tool · in progress</span>
+                </div>
+                <span class="proj-item-tag">Experiment</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TRACK: Game Jams -->
+          <div class="track" data-track="jams">
+            <div class="track-header" onclick="toggleTrack(this)">
+              <div class="track-header-left">
+                <span class="track-badge">Community</span>
+                <span class="track-name">Game Jams</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <span class="track-count">2 projects</span>
+                <div class="track-arrow"></div>
+              </div>
+            </div>
+            <div class="track-body">
+              <div class="proj-item" data-name="Game Jam #1" data-role="48h jam" data-tags="Unity,Game Jam,48h" onclick="selectProject(this)">
+                <div class="proj-item-left">
+                  <span class="proj-item-name">Jam Project #1</span>
+                  <span class="proj-item-sub">48h · details TBD</span>
+                </div>
+                <span class="proj-item-tag">48h</span>
+              </div>
+              <div class="proj-item" data-name="Game Jam #2" data-role="72h jam" data-tags="Unity,Game Jam,72h" onclick="selectProject(this)">
+                <div class="proj-item-left">
+                  <span class="proj-item-name">Jam Project #2</span>
+                  <span class="proj-item-sub">72h · details TBD</span>
+                </div>
+                <span class="proj-item-tag">72h</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /proj-list-col -->
+      </div><!-- /projects-body -->
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section reveal">
+      <div>
+        <h2 class="contact-heading">Let's work<br/><em>together.</em></h2>
+        <p class="contact-sub">Open to remote Unity developer roles and indie collaborations. Based in Lviv, Ukraine — working globally.</p>
+      </div>
+      <div class="contact-icons">
+
+        <!-- Email -->
+        <a class="contact-icon" href="mailto:kaskat250@gmail.com" title="Email">
+          <span class="ic-tooltip">Email</span>
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+
+        <!-- Telegram -->
+        <a class="contact-icon" href="https://t.me/Kaskat" target="_blank" title="Telegram">
+          <span class="ic-tooltip">Telegram</span>
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a class="contact-icon" href="#" title="LinkedIn">
+          <span class="ic-tooltip">LinkedIn</span>
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+
+        <!-- Instagram -->
+        <a class="contact-icon" href="#" title="Instagram">
+          <span class="ic-tooltip">Instagram</span>
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+
+        <!-- CV Download -->
+        <a class="contact-icon" href="#" title="Download CV">
+          <span class="ic-tooltip">Download CV</span>
+          <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-2 8l-4-4h2.5v-4h3v4H14l-3 4z"/></svg>
+        </a>
+
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2025 <span>Yevhenii Hladkykh</span></span>
+      <span>Lviv, Ukraine <span>·</span> Remote only</span>
+    </footer>
+
+  </div><!-- /page -->
+
+  <script>
+    // ── Theme toggle ──
+    document.getElementById('theme-toggle').addEventListener('change', e => {
+      document.documentElement.dataset.theme = e.target.checked ? 'light' : 'dark';
+    });
+
+    // ── Track accordion ──
+    function toggleTrack(header) {
+      const track = header.closest('.track');
+      const isOpen = track.classList.contains('open');
+
+      // Close all others
+      document.querySelectorAll('.track.open').forEach(t => {
+        if (t !== track) t.classList.remove('open');
+      });
+
+      track.classList.toggle('open', !isOpen);
+    }
+
+    // ── Project select → update preview ──
+    function selectProject(el) {
+      document.querySelectorAll('.proj-item.selected').forEach(i => i.classList.remove('selected'));
+      el.classList.add('selected');
+
+      const name = el.dataset.name;
+      const role = el.dataset.role;
+      const tags = (el.dataset.tags || '').split(',').filter(Boolean);
+
+      document.getElementById('pname').textContent = name;
+      document.getElementById('prole').textContent = role;
+      document.getElementById('pf-img').textContent = name;
+
+      const frame = document.getElementById('pframe');
+      frame.classList.add('active');
+
+      const tagsEl = document.getElementById('ptags');
+      tagsEl.innerHTML = tags.map(t => `<span class="ptag">${t.trim()}</span>`).join('');
+    }
+
+    // ── Particles for featured items ──
+    document.querySelectorAll('.proj-item.featured .particles').forEach(container => {
+      for (let i = 0; i < 6; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.setProperty('--dur', (3 + Math.random() * 3) + 's');
+        p.style.setProperty('--delay', (Math.random() * 4) + 's');
+        p.style.setProperty('--dx', ((Math.random() - 0.5) * 20) + 'px');
+        p.style.left = (10 + Math.random() * 80) + '%';
+        p.style.bottom = '4px';
+        container.appendChild(p);
+      }
+    });
+
+    // ── Scroll reveal ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
