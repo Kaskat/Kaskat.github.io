@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio — Yevhenii Hladkykh</title>
+  <title>Yevhenii Hladkykh — Unity Developer</title>
+  <meta name="description" content="Unity/C# Developer with 5+ years in mobile F2P. 16+ shipped titles. Portfolio & CV."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
@@ -50,13 +51,15 @@
       background: var(--bg);
       color: var(--text);
       font-family: 'DM Mono', monospace;
-      font-weight: 300;
-      font-size: 14px;
+      font-weight: 400;
+      font-size: 18px;
       line-height: 1.6;
       min-height: 100vh;
       transition: background .35s, color .35s;
       overflow-x: hidden;
     }
+
+    a { color: inherit; text-decoration: none; }
 
     /* ══════════════════════════════════
        TOP BAR
@@ -76,10 +79,26 @@
 
     .topbar-left {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1.4rem;
       letter-spacing: 0.1em;
       color: var(--accent);
     }
+
+    .topbar-center {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .topbar-center a {
+      font-size: 0.88rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      transition: color .2s;
+    }
+    .topbar-center a:hover,
+    .topbar-center a.active { color: var(--accent); }
 
     .topbar-right { display: flex; align-items: center; gap: 12px; }
 
@@ -87,7 +106,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.62rem;
+      font-size: 0.88rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--text-dim);
@@ -121,8 +140,23 @@
     ══════════════════════════════════ */
     .page { padding-top: 48px; }
 
+    .sec-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 64px;
+      margin-bottom: 48px;
+    }
+    .sec-num { font-size: 0.88rem; letter-spacing: 0.22em; color: var(--accent); }
+    .sec-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      letter-spacing: 0.05em;
+    }
+    .sec-line { flex: 1; height: 1px; background: var(--border); }
+
     /* ══════════════════════════════════
-       HERO — full viewport, sticky
+       HERO
     ══════════════════════════════════ */
     .hero {
       min-height: 100svh;
@@ -134,7 +168,6 @@
       overflow: hidden;
     }
 
-    /* Radial glow bg */
     .hero::before {
       content: '';
       position: absolute;
@@ -145,7 +178,7 @@
     }
 
     .hero-tag {
-      font-size: 0.65rem;
+      font-size: 0.95rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--accent);
@@ -179,8 +212,8 @@
     }
 
     .hero-desc {
-      max-width: 460px;
-      font-size: 0.85rem;
+      max-width: 520px;
+      font-size: 1.05rem;
       color: var(--text-dim);
       line-height: 1.85;
       margin-bottom: 36px;
@@ -198,11 +231,12 @@
     }
 
     .btn-primary {
+      display: inline-block;
       padding: 12px 28px;
       background: var(--accent);
       color: var(--bg);
       font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.95rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       border: none;
@@ -212,11 +246,12 @@
     .btn-primary:hover { opacity: .85; transform: translateY(-2px); }
 
     .btn-ghost {
+      display: inline-block;
       padding: 12px 28px;
       background: transparent;
       color: var(--text-dim);
       font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.95rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       border: 1px solid var(--border);
@@ -236,13 +271,13 @@
     .stat { text-align: right; }
     .stat-n {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.4rem;
+      font-size: 3.2rem;
       line-height: 1;
       color: var(--text);
     }
     .stat-n em { font-style: normal; color: var(--accent); }
     .stat-l {
-      font-size: 0.58rem;
+      font-size: 0.85rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--text-dim);
@@ -250,7 +285,7 @@
     }
 
     /* ══════════════════════════════════
-       TICKER — fixed loop
+       TICKER
     ══════════════════════════════════ */
     .ticker-wrap {
       overflow: hidden;
@@ -264,13 +299,12 @@
       width: max-content;
       animation: ticker-scroll 28s linear infinite;
     }
-    /* Two identical sets for seamless loop */
     .ticker-set {
       display: flex;
       flex-shrink: 0;
     }
     .ti {
-      font-size: 0.63rem;
+      font-size: 0.88rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-dim);
@@ -285,28 +319,12 @@
     }
 
     /* ══════════════════════════════════
-       PROJECTS SECTION — split layout
+       PROJECTS
     ══════════════════════════════════ */
     .projects-section {
       padding: 80px 0;
     }
 
-    .sec-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 0 64px;
-      margin-bottom: 48px;
-    }
-    .sec-num { font-size: 0.6rem; letter-spacing: 0.22em; color: var(--accent); }
-    .sec-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      letter-spacing: 0.05em;
-    }
-    .sec-line { flex: 1; height: 1px; background: var(--border); }
-
-    /* Split: sticky preview left, list right */
     .projects-body {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -314,7 +332,6 @@
       align-items: start;
     }
 
-    /* LEFT — sticky preview */
     .proj-preview-col {
       position: sticky;
       top: 60px;
@@ -323,7 +340,8 @@
 
     .preview-frame {
       width: 100%;
-      aspect-ratio: 4/3;
+      aspect-ratio: 9/16;
+      max-height: 70vh;
       background: var(--surface);
       border: 1px solid var(--border);
       position: relative;
@@ -334,21 +352,49 @@
       transition: border-color .3s;
     }
 
-    .preview-frame .pf-img {
+    .pf-placeholder {
       position: absolute;
       inset: 0;
       background: var(--surface);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.6rem;
+      font-size: 0.88rem;
       letter-spacing: 0.2em;
       color: var(--muted);
       text-transform: uppercase;
-      transition: opacity .4s ease;
+      transition: opacity .3s ease;
+      z-index: 1;
     }
+    .pf-placeholder.hidden { opacity: 0; pointer-events: none; }
 
-    /* Accent top bar on preview */
+    /* Blurred backdrop — mirrored video/image behind content */
+    .pf-backdrop {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity .4s ease;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .pf-backdrop.active { opacity: 1; }
+
+    .pf-video, .pf-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity .3s ease;
+      z-index: 1;
+    }
+    .pf-video.active, .pf-image.active { opacity: 1; }
+
     .preview-frame::before {
       content: '';
       position: absolute;
@@ -360,6 +406,91 @@
     }
     .preview-frame.active::before { width: 100%; }
 
+    /* Thumbnail strip — overlay at bottom of preview */
+    .preview-thumbs-wrap {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      z-index: 3;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity .25s, transform .25s;
+      pointer-events: none;
+      padding: 20px 0 0;
+    }
+    .preview-frame:hover .preview-thumbs-wrap {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .preview-thumbs-wrap.empty { display: none; }
+
+    .preview-thumbs {
+      display: flex;
+      gap: 3px;
+      padding: 0 4px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      cursor: grab;
+    }
+    .preview-thumbs::-webkit-scrollbar { display: none; }
+    .preview-thumbs:empty { display: none; }
+
+    .thumb-item {
+      width: 48px;
+      height: 80px;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    .thumb-item:hover { border-color: var(--text-dim); }
+    .thumb-item.active { border-color: var(--accent); }
+
+    .thumb-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Video icon badge on thumbnail */
+    .thumb-video-badge {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.35);
+      pointer-events: none;
+    }
+    .thumb-video-badge::after {
+      content: '';
+      display: block;
+      width: 0; height: 0;
+      border-style: solid;
+      border-width: 6px 0 6px 10px;
+      border-color: transparent transparent transparent #fff;
+    }
+
+    /* Carousel counter */
+    .carousel-counter {
+      position: absolute;
+      top: 8px; right: 8px;
+      z-index: 4;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      color: #fff;
+      background: rgba(0,0,0,0.5);
+      padding: 2px 8px;
+      opacity: 0;
+      transition: opacity .25s;
+      pointer-events: none;
+    }
+    .preview-frame:hover .carousel-counter { opacity: 1; }
+
     .preview-meta {
       margin-top: 14px;
       display: flex;
@@ -368,13 +499,13 @@
     }
     .preview-name {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.6rem;
       letter-spacing: 0.05em;
       color: var(--text);
       transition: color .3s;
     }
     .preview-role {
-      font-size: 0.6rem;
+      font-size: 0.88rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
@@ -387,20 +518,18 @@
       margin-top: 12px;
     }
     .ptag {
-      font-size: 0.58rem;
+      font-size: 0.85rem;
       letter-spacing: 0.08em;
       color: var(--text-dim);
       background: var(--muted);
       padding: 3px 8px;
     }
 
-    /* RIGHT — accordion list */
     .proj-list-col {
       padding: 0 64px 0 0;
       border-left: 1px solid var(--border);
     }
 
-    /* Track (category) */
     .track {
       border-bottom: 1px solid var(--border);
     }
@@ -422,7 +551,7 @@
       gap: 12px;
     }
     .track-badge {
-      font-size: 0.58rem;
+      font-size: 0.85rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--accent);
@@ -434,12 +563,12 @@
 
     .track-name {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1.4rem;
       letter-spacing: 0.05em;
     }
 
     .track-count {
-      font-size: 0.6rem;
+      font-size: 0.88rem;
       letter-spacing: 0.1em;
       color: var(--text-dim);
     }
@@ -454,17 +583,51 @@
     }
     .track.open .track-arrow { transform: rotate(-135deg) translateY(-3px); border-color: var(--accent); }
 
-    /* Peek — shows 1-2 items blurred when closed */
     .track-body {
       max-height: 0;
       overflow: hidden;
       transition: max-height .4s cubic-bezier(0.16,1,0.3,1);
     }
     .track.open .track-body {
-      max-height: 800px;
+      max-height: 1200px;
     }
 
-    /* Individual project row */
+    /* Sub-pills inside Work track */
+    .sub-pills {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .sub-pill {
+      flex: 1;
+      padding: 10px 16px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--border);
+      cursor: pointer;
+      transition: color .2s, background .2s;
+      text-align: center;
+    }
+    .sub-pill:last-child { border-right: none; }
+    .sub-pill:hover { color: var(--text); background: var(--surface); }
+    .sub-pill.active {
+      color: var(--accent);
+      background: var(--surface);
+      box-shadow: inset 0 -2px 0 var(--accent);
+    }
+
+    .sub-group {
+      display: none;
+    }
+    .sub-group.active {
+      display: block;
+    }
+
     .proj-item {
       display: flex;
       align-items: center;
@@ -489,7 +652,7 @@
 
     .proj-item-name {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1rem;
+      font-size: 1.35rem;
       letter-spacing: 0.04em;
       transition: color .2s;
     }
@@ -497,14 +660,14 @@
     .proj-item.selected .proj-item-name { color: var(--accent); }
 
     .proj-item-sub {
-      font-size: 0.58rem;
+      font-size: 0.85rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-dim);
     }
 
     .proj-item-tag {
-      font-size: 0.55rem;
+      font-size: 0.85rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-dim);
@@ -513,21 +676,17 @@
       white-space: nowrap;
     }
 
-    /* ══════════════════════════════════
-       CROWN / GLOW — featured projects
-    ══════════════════════════════════ */
+    /* Featured projects */
     .proj-item.featured {
-      /* Subtle bg glow */
       background: linear-gradient(90deg, var(--glow2) 0%, transparent 60%);
+      position: relative;
+      overflow: hidden;
+      animation: featuredGlow 3s ease-in-out infinite;
     }
+    .proj-item.featured .proj-item-name { color: var(--text); }
 
-    .proj-item.featured .proj-item-name {
-      color: var(--text);
-    }
-
-    /* Crown icon */
     .crown-icon {
-      font-size: 0.75rem;
+      font-size: 1.05rem;
       margin-left: 6px;
       color: var(--crown);
       animation: crownPulse 2.5s ease-in-out infinite;
@@ -538,12 +697,6 @@
       50% { opacity: 1; transform: translateY(-1px); }
     }
 
-    /* Animated border — CSS lines technique */
-    .proj-item.featured {
-      position: relative;
-      overflow: hidden;
-    }
-
     .proj-item.featured::after {
       content: '';
       position: absolute;
@@ -552,17 +705,11 @@
       pointer-events: none;
     }
 
-    /* Animated glow border via pseudo + box-shadow pulse */
-    .proj-item.featured {
-      animation: featuredGlow 3s ease-in-out infinite;
-    }
-
     @keyframes featuredGlow {
       0%, 100% { box-shadow: inset 0 0 0 1px rgba(255,107,43,0.15), 0 0 0 0 transparent; }
       50%       { box-shadow: inset 0 0 0 1px rgba(255,107,43,0.45), 0 0 8px 0 rgba(255,107,43,0.08); }
     }
 
-    /* Particles — tiny dots floating */
     .particles {
       position: absolute;
       inset: 0;
@@ -587,7 +734,7 @@
     }
 
     /* ══════════════════════════════════
-       CONTACT SECTION
+       CONTACT
     ══════════════════════════════════ */
     .contact-section {
       padding: 80px 64px;
@@ -601,7 +748,7 @@
 
     .contact-heading {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2.8rem, 5.5vw, 4.5rem);
       letter-spacing: 0.04em;
       line-height: 0.95;
       margin-bottom: 12px;
@@ -609,9 +756,9 @@
     .contact-heading em { font-style: normal; color: var(--accent); }
 
     .contact-sub {
-      font-size: 0.82rem;
+      font-size: 1.05rem;
       color: var(--text-dim);
-      max-width: 340px;
+      max-width: 420px;
       line-height: 1.75;
     }
 
@@ -647,7 +794,7 @@
       bottom: calc(100% + 8px);
       left: 50%;
       transform: translateX(-50%);
-      font-size: 0.55rem;
+      font-size: 0.82rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--bg);
@@ -661,32 +808,156 @@
     .contact-icon:hover .ic-tooltip { opacity: 1; }
 
     /* ══════════════════════════════════
-       FOOTER
+       PAGE TRANSITION
     ══════════════════════════════════ */
-    footer {
-      padding: 16px 64px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      color: var(--text-dim);
+    body {
+      animation: pageIn .35s ease;
     }
-    footer span { color: var(--accent); }
+    body.page-out {
+      opacity: 0;
+      transition: opacity .2s ease;
+    }
+
+    @keyframes pageIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
 
     /* ══════════════════════════════════
        MOBILE
     ══════════════════════════════════ */
+    /* ── Mobile modal overlay ── */
+    .mobile-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,0.92);
+      flex-direction: column;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .mobile-modal.open { display: flex; }
+    .mobile-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px 8px;
+      flex-shrink: 0;
+    }
+    .mobile-modal-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      color: #fff;
+    }
+    .mobile-modal-role {
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 0 20px 12px;
+      flex-shrink: 0;
+    }
+    .mobile-modal-close {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      font-size: 1.4rem;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .mobile-modal-close:hover { border-color: var(--accent); }
+    .mobile-modal-gallery {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 12px;
+    }
+    .mobile-modal-main {
+      width: 100%;
+      aspect-ratio: 9/16;
+      max-height: 65vh;
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .mobile-modal-main video,
+    .mobile-modal-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .mobile-modal-counter {
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.6);
+      padding: 8px 0 4px;
+      text-align: center;
+    }
+    .mobile-modal-thumbs {
+      display: flex;
+      gap: 4px;
+      padding: 8px 4px 12px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+    }
+    .mobile-modal-thumbs::-webkit-scrollbar { display: none; }
+    .mobile-modal-thumb {
+      width: 44px;
+      height: 74px;
+      flex-shrink: 0;
+      border: 2px solid transparent;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .mobile-modal-thumb.active { border-color: var(--accent); }
+    .mobile-modal-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .mobile-modal-thumb .thumb-video-badge {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.35);
+      pointer-events: none;
+    }
+    .mobile-modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 8px 20px 20px;
+      flex-shrink: 0;
+    }
+    .mobile-modal-tags .ptag {
+      font-size: 0.8rem;
+    }
+
     @media (max-width: 768px) {
+      .topbar-center { display: none; }
       .hero { padding: 72px 24px 50px; }
       .hero-stats { position: static; margin-top: 40px; justify-content: flex-start; }
       .sec-header { padding: 0 24px; }
       .projects-body { grid-template-columns: 1fr; }
-      .proj-preview-col { position: static; padding: 0 24px; margin-bottom: 32px; }
-      .proj-list-col { padding: 0; border-left: none; border-top: 1px solid var(--border); }
+      .proj-preview-col { display: none; }
+      .proj-list-col { padding: 0; border-left: none; order: 1; }
       .contact-section { padding: 60px 24px; flex-direction: column; align-items: flex-start; }
       .contact-icons { flex-wrap: wrap; }
-      footer { padding: 14px 24px; flex-direction: column; gap: 4px; }
     }
 
     /* ══════════════════════════════════
@@ -709,7 +980,12 @@
 
   <!-- TOP BAR -->
   <div class="topbar">
-    <div class="topbar-left">YH_</div>
+    <a class="topbar-left" href="./">YH_</a>
+    <nav class="topbar-center">
+      <a href="#projects">Projects</a>
+      <a href="about.html">About Me</a>
+      <a href="#contact">Contact</a>
+    </nav>
     <div class="topbar-right">
       <label class="toggle-wrap">
         <span>Dark</span>
@@ -726,7 +1002,7 @@
   <div class="page">
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="hero">
       <div class="hero-tag">Unity / C# Developer</div>
       <h1 class="htitle">
         Building<br/><em>mobile games</em><br/>that ship.
@@ -737,8 +1013,8 @@
         payments, and LiveOps. Exploring <strong>AI-assisted rapid development</strong>.
       </p>
       <div class="hero-btns">
-        <button class="btn-primary" onclick="document.querySelector('.projects-section').scrollIntoView({behavior:'smooth'})">See My Projects</button>
-        <button class="btn-ghost">More About Me</button>
+        <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Projects</button>
+        <a class="btn-ghost" href="about.html">About Me</a>
       </div>
       <div class="hero-stats">
         <div class="stat">
@@ -750,8 +1026,8 @@
           <div class="stat-l">Experience</div>
         </div>
         <div class="stat">
-          <div class="stat-n">2<em>d</em></div>
-          <div class="stat-l">Ball Sorting</div>
+          <div class="stat-n">4<em>&#215;</em></div>
+          <div class="stat-l">Platforms</div>
         </div>
       </div>
     </section>
@@ -760,34 +1036,34 @@
     <div class="ticker-wrap">
       <div class="ticker-track">
         <div class="ticker-set">
-          <span class="ti"><b>✦</b>Unity / C#</span>
-          <span class="ti"><b>✦</b>Mobile F2P</span>
-          <span class="ti"><b>✦</b>LiveOps</span>
-          <span class="ti"><b>✦</b>IAP & Subscriptions</span>
-          <span class="ti"><b>✦</b>AI-Assisted Dev</span>
-          <span class="ti"><b>✦</b>Analytics & Funnels</span>
-          <span class="ti"><b>✦</b>Android & iOS</span>
-          <span class="ti"><b>✦</b>Claude Code</span>
-          <span class="ti"><b>✦</b>Addressables</span>
-          <span class="ti"><b>✦</b>Jenkins CI/CD</span>
+          <span class="ti"><b>&#10022;</b>Unity / C#</span>
+          <span class="ti"><b>&#10022;</b>Mobile F2P</span>
+          <span class="ti"><b>&#10022;</b>LiveOps</span>
+          <span class="ti"><b>&#10022;</b>IAP &amp; Subscriptions</span>
+          <span class="ti"><b>&#10022;</b>AI-Assisted Dev</span>
+          <span class="ti"><b>&#10022;</b>Analytics &amp; Funnels</span>
+          <span class="ti"><b>&#10022;</b>Android &amp; iOS</span>
+          <span class="ti"><b>&#10022;</b>Claude Code</span>
+          <span class="ti"><b>&#10022;</b>Addressables</span>
+          <span class="ti"><b>&#10022;</b>Jenkins CI/CD</span>
         </div>
         <div class="ticker-set" aria-hidden="true">
-          <span class="ti"><b>✦</b>Unity / C#</span>
-          <span class="ti"><b>✦</b>Mobile F2P</span>
-          <span class="ti"><b>✦</b>LiveOps</span>
-          <span class="ti"><b>✦</b>IAP & Subscriptions</span>
-          <span class="ti"><b>✦</b>AI-Assisted Dev</span>
-          <span class="ti"><b>✦</b>Analytics & Funnels</span>
-          <span class="ti"><b>✦</b>Android & iOS</span>
-          <span class="ti"><b>✦</b>Claude Code</span>
-          <span class="ti"><b>✦</b>Addressables</span>
-          <span class="ti"><b>✦</b>Jenkins CI/CD</span>
+          <span class="ti"><b>&#10022;</b>Unity / C#</span>
+          <span class="ti"><b>&#10022;</b>Mobile F2P</span>
+          <span class="ti"><b>&#10022;</b>LiveOps</span>
+          <span class="ti"><b>&#10022;</b>IAP &amp; Subscriptions</span>
+          <span class="ti"><b>&#10022;</b>AI-Assisted Dev</span>
+          <span class="ti"><b>&#10022;</b>Analytics &amp; Funnels</span>
+          <span class="ti"><b>&#10022;</b>Android &amp; iOS</span>
+          <span class="ti"><b>&#10022;</b>Claude Code</span>
+          <span class="ti"><b>&#10022;</b>Addressables</span>
+          <span class="ti"><b>&#10022;</b>Jenkins CI/CD</span>
         </div>
       </div>
     </div>
 
     <!-- PROJECTS -->
-    <section class="projects-section reveal">
+    <section class="projects-section reveal" id="projects">
 
       <div class="sec-header">
         <span class="sec-num">01 /</span>
@@ -797,10 +1073,18 @@
 
       <div class="projects-body">
 
-        <!-- LEFT: sticky preview -->
+        <!-- LEFT: sticky preview (Steam-style gallery) -->
         <div class="proj-preview-col">
           <div class="preview-frame" id="pframe">
-            <div class="pf-img" id="pf-img">← Select a project</div>
+            <div class="pf-placeholder" id="pf-placeholder">&#8592; Select a project</div>
+            <video class="pf-backdrop" id="pf-backdrop-video" muted loop playsinline></video>
+            <img class="pf-backdrop" id="pf-backdrop-img" alt=""/>
+            <video class="pf-video" id="pf-video" muted loop playsinline></video>
+            <img class="pf-image" id="pf-image" alt=""/>
+            <div class="carousel-counter hidden" id="car-counter"></div>
+            <div class="preview-thumbs-wrap empty" id="pthumbs-wrap">
+              <div class="preview-thumbs" id="pthumbs"></div>
+            </div>
           </div>
           <div class="preview-meta">
             <div>
@@ -814,72 +1098,201 @@
         <!-- RIGHT: accordion -->
         <div class="proj-list-col" id="proj-list">
 
-          <!-- TRACK: Professional -->
-          <div class="track open" data-track="pro">
+          <!-- TRACK: Work (with sub-pills) -->
+          <div class="track open" data-track="work">
             <div class="track-header" onclick="toggleTrack(this)">
               <div class="track-header-left">
                 <span class="track-badge">Professional</span>
                 <span class="track-name">Work</span>
               </div>
               <div style="display:flex;align-items:center;gap:12px">
-                <span class="track-count">8 projects</span>
+                <span class="track-count">22 titles</span>
                 <div class="track-arrow"></div>
               </div>
             </div>
             <div class="track-body">
-              <div class="proj-item featured" data-name="Freelance Games" data-role="Full-cycle owner" data-tags="Unity,Hypercasual,Android,iOS,2020" onclick="selectProject(this)">
-                <div class="particles"></div>
-                <div class="proj-item-left">
-                  <span class="proj-item-name">Freelance Games <span class="crown-icon">♛</span></span>
-                  <span class="proj-item-sub">5 hypercasual prototypes · 2+ released</span>
-                </div>
-                <span class="proj-item-tag">Full-cycle</span>
+
+              <!-- Sub-pills -->
+              <div class="sub-pills">
+                <button class="sub-pill" onclick="switchPill(this, 'freelance')">Freelance</button>
+                <button class="sub-pill active" onclick="switchPill(this, 'hyper')">Hypercasual</button>
+                <button class="sub-pill" onclick="switchPill(this, 'casual')">Casual</button>
+                <button class="sub-pill" onclick="switchPill(this, 'bingo')">Bingo</button>
               </div>
-              <div class="proj-item featured" data-name="War Machines 3D" data-role="Primary developer — built from scratch" data-tags="Unity,Hypercasual,Android,iOS,Built from scratch" onclick="selectProject(this)">
-                <div class="particles"></div>
-                <div class="proj-item-left">
-                  <span class="proj-item-name">War Machines 3D <span class="crown-icon">♛</span></span>
-                  <span class="proj-item-sub">Playcus · built from scratch</span>
+
+              <!-- SUB: Freelance -->
+              <div class="sub-group" data-sub="freelance">
+                <div class="proj-item" data-name="Tap Jump" data-role="Freelance · full-cycle development" data-tags="Unity,Hypercasual,Android,iOS,Full-cycle" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Tap Jump</span>
+                    <span class="proj-item-sub">Freelance · hypercasual</span>
+                  </div>
+                  <span class="proj-item-tag">Full-cycle</span>
                 </div>
-                <span class="proj-item-tag">Primary dev</span>
-              </div>
-              <div class="proj-item featured" data-name="Groomer Run 3D" data-role="Primary developer — built from scratch" data-tags="Unity,Hypercasual,Android,iOS,Built from scratch" onclick="selectProject(this)">
-                <div class="particles"></div>
-                <div class="proj-item-left">
-                  <span class="proj-item-name">Groomer Run 3D <span class="crown-icon">♛</span></span>
-                  <span class="proj-item-sub">Playcus · built from scratch</span>
+                <div class="proj-item" data-name="Ghost Catcher" data-role="Freelance · full-cycle development" data-tags="Unity,Hypercasual,Android,iOS,Full-cycle" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Ghost Catcher</span>
+                    <span class="proj-item-sub">Freelance · hypercasual</span>
+                  </div>
+                  <span class="proj-item-tag">Full-cycle</span>
                 </div>
-                <span class="proj-item-tag">Primary dev</span>
-              </div>
-              <div class="proj-item" data-name="Cats Run 3D" data-role="Primary developer" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
-                <div class="proj-item-left">
-                  <span class="proj-item-name">Cats Run 3D</span>
-                  <span class="proj-item-sub">Playcus · built from scratch</span>
+                <div class="proj-item" data-name="Wonder Pencils" data-role="Freelance · full-cycle development" data-tags="Unity,Hypercasual,Android,iOS,Full-cycle" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Wonder Pencils</span>
+                    <span class="proj-item-sub">Freelance · hypercasual</span>
+                  </div>
+                  <span class="proj-item-tag">Full-cycle</span>
                 </div>
-                <span class="proj-item-tag">Primary dev</span>
-              </div>
-              <div class="proj-item" data-name="Animals Merge" data-role="Primary developer" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
-                <div class="proj-item-left">
-                  <span class="proj-item-name">Animals Merge</span>
-                  <span class="proj-item-sub">Playcus · built from scratch</span>
+                <div class="proj-item" data-name="Space Match" data-role="Freelance · full-cycle development" data-tags="Unity,Hypercasual,Android,iOS,Full-cycle" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Space Match</span>
+                    <span class="proj-item-sub">Freelance · hypercasual</span>
+                  </div>
+                  <span class="proj-item-tag">Full-cycle</span>
                 </div>
-                <span class="proj-item-tag">Primary dev</span>
-              </div>
-              <div class="proj-item" data-name="Casual Features" data-role="Feature developer" data-tags="Unity,Casual,Music,Word,Hidden Object" onclick="selectProject(this)">
-                <div class="proj-item-left">
-                  <span class="proj-item-name">Casual Features</span>
-                  <span class="proj-item-sub">Groove Masters, Word Ways, Find the Difference…</span>
+                <div class="proj-item" data-name="Tetroad" data-role="Freelance · full-cycle development" data-tags="Unity,Hypercasual,Android,iOS,Full-cycle" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Tetroad</span>
+                    <span class="proj-item-sub">Freelance · hypercasual</span>
+                  </div>
+                  <span class="proj-item-tag">Full-cycle</span>
                 </div>
-                <span class="proj-item-tag">Feature dev</span>
               </div>
-              <div class="proj-item featured" data-name="Bingo Platform ×6" data-role="Features + support · IAP refactor · Analytics redesign" data-tags="Unity,Client-Server,IAP,LiveOps,Analytics,Android,iOS,Windows" onclick="selectProject(this)">
-                <div class="particles"></div>
-                <div class="proj-item-left">
-                  <span class="proj-item-name">Bingo Platform ×6 <span class="crown-icon">♛</span></span>
-                  <span class="proj-item-sub">Playcus · client-server · 6 variations</span>
+
+              <!-- SUB: Hypercasual -->
+              <div class="sub-group active" data-sub="hyper">
+                <div class="proj-item featured" data-name="War Machines 3D" data-role="Primary developer — built from scratch, maintained 1-3 years" data-tags="Unity,Hypercasual,Android,iOS,Built from scratch,Long-term support" onclick="selectProject(this)">
+                  <div class="particles"></div>
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">War Machines 3D <span class="crown-icon">&#9819;</span></span>
+                    <span class="proj-item-sub">Playcus · built from scratch · long-term</span>
+                  </div>
+                  <span class="proj-item-tag">Primary dev</span>
                 </div>
-                <span class="proj-item-tag">Features + support</span>
+                <div class="proj-item featured" data-name="Groomer Run 3D" data-role="Primary developer — built from scratch, maintained 1-3 years" data-tags="Unity,Hypercasual,Android,iOS,Built from scratch,Long-term support" onclick="selectProject(this)">
+                  <div class="particles"></div>
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Groomer Run 3D <span class="crown-icon">&#9819;</span></span>
+                    <span class="proj-item-sub">Playcus · built from scratch · long-term</span>
+                  </div>
+                  <span class="proj-item-tag">Primary dev</span>
+                </div>
+                <div class="proj-item" data-name="Cats Groomer Runner" data-role="Primary developer — built from scratch" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Cats Groomer Runner</span>
+                    <span class="proj-item-sub">Playcus · built from scratch</span>
+                  </div>
+                  <span class="proj-item-tag">Primary dev</span>
+                </div>
+                <div class="proj-item" data-name="Cats Run 3D" data-role="Primary developer — built from scratch" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Cats Run 3D</span>
+                    <span class="proj-item-sub">Playcus · built from scratch</span>
+                  </div>
+                  <span class="proj-item-tag">Primary dev</span>
+                </div>
+                <div class="proj-item" data-name="Animals Merge" data-role="Primary developer — built from scratch" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Animals Merge</span>
+                    <span class="proj-item-sub">Playcus · built from scratch</span>
+                  </div>
+                  <span class="proj-item-tag">Primary dev</span>
+                </div>
               </div>
+
+              <!-- SUB: Casual -->
+              <div class="sub-group" data-sub="casual">
+                <div class="proj-item" data-name="Groove Masters" data-role="Feature developer — DJ Drum Pad" data-tags="Unity,Casual,Music,Feature dev" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Groove Masters</span>
+                    <span class="proj-item-sub">Playcus · DJ Drum Pad · music genre</span>
+                  </div>
+                  <span class="proj-item-tag">Feature dev</span>
+                </div>
+                <div class="proj-item" data-name="Drum Pad Stars" data-role="Feature developer — music game" data-tags="Unity,Casual,Music,Feature dev" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Drum Pad Stars</span>
+                    <span class="proj-item-sub">Playcus · music genre</span>
+                  </div>
+                  <span class="proj-item-tag">Feature dev</span>
+                </div>
+                <div class="proj-item" data-name="Word Ways" data-role="Feature developer — word game" data-tags="Unity,Casual,Word,Feature dev" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Word Ways</span>
+                    <span class="proj-item-sub">Playcus · word genre</span>
+                  </div>
+                  <span class="proj-item-tag">Feature dev</span>
+                </div>
+                <div class="proj-item" data-name="Find the Difference" data-role="Feature developer — hidden object" data-tags="Unity,Casual,Hidden Object,Feature dev" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Find the Difference</span>
+                    <span class="proj-item-sub">Playcus · hidden object genre</span>
+                  </div>
+                  <span class="proj-item-tag">Feature dev</span>
+                </div>
+                <div class="proj-item" data-name="Bingo Home Makeover" data-role="Feature developer — bingo/casual" data-tags="Unity,Casual,Bingo,Feature dev" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Bingo Home Makeover</span>
+                    <span class="proj-item-sub">Playcus · bingo/casual</span>
+                  </div>
+                  <span class="proj-item-tag">Feature dev</span>
+                </div>
+              </div>
+
+              <!-- SUB: Bingo Platform -->
+              <div class="sub-group" data-sub="bingo">
+                <div class="proj-item featured" data-name="Bingo Platform" data-role="Features + IAP refactor + Analytics redesign — Unity client + PHP backend" data-tags="Unity,Client-Server,IAP,LiveOps,Analytics,Addressables,14+ langs,4 platforms" onclick="selectProject(this)">
+                  <div class="particles"></div>
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Bingo Platform &#215;6 <span class="crown-icon">&#9819;</span></span>
+                    <span class="proj-item-sub">Client-server · IAP refactor · Analytics redesign</span>
+                  </div>
+                  <span class="proj-item-tag">Full stack</span>
+                </div>
+                <div class="proj-item" data-name="Bingo Star" data-role="Platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Bingo Star</span>
+                    <span class="proj-item-sub">Platform variation</span>
+                  </div>
+                  <span class="proj-item-tag">Variation</span>
+                </div>
+                <div class="proj-item" data-name="Bingo Farm Ways" data-role="Platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Bingo Farm Ways</span>
+                    <span class="proj-item-sub">Platform variation</span>
+                  </div>
+                  <span class="proj-item-tag">Variation</span>
+                </div>
+                <div class="proj-item" data-name="Bingo Country Boys" data-role="Platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Bingo Country Boys</span>
+                    <span class="proj-item-sub">Platform variation</span>
+                  </div>
+                  <span class="proj-item-tag">Variation</span>
+                </div>
+                <div class="proj-item" data-name="Bingo Country Days" data-role="Platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Bingo Country Days</span>
+                    <span class="proj-item-sub">Platform variation</span>
+                  </div>
+                  <span class="proj-item-tag">Variation</span>
+                </div>
+                <div class="proj-item" data-name="Bingo Kingdom Arena" data-role="Platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Bingo Kingdom Arena</span>
+                    <span class="proj-item-sub">Platform variation</span>
+                  </div>
+                  <span class="proj-item-tag">Variation</span>
+                </div>
+                <div class="proj-item" data-name="Bingo Country Ways" data-role="Platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Bingo Country Ways</span>
+                    <span class="proj-item-sub">Platform variation</span>
+                  </div>
+                  <span class="proj-item-tag">Variation</span>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -888,10 +1301,10 @@
             <div class="track-header" onclick="toggleTrack(this)">
               <div class="track-header-left">
                 <span class="track-badge">Independent</span>
-                <span class="track-name">Projects</span>
+                <span class="track-name">R&amp;D &amp; Experiments</span>
               </div>
               <div style="display:flex;align-items:center;gap:12px">
-                <span class="track-count">4 projects</span>
+                <span class="track-count">2 projects</span>
                 <div class="track-arrow"></div>
               </div>
             </div>
@@ -899,31 +1312,24 @@
               <div class="proj-item featured" data-name="Ball Sorting Puzzle" data-role="Solo build · AI-assisted · 2 days" data-tags="Unity,C#,Claude Code,Android,AI Pipeline,2 days" onclick="selectProject(this)">
                 <div class="particles"></div>
                 <div class="proj-item-left">
-                  <span class="proj-item-name">Ball Sorting Puzzle <span class="crown-icon">♛</span></span>
+                  <span class="proj-item-name">Ball Sorting Puzzle <span class="crown-icon">&#9819;</span></span>
                   <span class="proj-item-sub">AI-assisted · built in 2 days</span>
                 </div>
                 <span class="proj-item-tag">Solo</span>
               </div>
-              <div class="proj-item" data-name="AI Pipeline R&D" data-role="Bingo clone via AI agents" data-tags="Claude Code,AI Agents,Unity,R&D" onclick="selectProject(this)">
+              <div class="proj-item" data-name="AI Pipeline R&D" data-role="Bingo clone via AI agents — iterative workflow refinement" data-tags="Claude Code,AI Agents,Unity,R&D" onclick="selectProject(this)">
                 <div class="proj-item-left">
-                  <span class="proj-item-name">AI Pipeline R&D</span>
+                  <span class="proj-item-name">AI Pipeline R&amp;D</span>
                   <span class="proj-item-sub">Bingo reproduction via agent orchestration</span>
                 </div>
-                <span class="proj-item-tag">R&D</span>
+                <span class="proj-item-tag">R&amp;D</span>
               </div>
-              <div class="proj-item" data-name="Physics Engine" data-role="Pet project · in progress" data-tags="C#,Unity,Physics,In Progress" onclick="selectProject(this)">
+              <div class="proj-item" data-name="Ride Physics" data-role="Custom physics engine experiments — vehicle simulation R&D" data-tags="Unity,C#,Physics,R&D,Custom Engine" onclick="selectProject(this)">
                 <div class="proj-item-left">
-                  <span class="proj-item-name">Physics Engine</span>
-                  <span class="proj-item-sub">Custom physics · in progress</span>
+                  <span class="proj-item-name">Ride Physics</span>
+                  <span class="proj-item-sub">Custom physics engine for vehicle simulation</span>
                 </div>
-                <span class="proj-item-tag">Experiment</span>
-              </div>
-              <div class="proj-item" data-name="Windows Overlay" data-role="Pet project · in progress" data-tags="C#,Windows,Overlay,In Progress" onclick="selectProject(this)">
-                <div class="proj-item-left">
-                  <span class="proj-item-name">Windows Overlay</span>
-                  <span class="proj-item-sub">Desktop tool · in progress</span>
-                </div>
-                <span class="proj-item-tag">Experiment</span>
+                <span class="proj-item-tag">R&amp;D</span>
               </div>
             </div>
           </div>
@@ -936,120 +1342,366 @@
                 <span class="track-name">Game Jams</span>
               </div>
               <div style="display:flex;align-items:center;gap:12px">
-                <span class="track-count">2 projects</span>
+                <span class="track-count">1 project</span>
                 <div class="track-arrow"></div>
               </div>
             </div>
             <div class="track-body">
-              <div class="proj-item" data-name="Game Jam #1" data-role="48h jam" data-tags="Unity,Game Jam,48h" onclick="selectProject(this)">
+              <div class="proj-item" data-name="Fox Thieve" data-role="Game jam entry" data-tags="Unity,Game Jam,2D" onclick="selectProject(this)">
                 <div class="proj-item-left">
-                  <span class="proj-item-name">Jam Project #1</span>
-                  <span class="proj-item-sub">48h · details TBD</span>
+                  <span class="proj-item-name">Fox Thieve</span>
+                  <span class="proj-item-sub">Game jam entry</span>
                 </div>
-                <span class="proj-item-tag">48h</span>
+                <span class="proj-item-tag">Jam</span>
               </div>
-              <div class="proj-item" data-name="Game Jam #2" data-role="72h jam" data-tags="Unity,Game Jam,72h" onclick="selectProject(this)">
+              <div class="proj-item" data-name="Magic Sneeze" data-role="Game jam entry" data-tags="Unity,Game Jam,3D" onclick="selectProject(this)">
                 <div class="proj-item-left">
-                  <span class="proj-item-name">Jam Project #2</span>
-                  <span class="proj-item-sub">72h · details TBD</span>
+                  <span class="proj-item-name">Magic Sneeze</span>
+                  <span class="proj-item-sub">Game jam entry</span>
                 </div>
-                <span class="proj-item-tag">72h</span>
+                <span class="proj-item-tag">Jam</span>
               </div>
             </div>
           </div>
 
-        </div><!-- /proj-list-col -->
-      </div><!-- /projects-body -->
+        </div>
+      </div>
     </section>
 
     <!-- CONTACT -->
-    <section class="contact-section reveal">
+    <section class="contact-section reveal" id="contact">
       <div>
         <h2 class="contact-heading">Let's work<br/><em>together.</em></h2>
         <p class="contact-sub">Open to remote Unity developer roles and indie collaborations. Based in Lviv, Ukraine — working globally.</p>
       </div>
       <div class="contact-icons">
-
-        <!-- Email -->
         <a class="contact-icon" href="mailto:kaskat250@gmail.com" title="Email">
           <span class="ic-tooltip">Email</span>
           <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
         </a>
-
-        <!-- Telegram -->
         <a class="contact-icon" href="https://t.me/Kaskat" target="_blank" title="Telegram">
           <span class="ic-tooltip">Telegram</span>
           <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
         </a>
-
-        <!-- LinkedIn -->
-        <a class="contact-icon" href="#" title="LinkedIn">
-          <span class="ic-tooltip">LinkedIn</span>
-          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <a class="contact-icon" href="tel:+380989384514" title="Phone">
+          <span class="ic-tooltip">Phone</span>
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
         </a>
-
-        <!-- Instagram -->
-        <a class="contact-icon" href="#" title="Instagram">
-          <span class="ic-tooltip">Instagram</span>
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <a class="contact-icon" href="https://github.com/Kaskat" target="_blank" title="GitHub">
+          <span class="ic-tooltip">GitHub</span>
+          <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
         </a>
-
-        <!-- CV Download -->
-        <a class="contact-icon" href="#" title="Download CV">
-          <span class="ic-tooltip">Download CV</span>
-          <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-2 8l-4-4h2.5v-4h3v4H14l-3 4z"/></svg>
-        </a>
-
       </div>
     </section>
 
-    <footer>
-      <span>© 2025 <span>Yevhenii Hladkykh</span></span>
-      <span>Lviv, Ukraine <span>·</span> Remote only</span>
-    </footer>
-
-  </div><!-- /page -->
+  </div>
 
   <script>
     // ── Theme toggle ──
+    const themeKey = 'yh-theme';
+    const saved = localStorage.getItem(themeKey);
+    if (saved) {
+      document.documentElement.dataset.theme = saved;
+      document.getElementById('theme-toggle').checked = saved === 'light';
+    }
     document.getElementById('theme-toggle').addEventListener('change', e => {
-      document.documentElement.dataset.theme = e.target.checked ? 'light' : 'dark';
+      const t = e.target.checked ? 'light' : 'dark';
+      document.documentElement.dataset.theme = t;
+      localStorage.setItem(themeKey, t);
     });
 
     // ── Track accordion ──
     function toggleTrack(header) {
       const track = header.closest('.track');
       const isOpen = track.classList.contains('open');
-
-      // Close all others
       document.querySelectorAll('.track.open').forEach(t => {
         if (t !== track) t.classList.remove('open');
       });
-
       track.classList.toggle('open', !isOpen);
     }
 
-    // ── Project select → update preview ──
+    // ── Sub-pill switching ──
+    function switchPill(btn, subName) {
+      const track = btn.closest('.track');
+      track.querySelectorAll('.sub-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      track.querySelectorAll('.sub-group').forEach(g => g.classList.remove('active'));
+      track.querySelector('[data-sub="' + subName + '"]').classList.add('active');
+    }
+
+    // ── Media config ──
+    // To add media: drop files in docs/assets/projects/<folder>/
+    //   video.mp4 (+video.webm)  — gameplay video (webm optional, better compression)
+    //   thumb.webp               — video thumbnail (optional, auto-generated if missing)
+    //   1.webp (or .png), 2.webp… — screenshots, numbered sequentially
+    const MEDIA_BASE = 'assets/projects/';
+    const mediaConfig = {
+      'Tap Jump':        { folder: 'tap-jump', videos: [{name:'video',fmt:'both'}], screens: ['.png','.png'] },
+      'Tetroad':         { folder: 'tetroad', videos: [{name:'video',fmt:'both'}], screens: [], backdrop: { blur: 40, scale: 1.5, brightness: 0.3 } },
+      'Ghost Catcher':   { folder: 'ghost-catcher', videos: [{name:'video',fmt:'webm'}], screens: [] },
+      'Space Match':     { folder: 'space-match', videos: [{name:'video',fmt:'webm'}], screens: [], backdrop: { blur: 50, brightness: 0.25, saturate: 0.8 } },
+      'Wonder Pencils':  { folder: 'wonder-pencil', videos: [{name:'video',fmt:'webm'}], screens: [], backdrop: { scale: 1.1, blur: 35 } },
+      'War Machines 3D': { folder: 'war-machines', videos: [
+        {name:'video',fmt:'mp4'}, {name:'submarine',fmt:'mp4'}, {name:'turret',fmt:'mp4'}
+      ], screens: ['.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png'] },
+      'Fox Thieve':      { folder: 'fox-thieve', videos: [{name:'video',fmt:'mp4'}], screens: ['.png','.png','.png'] },
+      'Magic Sneeze':    { folder: 'magic-sneeze', videos: [{name:'video',fmt:'mp4'}], screens: ['.jpg','.jpg','.jpg','.jpg','.jpg'] },
+      'Ball Sorting Puzzle': { folder: 'ball-sorting-ai', videos: [{name:'video',fmt:'mp4'}], screens: ['.png','.png','.png','.png','.png'] },
+      'Groomer Run 3D': { folder: 'groomer-run', videos: [{name:'video',fmt:'mp4'}], screens: ['.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png'] },
+      'Ride Physics': { folder: 'ride-physics', videos: [
+        {name:'video',fmt:'mp4'}, {name:'video2',fmt:'mp4'}, {name:'video3',fmt:'mp4'},
+        {name:'video4',fmt:'mp4'}, {name:'video5',fmt:'mp4'}, {name:'video6',fmt:'mp4'}
+      ], screens: [] },
+      // videos: [{name:'filename',fmt:'both'|'mp4'|'webm'}]  — all videos shown first
+      // screens: ['.ext','.ext'…] → 1.ext, 2.ext — shown after videos
+      // backdrop: { blur: 30, scale: 1.3, brightness: 0.5, saturate: 1.4 }
+      //   defaults: blur=30, scale=1.3, brightness=0.5, saturate=1.4
+      //   set brightness lower (0.2-0.3) for annoying/bright videos
+      //   set blur higher (40-60) for busy content
+      //   set false to disable backdrop entirely
+    };
+
+    // ── Gallery / Carousel logic ──
+    const pframe     = document.getElementById('pframe');
+    const pVideo     = document.getElementById('pf-video');
+    const pImage     = document.getElementById('pf-image');
+    const pBdVideo   = document.getElementById('pf-backdrop-video');
+    const pBdImg     = document.getElementById('pf-backdrop-img');
+    const pHolder    = document.getElementById('pf-placeholder');
+    const pThumbs    = document.getElementById('pthumbs');
+    const pThumbsWrap = document.getElementById('pthumbs-wrap');
+    const carCounter = document.getElementById('car-counter');
+
+    // ── Thumbnail drag-to-scroll ──
+    let thumbDrag = { active: false, startX: 0, scrollLeft: 0, moved: false };
+    pThumbs.addEventListener('mousedown', e => {
+      thumbDrag.active = true;
+      thumbDrag.moved = false;
+      thumbDrag.startX = e.pageX;
+      thumbDrag.scrollLeft = pThumbs.scrollLeft;
+      pThumbs.style.cursor = 'grabbing';
+      e.preventDefault();
+    });
+    document.addEventListener('mousemove', e => {
+      if (!thumbDrag.active) return;
+      const dx = e.pageX - thumbDrag.startX;
+      if (Math.abs(dx) > 3) thumbDrag.moved = true;
+      pThumbs.scrollLeft = thumbDrag.scrollLeft - dx;
+    });
+    document.addEventListener('mouseup', () => {
+      thumbDrag.active = false;
+      pThumbs.style.cursor = '';
+    });
+
+    let galleryItems = [];
+    let galleryIndex = 0;
+    let currentBackdrop = null; // {blur, scale, brightness, saturate} or false
+
+    function applyBackdrop(bd) {
+      const targets = [pBdVideo, pBdImg];
+      if (bd === false) {
+        targets.forEach(t => { t.style.filter = ''; t.style.transform = ''; });
+        return;
+      }
+      const b = bd || {};
+      const blur = b.blur ?? 30;
+      const scale = b.scale ?? 1.3;
+      const brightness = b.brightness ?? 0.5;
+      const saturate = b.saturate ?? 1.4;
+      const f = `blur(${blur}px) saturate(${saturate}) brightness(${brightness})`;
+      const tr = `translate(-50%, -50%) scale(${scale})`;
+      targets.forEach(t => { t.style.filter = f; t.style.transform = tr; });
+    }
+
+    function showGalleryItem(idx) {
+      if (idx < 0 || idx >= galleryItems.length) return;
+      galleryIndex = idx;
+      const item = galleryItems[idx];
+
+      // Reset all
+      pVideo.classList.remove('active');
+      pImage.classList.remove('active');
+      pBdVideo.classList.remove('active');
+      pBdImg.classList.remove('active');
+      pVideo.pause();
+      pBdVideo.pause();
+
+      const showBd = currentBackdrop !== false;
+
+      if (item.type === 'video') {
+        pVideo.innerHTML = '';
+        if (showBd) pBdVideo.innerHTML = '';
+        if (item.webm) {
+          const s1 = document.createElement('source');
+          s1.src = item.webm; s1.type = 'video/webm';
+          pVideo.appendChild(s1);
+          if (showBd) {
+            const s2 = document.createElement('source');
+            s2.src = item.webm; s2.type = 'video/webm';
+            pBdVideo.appendChild(s2);
+          }
+        }
+        if (item.mp4) {
+          const s1 = document.createElement('source');
+          s1.src = item.mp4; s1.type = 'video/mp4';
+          pVideo.appendChild(s1);
+          if (showBd) {
+            const s2 = document.createElement('source');
+            s2.src = item.mp4; s2.type = 'video/mp4';
+            pBdVideo.appendChild(s2);
+          }
+        }
+        pVideo.load();
+        pVideo.classList.add('active');
+        pVideo.play().catch(() => {});
+        if (showBd) {
+          pBdVideo.load();
+          pBdVideo.classList.add('active');
+          pBdVideo.play().catch(() => {});
+        }
+      } else {
+        pImage.src = item.src;
+        pImage.classList.add('active');
+        if (showBd) {
+          pBdImg.src = item.src;
+          pBdImg.classList.add('active');
+        }
+      }
+
+      // Update counter
+      carCounter.textContent = (idx + 1) + ' / ' + galleryItems.length;
+
+      // Update active thumb
+      pThumbs.querySelectorAll('.thumb-item').forEach((t, i) => {
+        t.classList.toggle('active', i === idx);
+      });
+    }
+
+
+
+    // Generate thumbnail from video's first frame
+    function videoThumb(videoSrc, callback) {
+      const v = document.createElement('video');
+      v.muted = true;
+      v.crossOrigin = 'anonymous';
+      v.preload = 'auto';
+      v.addEventListener('loadeddata', () => { v.currentTime = 0.5; });
+      v.addEventListener('seeked', () => {
+        try {
+          const c = document.createElement('canvas');
+          c.width = v.videoWidth || 114;
+          c.height = v.videoHeight || 192;
+          c.getContext('2d').drawImage(v, 0, 0, c.width, c.height);
+          callback(c.toDataURL('image/jpeg', 0.7));
+        } catch(e) {}
+      }, { once: true });
+      v.src = videoSrc;
+    }
+
+    function buildGallery(name) {
+      const cfg = mediaConfig[name];
+      pThumbs.innerHTML = '';
+      pVideo.classList.remove('active');
+      pImage.classList.remove('active');
+      pBdVideo.classList.remove('active');
+      pBdImg.classList.remove('active');
+      pVideo.pause();
+      pBdVideo.pause();
+      pVideo.innerHTML = '';
+      pBdVideo.innerHTML = '';
+      pImage.removeAttribute('src');
+      pBdImg.removeAttribute('src');
+      carCounter.classList.add('hidden');
+      pThumbsWrap.classList.add('empty');
+      galleryItems = [];
+      galleryIndex = 0;
+
+      if (!cfg) {
+        pHolder.textContent = name;
+        pHolder.classList.remove('hidden');
+        return;
+      }
+
+      pHolder.classList.add('hidden');
+      currentBackdrop = cfg.backdrop !== undefined ? cfg.backdrop : null;
+      applyBackdrop(currentBackdrop);
+      const base = MEDIA_BASE + cfg.folder + '/';
+
+      // Videos first
+      (cfg.videos || []).forEach(v => {
+        galleryItems.push({
+          type: 'video',
+          mp4: v.fmt === 'webm' ? null : base + v.name + '.mp4',
+          webm: v.fmt === 'mp4' ? null : base + v.name + '.webm'
+        });
+      });
+      // Screenshots after
+      (cfg.screens || []).forEach((ext, i) => {
+        galleryItems.push({ type: 'image', src: base + (i + 1) + ext });
+      });
+
+      if (galleryItems.length === 0) {
+        pHolder.textContent = name;
+        pHolder.classList.remove('hidden');
+        return;
+      }
+
+      // Show counter + thumbs if >1 item
+      if (galleryItems.length > 1) {
+        carCounter.classList.remove('hidden');
+        pThumbsWrap.classList.remove('empty');
+      }
+
+      // Show first item
+      showGalleryItem(0);
+
+      // Build thumbnail strip
+      galleryItems.forEach((item, idx) => {
+        const thumb = document.createElement('div');
+        thumb.className = 'thumb-item' + (idx === 0 ? ' active' : '');
+
+        if (item.type === 'video') {
+          videoThumb(item.mp4 || item.webm, dataUrl => {
+            const img = document.createElement('img');
+            img.src = dataUrl;
+            img.alt = '';
+            thumb.insertBefore(img, thumb.firstChild);
+          });
+          const badge = document.createElement('div');
+          badge.className = 'thumb-video-badge';
+          thumb.appendChild(badge);
+        } else {
+          const img = document.createElement('img');
+          img.src = item.src;
+          img.alt = '';
+          img.loading = 'lazy';
+          thumb.appendChild(img);
+        }
+
+        thumb.addEventListener('click', () => { if (!thumbDrag.moved) showGalleryItem(idx); });
+        pThumbs.appendChild(thumb);
+      });
+
+      // Center thumbs if they fit, left-align if they overflow
+      requestAnimationFrame(() => {
+        pThumbs.style.justifyContent = pThumbs.scrollWidth <= pThumbs.clientWidth ? 'center' : 'flex-start';
+      });
+    }
+
+    // ── Project select ──
     function selectProject(el) {
       document.querySelectorAll('.proj-item.selected').forEach(i => i.classList.remove('selected'));
       el.classList.add('selected');
-
       const name = el.dataset.name;
-      const role = el.dataset.role;
-      const tags = (el.dataset.tags || '').split(',').filter(Boolean);
-
       document.getElementById('pname').textContent = name;
-      document.getElementById('prole').textContent = role;
-      document.getElementById('pf-img').textContent = name;
-
-      const frame = document.getElementById('pframe');
-      frame.classList.add('active');
-
-      const tagsEl = document.getElementById('ptags');
-      tagsEl.innerHTML = tags.map(t => `<span class="ptag">${t.trim()}</span>`).join('');
+      document.getElementById('prole').textContent = el.dataset.role;
+      pframe.classList.add('active');
+      const tags = (el.dataset.tags || '').split(',').filter(Boolean);
+      document.getElementById('ptags').innerHTML = tags.map(t => `<span class="ptag">${t.trim()}</span>`).join('');
+      buildGallery(name);
     }
 
-    // ── Particles for featured items ──
+    // ── Particles ──
     document.querySelectorAll('.proj-item.featured .particles').forEach(container => {
       for (let i = 0; i < 6; i++) {
         const p = document.createElement('div');
@@ -1072,8 +1724,195 @@
         }
       });
     }, { threshold: 0.08 });
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Page transitions ──
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('tel:') && a.target !== '_blank') {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.add('page-out');
+          setTimeout(() => { window.location.href = href; }, 200);
+        });
+      }
+    });
+  </script>
+
+  <!-- Mobile project modal -->
+  <div class="mobile-modal" id="mobile-modal">
+    <div class="mobile-modal-header">
+      <span class="mobile-modal-title" id="mm-title"></span>
+      <button class="mobile-modal-close" onclick="closeMobileModal()">&times;</button>
+    </div>
+    <div class="mobile-modal-role" id="mm-role"></div>
+    <div class="mobile-modal-gallery">
+      <div class="mobile-modal-main" id="mm-main"></div>
+      <div class="mobile-modal-counter" id="mm-counter"></div>
+      <div class="mobile-modal-thumbs" id="mm-thumbs"></div>
+    </div>
+    <div class="mobile-modal-tags" id="mm-tags"></div>
+  </div>
+
+  <script>
+  // ── Mobile modal gallery ──
+  (function() {
+    const isMobile = () => window.innerWidth <= 768;
+    const modal = document.getElementById('mobile-modal');
+    const mmMain = document.getElementById('mm-main');
+    const mmTitle = document.getElementById('mm-title');
+    const mmRole = document.getElementById('mm-role');
+    const mmCounter = document.getElementById('mm-counter');
+    const mmThumbs = document.getElementById('mm-thumbs');
+    const mmTags = document.getElementById('mm-tags');
+
+    let mmItems = [];
+    let mmIndex = 0;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    window.closeMobileModal = function() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      // Stop any playing video
+      const v = mmMain.querySelector('video');
+      if (v) v.pause();
+    };
+
+    // Intercept selectProject on mobile
+    const origSelect = window.selectProject;
+    window.selectProject = function(el) {
+      if (!isMobile()) return origSelect(el);
+      openMobileModal(el);
+    };
+
+    function openMobileModal(el) {
+      const name = el.dataset.name;
+      const role = el.dataset.role || '';
+      const tags = (el.dataset.tags || '').split(',').filter(Boolean);
+      const cfg = mediaConfig[name];
+
+      mmTitle.textContent = name;
+      mmRole.textContent = role;
+      mmTags.innerHTML = tags.map(t => `<span class="ptag">${t.trim()}</span>`).join('');
+      mmMain.innerHTML = '';
+      mmThumbs.innerHTML = '';
+      mmItems = [];
+      mmIndex = 0;
+
+      if (!cfg) {
+        mmMain.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-size:0.9rem;letter-spacing:0.15em;text-transform:uppercase">' + name + '</div>';
+        mmCounter.textContent = '';
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        return;
+      }
+
+      const base = MEDIA_BASE + cfg.folder + '/';
+
+      // Build items — videos first
+      (cfg.videos || []).forEach(v => {
+        mmItems.push({
+          type: 'video',
+          mp4: v.fmt === 'webm' ? null : base + v.name + '.mp4',
+          webm: v.fmt === 'mp4' ? null : base + v.name + '.webm'
+        });
+      });
+      (cfg.screens || []).forEach((ext, i) => {
+        mmItems.push({ type: 'image', src: base + (i + 1) + ext });
+      });
+
+      if (mmItems.length === 0) {
+        mmMain.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-size:0.9rem;letter-spacing:0.15em;text-transform:uppercase">' + name + '</div>';
+        mmCounter.textContent = '';
+      } else {
+        showMobileItem(0);
+        buildMobileThumbs();
+      }
+
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showMobileItem(idx) {
+      if (idx < 0 || idx >= mmItems.length) return;
+      mmIndex = idx;
+      const item = mmItems[idx];
+      mmMain.innerHTML = '';
+
+      if (item.type === 'video') {
+        const v = document.createElement('video');
+        v.muted = true; v.loop = true; v.playsInline = true; v.autoplay = true;
+        if (item.webm) { const s = document.createElement('source'); s.src = item.webm; s.type = 'video/webm'; v.appendChild(s); }
+        if (item.mp4) { const s = document.createElement('source'); s.src = item.mp4; s.type = 'video/mp4'; v.appendChild(s); }
+        mmMain.appendChild(v);
+        v.play().catch(() => {});
+      } else {
+        const img = document.createElement('img');
+        img.src = item.src; img.alt = '';
+        mmMain.appendChild(img);
+      }
+
+      mmCounter.textContent = mmItems.length > 1 ? (idx + 1) + ' / ' + mmItems.length : '';
+
+      // Update thumb active state
+      mmThumbs.querySelectorAll('.mobile-modal-thumb').forEach((t, i) => {
+        t.classList.toggle('active', i === idx);
+      });
+    }
+
+    function buildMobileThumbs() {
+      if (mmItems.length <= 1) return;
+      mmItems.forEach((item, idx) => {
+        const thumb = document.createElement('div');
+        thumb.className = 'mobile-modal-thumb' + (idx === 0 ? ' active' : '');
+
+        if (item.type === 'video') {
+          videoThumb(item.mp4 || item.webm, dataUrl => {
+            const img = document.createElement('img');
+            img.src = dataUrl; img.alt = '';
+            thumb.insertBefore(img, thumb.firstChild);
+          });
+          const badge = document.createElement('div');
+          badge.className = 'thumb-video-badge';
+          badge.innerHTML = '<span style="display:block;width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff"></span>';
+          thumb.appendChild(badge);
+        } else {
+          const img = document.createElement('img');
+          img.src = item.src; img.alt = ''; img.loading = 'lazy';
+          thumb.appendChild(img);
+        }
+
+        thumb.addEventListener('click', () => showMobileItem(idx));
+        mmThumbs.appendChild(thumb);
+      });
+    }
+
+    // Swipe navigation on main preview
+    mmMain.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    mmMain.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0 && mmIndex < mmItems.length - 1) showMobileItem(mmIndex + 1);
+        else if (dx > 0 && mmIndex > 0) showMobileItem(mmIndex - 1);
+      }
+    }, { passive: true });
+
+    // Close on backdrop click
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeMobileModal();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeMobileModal();
+    });
+  })();
   </script>
 
 </body>
