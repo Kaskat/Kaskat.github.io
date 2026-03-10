@@ -1,7 +1,7 @@
 # Drafts and experiments
-Site/
+drafts/
 
-# Office files (source docs, not for web)
+# Office files
 *.docx
 *.pdf
 

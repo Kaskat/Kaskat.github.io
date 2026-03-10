@@ -5,10 +5,13 @@ Personal CV/portfolio website deployed via GitHub Pages.
 Single-page static site (HTML/CSS/JS) — no build tools, no frameworks.
 
 ## Architecture
-- `index.html` — the live site (served by GitHub Pages from root)
-- `CV_Yevhenii_Hladkykh_Detailed.md` — source of truth for all CV content
-- `CV_Yevhenii_Hladkykh_Compact.md` — short version for quick reference
-- `Site/` — drafts, experiments, old theme explorations (not deployed)
+- `docs/` — GitHub Pages serves from here
+  - `docs/index.html` — the live site
+  - `docs/assets/` — images, icons, static files
+- `src/` — source content (not deployed)
+  - `src/CV_Yevhenii_Hladkykh_Detailed.md` — source of truth for all CV content
+  - `src/CV_Yevhenii_Hladkykh_Compact.md` — short version for quick reference
+- `drafts/` — experiments, old theme explorations (gitignored)
 
 ## Design Direction
 - Theme: "Ember" — dark monospace aesthetic with orange accent (#ff6b2b)
