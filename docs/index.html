@@ -147,13 +147,14 @@
       padding: 0 64px;
       margin-bottom: 48px;
     }
-    .sec-num { font-size: 0.88rem; letter-spacing: 0.22em; color: var(--accent); }
+    .sec-num { font-size: 0.88rem; letter-spacing: 0.22em; color: var(--accent); transition: color .35s; }
     .sec-title {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(2.2rem, 4vw, 3.2rem);
       letter-spacing: 0.05em;
+      transition: color .35s;
     }
-    .sec-line { flex: 1; height: 1px; background: var(--border); }
+    .sec-line { flex: 1; height: 1px; background: var(--border); transition: background .35s; }
 
     /* ══════════════════════════════════
        HERO
@@ -175,6 +176,7 @@
       width: 600px; height: 600px;
       background: radial-gradient(circle, var(--glow2) 0%, transparent 70%);
       pointer-events: none;
+      z-index: -1;
     }
 
     .hero-tag {
@@ -186,6 +188,8 @@
       align-items: center;
       gap: 10px;
       margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
       opacity: 0;
       animation: fadeUp .5s .1s forwards;
     }
@@ -203,6 +207,8 @@
       letter-spacing: 0.02em;
       text-transform: uppercase;
       margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
       opacity: 0;
       animation: fadeUp .5s .2s forwards;
     }
@@ -217,6 +223,8 @@
       color: var(--text-dim);
       line-height: 1.85;
       margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
       opacity: 0;
       animation: fadeUp .5s .3s forwards;
     }
@@ -226,6 +234,8 @@
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
       opacity: 0;
       animation: fadeUp .5s .4s forwards;
     }
@@ -293,11 +303,11 @@
       border-bottom: 1px solid var(--border);
       padding: 10px 0;
       background: var(--bg2);
+      transition: background .35s, border-color .35s;
     }
     .ticker-track {
       display: flex;
       width: max-content;
-      animation: ticker-scroll 28s linear infinite;
     }
     .ticker-set {
       display: flex;
@@ -310,13 +320,11 @@
       color: var(--text-dim);
       padding: 0 24px;
       white-space: nowrap;
+      transition: color .35s;
     }
-    .ti b { color: var(--accent); font-weight: 300; margin-right: 4px; }
+    .ti b { color: var(--accent); font-weight: 300; margin-right: 4px; transition: color .35s; }
 
-    @keyframes ticker-scroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
+    /* ticker-scroll keyframes injected by JS with exact pixel width */
 
     /* ══════════════════════════════════
        PROJECTS
@@ -349,7 +357,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: border-color .3s;
+      transition: border-color .35s, background .35s;
     }
 
     .pf-placeholder {
@@ -363,7 +371,7 @@
       letter-spacing: 0.2em;
       color: var(--muted);
       text-transform: uppercase;
-      transition: opacity .3s ease;
+      transition: opacity .3s ease, background .35s, color .35s;
       z-index: 1;
     }
     .pf-placeholder.hidden { opacity: 0; pointer-events: none; }
@@ -445,7 +453,7 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
-      transition: border-color .2s;
+      transition: border-color .35s;
     }
     .thumb-item:hover { border-color: var(--text-dim); }
     .thumb-item.active { border-color: var(--accent); }
@@ -510,6 +518,7 @@
       text-transform: uppercase;
       color: var(--accent);
       margin-top: 3px;
+      transition: color .35s;
     }
     .preview-tags {
       display: flex;
@@ -523,15 +532,18 @@
       color: var(--text-dim);
       background: var(--muted);
       padding: 3px 8px;
+      transition: color .35s, background .35s;
     }
 
     .proj-list-col {
       padding: 0 64px 0 0;
       border-left: 1px solid var(--border);
+      transition: border-color .35s;
     }
 
     .track {
       border-bottom: 1px solid var(--border);
+      transition: border-color .35s;
     }
 
     .track-header {
@@ -540,7 +552,7 @@
       align-items: center;
       padding: 18px 24px;
       cursor: pointer;
-      transition: background .2s;
+      transition: background .35s;
       user-select: none;
     }
     .track-header:hover { background: var(--surface); }
@@ -557,7 +569,7 @@
       color: var(--accent);
       border: 1px solid var(--border);
       padding: 2px 8px;
-      transition: border-color .2s;
+      transition: border-color .35s, color .35s;
     }
     .track-header:hover .track-badge { border-color: var(--accent); }
 
@@ -565,12 +577,14 @@
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.4rem;
       letter-spacing: 0.05em;
+      transition: color .35s;
     }
 
     .track-count {
       font-size: 0.88rem;
       letter-spacing: 0.1em;
       color: var(--text-dim);
+      transition: color .35s;
     }
 
     .track-arrow {
@@ -635,7 +649,7 @@
       padding: 12px 24px;
       border-top: 1px solid var(--border);
       cursor: pointer;
-      transition: background .15s, padding-left .2s;
+      transition: background .35s, padding-left .2s, border-color .35s;
       position: relative;
     }
     .proj-item:hover { background: var(--surface); padding-left: 32px; }
@@ -654,7 +668,7 @@
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.35rem;
       letter-spacing: 0.04em;
-      transition: color .2s;
+      transition: color .35s;
     }
     .proj-item:hover .proj-item-name,
     .proj-item.selected .proj-item-name { color: var(--accent); }
@@ -664,6 +678,7 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-dim);
+      transition: color .35s;
     }
 
     .proj-item-tag {
@@ -674,6 +689,77 @@
       border: 1px solid var(--border);
       padding: 2px 7px;
       white-space: nowrap;
+      transition: color .35s, border-color .35s;
+    }
+
+    /* Variations */
+    .proj-item-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .variations-toggle {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 2px 8px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    .variations-toggle:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--surface);
+    }
+    .variations-toggle.open {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .variations-arrow {
+      width: 7px; height: 7px;
+      border-right: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+      transform: rotate(45deg) translateY(-2px);
+      transition: transform .25s;
+    }
+    .variations-toggle.open .variations-arrow {
+      transform: rotate(-135deg) translateY(-2px);
+    }
+    .variations-list {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s cubic-bezier(0.16,1,0.3,1);
+    }
+    .variations-list.open {
+      max-height: 500px;
+    }
+    .proj-item.variation {
+      padding-left: 44px;
+      border-top: 1px solid var(--border);
+      opacity: 0.75;
+    }
+    .proj-item.variation::after {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 1px;
+      background: var(--border);
+    }
+    .proj-item.variation:hover {
+      opacity: 1;
+      padding-left: 50px;
+    }
+    .proj-item.variation .proj-item-name {
+      font-size: 1.15rem;
     }
 
     /* Featured projects */
@@ -744,6 +830,7 @@
       align-items: flex-end;
       gap: 40px;
       flex-wrap: wrap;
+      transition: border-color .35s;
     }
 
     .contact-heading {
@@ -752,14 +839,16 @@
       letter-spacing: 0.04em;
       line-height: 0.95;
       margin-bottom: 12px;
+      transition: color .35s;
     }
-    .contact-heading em { font-style: normal; color: var(--accent); }
+    .contact-heading em { font-style: normal; color: var(--accent); transition: color .35s; }
 
     .contact-sub {
       font-size: 1.05rem;
       color: var(--text-dim);
       max-width: 420px;
       line-height: 1.75;
+      transition: color .35s;
     }
 
     .contact-icons {
@@ -777,7 +866,7 @@
       cursor: pointer;
       text-decoration: none;
       color: var(--text-dim);
-      transition: border-color .2s, color .2s, transform .2s, background .2s;
+      transition: border-color .35s, color .35s, transform .2s, background .35s;
       position: relative;
     }
     .contact-icon:hover {
@@ -979,12 +1068,11 @@
     @media (max-width: 768px) {
       .topbar-center { display: none; }
       .topbar {
-        position: fixed;
-        top: 0; left: 0; right: 0;
+        position: relative;
         padding: 8px 16px;
         padding-top: max(8px, env(safe-area-inset-top));
       }
-      .hero { padding: 64px 16px 40px; }
+      .hero { padding: 24px 16px 40px; }
       .hero-stats { position: static; margin-top: 32px; justify-content: flex-start; }
       .sec-header { padding: 0 16px; }
       .projects-body { grid-template-columns: 1fr; }
@@ -993,6 +1081,136 @@
       .contact-section { padding: 48px 16px; flex-direction: column; align-items: flex-start; }
       .contact-icons { flex-wrap: wrap; }
       body { font-size: 16px; }
+    }
+
+    /* ══════════════════════════════════
+       HERO REEL (desktop only)
+    ══════════════════════════════════ */
+    .hero-reel {
+      position: absolute;
+      top: 50%; right: 0;
+      transform: translateY(-50%) rotate(0deg);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      pointer-events: none;
+      z-index: 0;
+      width: 52%;
+      opacity: 0;
+      animation: reelFadeIn 1s .4s forwards;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 95%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 95%, transparent 100%);
+    }
+
+
+    @keyframes reelFadeIn {
+      from { opacity: 0; transform: translateY(-50%) rotate(0deg) translateX(30px); }
+      to   { opacity: 1; transform: translateY(-50%) rotate(0deg) translateX(0); }
+    }
+
+    .reel-belt {
+      overflow: hidden;
+      position: relative;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.015);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        inset 0 -1px 0 rgba(255,255,255,0.03),
+        0 2px 12px rgba(0,0,0,0.3);
+      transition: background .35s, box-shadow .35s;
+    }
+    [data-theme="light"] .reel-belt {
+      background: rgba(0,0,0,0.02);
+      box-shadow:
+        inset 0 1px 0 rgba(0,0,0,0.05),
+        inset 0 -1px 0 rgba(0,0,0,0.03),
+        0 2px 12px rgba(0,0,0,0.08);
+    }
+    .reel-skeleton {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 0;
+    }
+
+    /* depth: front belt bigger/brighter, back belt smaller/dimmer */
+    .reel-belt--1 { height: 240px; }
+    .reel-belt--2 { height: 380px; }
+    .reel-belt--3 { height: 270px; }
+
+    /* skeleton shimmer placeholders */
+    .reel-skeleton-item {
+      flex-shrink: 0;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    .reel-skeleton-item::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(
+        110deg,
+        transparent 30%,
+        rgba(255,255,255,0.08) 50%,
+        transparent 70%
+      );
+      animation: shimmer 1.5s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0%   { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    .reel-belt--1 .reel-skeleton-item { width: 280px; height: 180px; }
+    .reel-belt--2 .reel-skeleton-item { width: 400px; height: 300px; }
+    .reel-belt--3 .reel-skeleton-item { width: 330px; height: 210px; }
+
+    [data-theme="light"] .reel-skeleton-item {
+      background: rgba(0,0,0,0.05);
+    }
+    [data-theme="light"] .reel-skeleton-item::after {
+      background: linear-gradient(
+        110deg,
+        transparent 30%,
+        rgba(0,0,0,0.06) 50%,
+        transparent 70%
+      );
+    }
+
+    .reel-track {
+      display: flex;
+      width: max-content;
+      gap: 10px;
+      align-items: center;
+      height: 100%;
+      padding: 8px 0;
+      will-change: transform;
+      opacity: 0;
+      transition: opacity .5s ease;
+    }
+    .reel-track.ready {
+      opacity: 1;
+    }
+
+    .reel-track img {
+      height: auto;
+      max-height: calc(100% - 16px);
+      width: auto;
+      object-fit: contain;
+      border-radius: 6px;
+      flex-shrink: 0;
+      transition: opacity .35s ease;
+    }
+
+
+    /* edge fades — wider on left to protect hero text */
+
+    @media (max-width: 768px) {
+      .hero-reel { display: none; }
     }
 
     /* ══════════════════════════════════
@@ -1051,6 +1269,37 @@
         <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Projects</button>
         <a class="btn-ghost" href="about.html">About Me</a>
       </div>
+      <!-- HERO REEL (desktop) -->
+      <div class="hero-reel">
+        <div class="reel-belt reel-belt--1">
+          <div class="reel-skeleton">
+            <div class="reel-skeleton-item"></div><div class="reel-skeleton-item"></div>
+            <div class="reel-skeleton-item"></div><div class="reel-skeleton-item"></div>
+            <div class="reel-skeleton-item"></div><div class="reel-skeleton-item"></div>
+            <div class="reel-skeleton-item"></div><div class="reel-skeleton-item"></div>
+          </div>
+          <div class="reel-track" id="reel-track-1"></div>
+        </div>
+        <div class="reel-belt reel-belt--2">
+          <div class="reel-skeleton">
+            <div class="reel-skeleton-item"></div><div class="reel-skeleton-item"></div>
+            <div class="reel-skeleton-item"></div><div class="reel-skeleton-item"></div>
+            <div class="reel-skeleton-item"></div><div class="reel-skeleton-item"></div>
+            <div class="reel-skeleton-item"></div><div class="reel-skeleton-item"></div>
+          </div>
+          <div class="reel-track" id="reel-track-2"></div>
+        </div>
+        <div class="reel-belt reel-belt--3">
+          <div class="reel-skeleton">
+            <div class="reel-skeleton-item"></div><div class="reel-skeleton-item"></div>
+            <div class="reel-skeleton-item"></div><div class="reel-skeleton-item"></div>
+            <div class="reel-skeleton-item"></div><div class="reel-skeleton-item"></div>
+            <div class="reel-skeleton-item"></div><div class="reel-skeleton-item"></div>
+          </div>
+          <div class="reel-track" id="reel-track-3"></div>
+        </div>
+      </div>
+
       <div class="hero-stats">
         <div class="stat">
           <div class="stat-n">16<em>+</em></div>
@@ -1071,6 +1320,18 @@
     <div class="ticker-wrap">
       <div class="ticker-track">
         <div class="ticker-set">
+          <span class="ti"><b>&#10022;</b>Unity / C#</span>
+          <span class="ti"><b>&#10022;</b>Mobile F2P</span>
+          <span class="ti"><b>&#10022;</b>LiveOps</span>
+          <span class="ti"><b>&#10022;</b>IAP &amp; Subscriptions</span>
+          <span class="ti"><b>&#10022;</b>AI-Assisted Dev</span>
+          <span class="ti"><b>&#10022;</b>Analytics &amp; Funnels</span>
+          <span class="ti"><b>&#10022;</b>Android &amp; iOS</span>
+          <span class="ti"><b>&#10022;</b>Claude Code</span>
+          <span class="ti"><b>&#10022;</b>Addressables</span>
+          <span class="ti"><b>&#10022;</b>Jenkins CI/CD</span>
+        </div>
+        <div class="ticker-set" aria-hidden="true">
           <span class="ti"><b>&#10022;</b>Unity / C#</span>
           <span class="ti"><b>&#10022;</b>Mobile F2P</span>
           <span class="ti"><b>&#10022;</b>LiveOps</span>
@@ -1134,7 +1395,7 @@
         <!-- RIGHT: accordion -->
         <div class="proj-list-col" id="proj-list">
 
-          <!-- TRACK: Work (with sub-pills) -->
+          <!-- TRACK: Work -->
           <div class="track open" data-track="work">
             <div class="track-header" onclick="toggleTrack(this)">
               <div class="track-header-left">
@@ -1142,7 +1403,7 @@
                 <span class="track-name">Work</span>
               </div>
               <div style="display:flex;align-items:center;gap:12px">
-                <span class="track-count">22 titles</span>
+                <span class="track-count">Playcus · 5 years</span>
                 <div class="track-arrow"></div>
               </div>
             </div>
@@ -1150,14 +1411,190 @@
 
               <!-- Sub-pills -->
               <div class="sub-pills">
-                <button class="sub-pill" onclick="switchPill(this, 'freelance')">Freelance</button>
-                <button class="sub-pill active" onclick="switchPill(this, 'hyper')">Hypercasual</button>
-                <button class="sub-pill" onclick="switchPill(this, 'casual')">Casual</button>
-                <button class="sub-pill" onclick="switchPill(this, 'bingo')">Bingo</button>
+                <button class="sub-pill active" onclick="switchPill(this, 'casual')">Casual</button>
+                <button class="sub-pill" onclick="switchPill(this, 'hyper')">Hypercasual</button>
+              </div>
+
+              <!-- SUB: Casual -->
+              <div class="sub-group active" data-sub="casual">
+                <div class="proj-item featured has-variations" data-name="Bingo Star" data-role="Features + IAP refactor + Analytics redesign — Unity client + PHP backend" data-tags="Unity,Client-Server,IAP,LiveOps,Analytics,Addressables,14+ langs,4 platforms" onclick="selectProject(this)">
+                  <div class="particles"></div>
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Bingo Star <span class="crown-icon">&#9819;</span></span>
+                    <span class="proj-item-sub">Client-server · IAP refactor · Analytics redesign</span>
+                  </div>
+                  <div class="proj-item-right">
+                    <span class="proj-item-tag">Full stack</span>
+                    <button class="variations-toggle" onclick="event.stopPropagation(); toggleVariations(this)" title="Show variations">
+                      <span class="variations-count">5 variations</span>
+                      <span class="variations-arrow"></span>
+                    </button>
+                  </div>
+                </div>
+                <div class="variations-list">
+                  <div class="proj-item variation" data-name="Bingo Farm Ways" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                    <div class="proj-item-left">
+                      <span class="proj-item-name">Bingo Farm Ways</span>
+                      <span class="proj-item-sub">Platform variation</span>
+                    </div>
+                    <span class="proj-item-tag">Variation</span>
+                  </div>
+                  <div class="proj-item variation" data-name="Bingo Country Boys" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                    <div class="proj-item-left">
+                      <span class="proj-item-name">Bingo Country Boys</span>
+                      <span class="proj-item-sub">Platform variation</span>
+                    </div>
+                    <span class="proj-item-tag">Variation</span>
+                  </div>
+                  <div class="proj-item variation" data-name="Bingo Country Days" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                    <div class="proj-item-left">
+                      <span class="proj-item-name">Bingo Country Days</span>
+                      <span class="proj-item-sub">Platform variation</span>
+                    </div>
+                    <span class="proj-item-tag">Variation</span>
+                  </div>
+                  <div class="proj-item variation" data-name="Bingo Kingdom Arena" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                    <div class="proj-item-left">
+                      <span class="proj-item-name">Bingo Kingdom Arena</span>
+                      <span class="proj-item-sub">Platform variation</span>
+                    </div>
+                    <span class="proj-item-tag">Variation</span>
+                  </div>
+                  <div class="proj-item variation" data-name="Bingo Country Ways" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                    <div class="proj-item-left">
+                      <span class="proj-item-name">Bingo Country Ways</span>
+                      <span class="proj-item-sub">Platform variation</span>
+                    </div>
+                    <span class="proj-item-tag">Variation</span>
+                  </div>
+                </div>
+                <div class="proj-item has-variations" data-name="Groove Masters" data-role="Feature developer — DJ Drum Pad" data-tags="Unity,Casual,Music,Feature dev" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Groove Masters</span>
+                    <span class="proj-item-sub">Playcus · DJ Drum Pad · music genre</span>
+                  </div>
+                  <div class="proj-item-right">
+                    <span class="proj-item-tag">Feature dev</span>
+                    <button class="variations-toggle" onclick="event.stopPropagation(); toggleVariations(this)" title="Show variations">
+                      <span class="variations-count">1 variation</span>
+                      <span class="variations-arrow"></span>
+                    </button>
+                  </div>
+                </div>
+                <div class="variations-list">
+                  <div class="proj-item variation" data-name="Drum Pad Stars" data-role="Feature developer — Groove Masters variation" data-tags="Unity,Casual,Music,Feature dev" onclick="selectProject(this)">
+                    <div class="proj-item-left">
+                      <span class="proj-item-name">Drum Pad Stars</span>
+                      <span class="proj-item-sub">Groove Masters variation</span>
+                    </div>
+                    <span class="proj-item-tag">Variation</span>
+                  </div>
+                </div>
+                <div class="proj-item" data-name="Word Ways" data-role="Feature developer — word game" data-tags="Unity,Casual,Word,Feature dev" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Word Ways</span>
+                    <span class="proj-item-sub">Playcus · word genre</span>
+                  </div>
+                  <span class="proj-item-tag">Feature dev</span>
+                </div>
+                <div class="proj-item" data-name="Find the Difference" data-role="Feature developer — hidden object" data-tags="Unity,Casual,Hidden Object,Feature dev" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Find the Difference</span>
+                    <span class="proj-item-sub">Playcus · hidden object genre</span>
+                  </div>
+                  <span class="proj-item-tag">Feature dev</span>
+                </div>
+                <div class="proj-item" data-name="Bingo Home Makeover" data-role="Feature developer — bingo/casual" data-tags="Unity,Casual,Bingo,Feature dev" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Bingo Home Makeover</span>
+                    <span class="proj-item-sub">Playcus · bingo/casual</span>
+                  </div>
+                  <span class="proj-item-tag">Feature dev</span>
+                </div>
+                <div class="proj-item" data-name="Perfect Everything" data-role="Feature developer — casual" data-tags="Unity,Casual,Feature dev" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Perfect Everything</span>
+                    <span class="proj-item-sub">Playcus · casual</span>
+                  </div>
+                  <span class="proj-item-tag">Feature dev</span>
+                </div>
+              </div>
+
+              <!-- SUB: Hypercasual -->
+              <div class="sub-group" data-sub="hyper">
+                <div class="proj-item featured" data-name="War Machines 3D" data-role="Primary developer — built from scratch, maintained 1-3 years" data-tags="Unity,Hypercasual,Android,iOS,Built from scratch,Long-term support" onclick="selectProject(this)">
+                  <div class="particles"></div>
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">War Machines 3D <span class="crown-icon">&#9819;</span></span>
+                    <span class="proj-item-sub">Playcus · built from scratch · long-term</span>
+                  </div>
+                  <span class="proj-item-tag">Primary dev</span>
+                </div>
+                <div class="proj-item featured has-variations" data-name="Groomer Run 3D" data-role="Primary developer — built from scratch, maintained 1-3 years" data-tags="Unity,Hypercasual,Android,iOS,Built from scratch,Long-term support" onclick="selectProject(this)">
+                  <div class="particles"></div>
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Groomer Run 3D <span class="crown-icon">&#9819;</span></span>
+                    <span class="proj-item-sub">Playcus · built from scratch · long-term</span>
+                  </div>
+                  <div class="proj-item-right">
+                    <span class="proj-item-tag">Primary dev</span>
+                    <button class="variations-toggle" onclick="event.stopPropagation(); toggleVariations(this)" title="Show variations">
+                      <span class="variations-count">2 variations</span>
+                      <span class="variations-arrow"></span>
+                    </button>
+                  </div>
+                </div>
+                <div class="variations-list">
+                  <div class="proj-item variation" data-name="Cats Groomer Runner" data-role="Primary developer — Groomer Run 3D variation" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
+                    <div class="proj-item-left">
+                      <span class="proj-item-name">Cats Groomer Runner</span>
+                      <span class="proj-item-sub">Groomer Run variation</span>
+                    </div>
+                    <span class="proj-item-tag">Variation</span>
+                  </div>
+                  <div class="proj-item variation" data-name="Cats Run 3D" data-role="Primary developer — Groomer Run 3D variation" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
+                    <div class="proj-item-left">
+                      <span class="proj-item-name">Cats Run 3D</span>
+                      <span class="proj-item-sub">Groomer Run variation</span>
+                    </div>
+                    <span class="proj-item-tag">Variation</span>
+                  </div>
+                </div>
+                <div class="proj-item" data-name="Animals Merge" data-role="Primary developer — built from scratch" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Animals Merge</span>
+                    <span class="proj-item-sub">Playcus · built from scratch</span>
+                  </div>
+                  <span class="proj-item-tag">Primary dev</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- TRACK: Playground -->
+          <div class="track" data-track="playground">
+            <div class="track-header" onclick="toggleTrack(this)">
+              <div class="track-header-left">
+                <span class="track-badge">Independent</span>
+                <span class="track-name">Playground</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <span class="track-count">9 projects</span>
+                <div class="track-arrow"></div>
+              </div>
+            </div>
+            <div class="track-body">
+
+              <!-- Sub-pills -->
+              <div class="sub-pills">
+                <button class="sub-pill active" onclick="switchPill(this, 'freelance')">Freelance</button>
+                <button class="sub-pill" onclick="switchPill(this, 'rnd')">R&amp;D</button>
+                <button class="sub-pill" onclick="switchPill(this, 'jams')">Game Jams</button>
               </div>
 
               <!-- SUB: Freelance -->
-              <div class="sub-group" data-sub="freelance">
+              <div class="sub-group active" data-sub="freelance">
                 <div class="proj-item" data-name="Tap Jump" data-role="Freelance · full-cycle development" data-tags="Unity,Hypercasual,Android,iOS,Full-cycle" onclick="selectProject(this)">
                   <div class="proj-item-left">
                     <span class="proj-item-name">Tap Jump</span>
@@ -1195,208 +1632,42 @@
                 </div>
               </div>
 
-              <!-- SUB: Hypercasual -->
-              <div class="sub-group active" data-sub="hyper">
-                <div class="proj-item featured" data-name="War Machines 3D" data-role="Primary developer — built from scratch, maintained 1-3 years" data-tags="Unity,Hypercasual,Android,iOS,Built from scratch,Long-term support" onclick="selectProject(this)">
-                  <div class="particles"></div>
+              <!-- SUB: R&D -->
+              <div class="sub-group" data-sub="rnd">
+                <div class="proj-item" data-name="Ball Sorting Puzzle" data-role="Solo build · AI-assisted · 2 days" data-tags="Unity,C#,Claude Code,Android,AI Pipeline,2 days" onclick="selectProject(this)">
                   <div class="proj-item-left">
-                    <span class="proj-item-name">War Machines 3D <span class="crown-icon">&#9819;</span></span>
-                    <span class="proj-item-sub">Playcus · built from scratch · long-term</span>
+                    <span class="proj-item-name">Ball Sorting Puzzle</span>
+                    <span class="proj-item-sub">AI-assisted · built in 2 days</span>
                   </div>
-                  <span class="proj-item-tag">Primary dev</span>
+                  <span class="proj-item-tag">Solo</span>
                 </div>
-                <div class="proj-item featured" data-name="Groomer Run 3D" data-role="Primary developer — built from scratch, maintained 1-3 years" data-tags="Unity,Hypercasual,Android,iOS,Built from scratch,Long-term support" onclick="selectProject(this)">
-                  <div class="particles"></div>
+                <div class="proj-item" data-name="Ride Physics" data-role="Custom physics engine experiments — vehicle simulation R&D" data-tags="Unity,C#,Physics,R&D,Custom Engine" onclick="selectProject(this)">
                   <div class="proj-item-left">
-                    <span class="proj-item-name">Groomer Run 3D <span class="crown-icon">&#9819;</span></span>
-                    <span class="proj-item-sub">Playcus · built from scratch · long-term</span>
+                    <span class="proj-item-name">Ride Physics</span>
+                    <span class="proj-item-sub">Custom physics engine for vehicle simulation</span>
                   </div>
-                  <span class="proj-item-tag">Primary dev</span>
-                </div>
-                <div class="proj-item" data-name="Cats Groomer Runner" data-role="Primary developer — built from scratch" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
-                  <div class="proj-item-left">
-                    <span class="proj-item-name">Cats Groomer Runner</span>
-                    <span class="proj-item-sub">Playcus · built from scratch</span>
-                  </div>
-                  <span class="proj-item-tag">Primary dev</span>
-                </div>
-                <div class="proj-item" data-name="Cats Run 3D" data-role="Primary developer — built from scratch" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
-                  <div class="proj-item-left">
-                    <span class="proj-item-name">Cats Run 3D</span>
-                    <span class="proj-item-sub">Playcus · built from scratch</span>
-                  </div>
-                  <span class="proj-item-tag">Primary dev</span>
-                </div>
-                <div class="proj-item" data-name="Animals Merge" data-role="Primary developer — built from scratch" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
-                  <div class="proj-item-left">
-                    <span class="proj-item-name">Animals Merge</span>
-                    <span class="proj-item-sub">Playcus · built from scratch</span>
-                  </div>
-                  <span class="proj-item-tag">Primary dev</span>
+                  <span class="proj-item-tag">R&amp;D</span>
                 </div>
               </div>
 
-              <!-- SUB: Casual -->
-              <div class="sub-group" data-sub="casual">
-                <div class="proj-item" data-name="Groove Masters" data-role="Feature developer — DJ Drum Pad" data-tags="Unity,Casual,Music,Feature dev" onclick="selectProject(this)">
+              <!-- SUB: Game Jams -->
+              <div class="sub-group" data-sub="jams">
+                <div class="proj-item" data-name="Fox Thieve" data-role="Game jam entry" data-tags="Unity,Game Jam,2D" onclick="selectProject(this)">
                   <div class="proj-item-left">
-                    <span class="proj-item-name">Groove Masters</span>
-                    <span class="proj-item-sub">Playcus · DJ Drum Pad · music genre</span>
+                    <span class="proj-item-name">Fox Thieve</span>
+                    <span class="proj-item-sub">Game jam entry</span>
                   </div>
-                  <span class="proj-item-tag">Feature dev</span>
+                  <span class="proj-item-tag">Jam</span>
                 </div>
-                <div class="proj-item" data-name="Drum Pad Stars" data-role="Feature developer — music game" data-tags="Unity,Casual,Music,Feature dev" onclick="selectProject(this)">
+                <div class="proj-item" data-name="Magic Sneeze" data-role="Game jam entry" data-tags="Unity,Game Jam,3D" onclick="selectProject(this)">
                   <div class="proj-item-left">
-                    <span class="proj-item-name">Drum Pad Stars</span>
-                    <span class="proj-item-sub">Playcus · music genre</span>
+                    <span class="proj-item-name">Magic Sneeze</span>
+                    <span class="proj-item-sub">Game jam entry</span>
                   </div>
-                  <span class="proj-item-tag">Feature dev</span>
-                </div>
-                <div class="proj-item" data-name="Word Ways" data-role="Feature developer — word game" data-tags="Unity,Casual,Word,Feature dev" onclick="selectProject(this)">
-                  <div class="proj-item-left">
-                    <span class="proj-item-name">Word Ways</span>
-                    <span class="proj-item-sub">Playcus · word genre</span>
-                  </div>
-                  <span class="proj-item-tag">Feature dev</span>
-                </div>
-                <div class="proj-item" data-name="Find the Difference" data-role="Feature developer — hidden object" data-tags="Unity,Casual,Hidden Object,Feature dev" onclick="selectProject(this)">
-                  <div class="proj-item-left">
-                    <span class="proj-item-name">Find the Difference</span>
-                    <span class="proj-item-sub">Playcus · hidden object genre</span>
-                  </div>
-                  <span class="proj-item-tag">Feature dev</span>
-                </div>
-                <div class="proj-item" data-name="Bingo Home Makeover" data-role="Feature developer — bingo/casual" data-tags="Unity,Casual,Bingo,Feature dev" onclick="selectProject(this)">
-                  <div class="proj-item-left">
-                    <span class="proj-item-name">Bingo Home Makeover</span>
-                    <span class="proj-item-sub">Playcus · bingo/casual</span>
-                  </div>
-                  <span class="proj-item-tag">Feature dev</span>
+                  <span class="proj-item-tag">Jam</span>
                 </div>
               </div>
 
-              <!-- SUB: Bingo Platform -->
-              <div class="sub-group" data-sub="bingo">
-                <div class="proj-item featured" data-name="Bingo Platform" data-role="Features + IAP refactor + Analytics redesign — Unity client + PHP backend" data-tags="Unity,Client-Server,IAP,LiveOps,Analytics,Addressables,14+ langs,4 platforms" onclick="selectProject(this)">
-                  <div class="particles"></div>
-                  <div class="proj-item-left">
-                    <span class="proj-item-name">Bingo Platform &#215;6 <span class="crown-icon">&#9819;</span></span>
-                    <span class="proj-item-sub">Client-server · IAP refactor · Analytics redesign</span>
-                  </div>
-                  <span class="proj-item-tag">Full stack</span>
-                </div>
-                <div class="proj-item" data-name="Bingo Star" data-role="Platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
-                  <div class="proj-item-left">
-                    <span class="proj-item-name">Bingo Star</span>
-                    <span class="proj-item-sub">Platform variation</span>
-                  </div>
-                  <span class="proj-item-tag">Variation</span>
-                </div>
-                <div class="proj-item" data-name="Bingo Farm Ways" data-role="Platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
-                  <div class="proj-item-left">
-                    <span class="proj-item-name">Bingo Farm Ways</span>
-                    <span class="proj-item-sub">Platform variation</span>
-                  </div>
-                  <span class="proj-item-tag">Variation</span>
-                </div>
-                <div class="proj-item" data-name="Bingo Country Boys" data-role="Platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
-                  <div class="proj-item-left">
-                    <span class="proj-item-name">Bingo Country Boys</span>
-                    <span class="proj-item-sub">Platform variation</span>
-                  </div>
-                  <span class="proj-item-tag">Variation</span>
-                </div>
-                <div class="proj-item" data-name="Bingo Country Days" data-role="Platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
-                  <div class="proj-item-left">
-                    <span class="proj-item-name">Bingo Country Days</span>
-                    <span class="proj-item-sub">Platform variation</span>
-                  </div>
-                  <span class="proj-item-tag">Variation</span>
-                </div>
-                <div class="proj-item" data-name="Bingo Kingdom Arena" data-role="Platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
-                  <div class="proj-item-left">
-                    <span class="proj-item-name">Bingo Kingdom Arena</span>
-                    <span class="proj-item-sub">Platform variation</span>
-                  </div>
-                  <span class="proj-item-tag">Variation</span>
-                </div>
-                <div class="proj-item" data-name="Bingo Country Ways" data-role="Platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
-                  <div class="proj-item-left">
-                    <span class="proj-item-name">Bingo Country Ways</span>
-                    <span class="proj-item-sub">Platform variation</span>
-                  </div>
-                  <span class="proj-item-tag">Variation</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- TRACK: Independent -->
-          <div class="track" data-track="indie">
-            <div class="track-header" onclick="toggleTrack(this)">
-              <div class="track-header-left">
-                <span class="track-badge">Independent</span>
-                <span class="track-name">R&amp;D &amp; Experiments</span>
-              </div>
-              <div style="display:flex;align-items:center;gap:12px">
-                <span class="track-count">2 projects</span>
-                <div class="track-arrow"></div>
-              </div>
-            </div>
-            <div class="track-body">
-              <div class="proj-item featured" data-name="Ball Sorting Puzzle" data-role="Solo build · AI-assisted · 2 days" data-tags="Unity,C#,Claude Code,Android,AI Pipeline,2 days" onclick="selectProject(this)">
-                <div class="particles"></div>
-                <div class="proj-item-left">
-                  <span class="proj-item-name">Ball Sorting Puzzle <span class="crown-icon">&#9819;</span></span>
-                  <span class="proj-item-sub">AI-assisted · built in 2 days</span>
-                </div>
-                <span class="proj-item-tag">Solo</span>
-              </div>
-              <div class="proj-item" data-name="AI Pipeline R&D" data-role="Bingo clone via AI agents — iterative workflow refinement" data-tags="Claude Code,AI Agents,Unity,R&D" onclick="selectProject(this)">
-                <div class="proj-item-left">
-                  <span class="proj-item-name">AI Pipeline R&amp;D</span>
-                  <span class="proj-item-sub">Bingo reproduction via agent orchestration</span>
-                </div>
-                <span class="proj-item-tag">R&amp;D</span>
-              </div>
-              <div class="proj-item" data-name="Ride Physics" data-role="Custom physics engine experiments — vehicle simulation R&D" data-tags="Unity,C#,Physics,R&D,Custom Engine" onclick="selectProject(this)">
-                <div class="proj-item-left">
-                  <span class="proj-item-name">Ride Physics</span>
-                  <span class="proj-item-sub">Custom physics engine for vehicle simulation</span>
-                </div>
-                <span class="proj-item-tag">R&amp;D</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- TRACK: Game Jams -->
-          <div class="track" data-track="jams">
-            <div class="track-header" onclick="toggleTrack(this)">
-              <div class="track-header-left">
-                <span class="track-badge">Community</span>
-                <span class="track-name">Game Jams</span>
-              </div>
-              <div style="display:flex;align-items:center;gap:12px">
-                <span class="track-count">1 project</span>
-                <div class="track-arrow"></div>
-              </div>
-            </div>
-            <div class="track-body">
-              <div class="proj-item" data-name="Fox Thieve" data-role="Game jam entry" data-tags="Unity,Game Jam,2D" onclick="selectProject(this)">
-                <div class="proj-item-left">
-                  <span class="proj-item-name">Fox Thieve</span>
-                  <span class="proj-item-sub">Game jam entry</span>
-                </div>
-                <span class="proj-item-tag">Jam</span>
-              </div>
-              <div class="proj-item" data-name="Magic Sneeze" data-role="Game jam entry" data-tags="Unity,Game Jam,3D" onclick="selectProject(this)">
-                <div class="proj-item-left">
-                  <span class="proj-item-name">Magic Sneeze</span>
-                  <span class="proj-item-sub">Game jam entry</span>
-                </div>
-                <span class="proj-item-tag">Jam</span>
-              </div>
             </div>
           </div>
 
@@ -1447,6 +1718,13 @@
     });
 
     // ── Track accordion ──
+    function autoSelectFirst(track) {
+      const activeSub = track.querySelector('.sub-group.active');
+      if (!activeSub) return;
+      const first = activeSub.querySelector('.proj-item:not(.variation)');
+      if (first) selectProject(first);
+    }
+
     function toggleTrack(header) {
       const track = header.closest('.track');
       const isOpen = track.classList.contains('open');
@@ -1454,6 +1732,7 @@
         if (t !== track) t.classList.remove('open');
       });
       track.classList.toggle('open', !isOpen);
+      if (!isOpen) autoSelectFirst(track);
     }
 
     // ── Sub-pill switching ──
@@ -1463,6 +1742,17 @@
       btn.classList.add('active');
       track.querySelectorAll('.sub-group').forEach(g => g.classList.remove('active'));
       track.querySelector('[data-sub="' + subName + '"]').classList.add('active');
+      autoSelectFirst(track);
+    }
+
+    // ── Variations toggle ──
+    function toggleVariations(btn) {
+      const projItem = btn.closest('.proj-item');
+      const variationsList = projItem.nextElementSibling;
+      if (!variationsList || !variationsList.classList.contains('variations-list')) return;
+      const isOpen = variationsList.classList.contains('open');
+      variationsList.classList.toggle('open', !isOpen);
+      btn.classList.toggle('open', !isOpen);
     }
 
     // ── Media config ──
@@ -1484,6 +1774,21 @@
       'Magic Sneeze':    { folder: 'magic-sneeze', videos: [{name:'video',fmt:'webm'}], screens: ['.jpg','.jpg','.jpg','.jpg','.jpg'] },
       'Ball Sorting Puzzle': { folder: 'ball-sorting-ai', videos: [{name:'video',fmt:'webm'}], screens: ['.png','.png','.png','.png','.png'] },
       'Groomer Run 3D': { folder: 'groomer-run', videos: [{name:'video',fmt:'webm'}], screens: ['.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png'] },
+      'Bingo Country Boys': { folder: 'bingo-country-boys', videos: [{name:'video',fmt:'webm'}], screens: ['.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg'] },
+      'Word Ways': { folder: 'word-ways', videos: [{name:'video',fmt:'webm'}], screens: ['.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png'] },
+      'Animals Merge': { folder: 'animal-merge', videos: [{name:'video',fmt:'webm'},{name:'video2',fmt:'webm'}], screens: ['.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png'] },
+      'Perfect Everything': { folder: 'perfect-everything', videos: [{name:'video',fmt:'webm'}], screens: ['.png','.png','.png','.png','.png','.png'] },
+      'Find the Difference': { folder: 'find-the-differences', videos: [{name:'video',fmt:'webm'}], screens: ['.png','.png','.png','.png'] },
+      'Bingo Country Days': { folder: 'bingo-country-days', videos: [], screens: ['.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg'] },
+      'Bingo Country Ways': { folder: 'bingo-country-ways', videos: [], screens: ['.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg'] },
+      'Bingo Kingdom Arena': { folder: 'bingo-kingdom', videos: [], screens: ['.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg'] },
+      'Bingo Farm Ways': { folder: 'bingo-farm', videos: [], screens: ['.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg'] },
+      'Bingo Star': { folder: 'bingo-star', videos: [{name:'video',fmt:'webm'}], screens: ['.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg'] },
+      'Bingo Home Makeover': { folder: 'bingo-make-over', videos: [{name:'video',fmt:'webm'}], screens: ['.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png'] },
+      'Drum Pad Stars': { folder: 'drum-pods', videos: [], screens: ['.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg'] },
+      'Groove Masters': { folder: 'groove-masters', videos: [], screens: ['.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg','.jpg'] },
+      'Cats Groomer Runner': { folder: 'groomer-cats', videos: [], screens: ['.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png','.png'] },
+      'Cats Run 3D': { folder: 'groomer-cats-2', videos: [], screens: ['.png','.png','.png','.png','.png','.png'] },
       'Ride Physics': { folder: 'ride-physics', videos: [
         {name:'video',fmt:'webm'}, {name:'video2',fmt:'webm'}, {name:'video3',fmt:'webm'},
         {name:'video4',fmt:'webm'}, {name:'video5',fmt:'webm'}, {name:'video6',fmt:'mp4'}
@@ -1743,6 +2048,26 @@
       const tags = (el.dataset.tags || '').split(',').filter(Boolean);
       document.getElementById('ptags').innerHTML = tags.map(t => `<span class="ptag">${t.trim()}</span>`).join('');
       buildGallery(name);
+
+      // Auto-fold all variations, then unfold if selecting a parent or its child
+      document.querySelectorAll('.variations-list.open').forEach(vl => {
+        const parent = vl.previousElementSibling;
+        const isChild = vl.contains(el);
+        const isParent = parent === el;
+        if (!isChild && !isParent) {
+          vl.classList.remove('open');
+          const btn = parent.querySelector('.variations-toggle');
+          if (btn) btn.classList.remove('open');
+        }
+      });
+      if (el.classList.contains('has-variations')) {
+        const variationsList = el.nextElementSibling;
+        const toggleBtn = el.querySelector('.variations-toggle');
+        if (variationsList && variationsList.classList.contains('variations-list')) {
+          variationsList.classList.add('open');
+          if (toggleBtn) toggleBtn.classList.add('open');
+        }
+      }
     }
 
     // ── Particles ──
@@ -1769,6 +2094,18 @@
       });
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Ticker: exact-pixel loop ──
+    (function() {
+      const track = document.querySelector('.ticker-track');
+      const firstSet = track.querySelector('.ticker-set');
+      if (!track || !firstSet) return;
+      const setWidth = firstSet.offsetWidth;
+      const style = document.createElement('style');
+      style.textContent = `@keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-${setWidth}px); } }`;
+      document.head.appendChild(style);
+      track.style.animation = 'ticker-scroll 28s linear infinite';
+    })();
 
     // ── Page transitions ──
     document.querySelectorAll('a[href]').forEach(a => {
@@ -1970,6 +2307,128 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && modal.classList.contains('open')) closeMobileModal();
     });
+  })();
+  </script>
+
+  <!-- HERO REEL ENGINE -->
+  <script>
+  (function() {
+    if (window.innerWidth <= 768) return;
+
+    const beltData = [
+      {
+        id: 'reel-track-1',
+        duration: 40, // seconds for one full loop
+        dir: 'left',
+        imgs: [
+          'war-machines/1.png','tap-jump/1.png','groomer-run/3.png','magic-sneeze/2.jpg',
+          'ball-sorting-ai/1.png','fox-thieve/2.png','war-machines/5.png','groomer-run/7.png',
+          'war-machines/9.png','ball-sorting-ai/4.png','groomer-run/11.png','magic-sneeze/5.jpg'
+        ]
+      },
+      {
+        id: 'reel-track-2',
+        duration: 60, // slower
+        dir: 'right',
+        imgs: [
+          'war-machines/3.png','groomer-run/1.png','magic-sneeze/4.jpg','ball-sorting-ai/3.png',
+          'war-machines/8.png','fox-thieve/1.png','tap-jump/2.png','groomer-run/5.png',
+          'war-machines/11.png','magic-sneeze/1.jpg','groomer-run/2.png','war-machines/12.png'
+        ]
+      },
+      {
+        id: 'reel-track-3',
+        duration: 48,
+        dir: 'left',
+        imgs: [
+          'groomer-run/9.png','war-machines/6.png','ball-sorting-ai/5.png','magic-sneeze/3.jpg',
+          'war-machines/10.png','groomer-run/4.png','fox-thieve/3.png','ball-sorting-ai/2.png',
+          'groomer-run/6.png','war-machines/4.png','groomer-run/8.png','war-machines/7.png'
+        ]
+      }
+    ];
+
+    const GAP = 10;
+    let styleEl;
+
+    function initBelt(cfg) {
+      const track = document.getElementById(cfg.id);
+      if (!track) return null;
+      const belt = track.parentElement;
+      const skeleton = belt.querySelector('.reel-skeleton');
+      const base = 'assets/projects/';
+
+      // create images
+      const fragment = document.createDocumentFragment();
+      cfg.imgs.forEach(src => {
+        const img = document.createElement('img');
+        img.src = base + src;
+        img.alt = '';
+        img.decoding = 'async';
+        fragment.appendChild(img);
+      });
+      track.appendChild(fragment);
+
+      return new Promise(resolve => {
+        let loaded = 0;
+        const images = track.querySelectorAll('img');
+        const total = images.length;
+        images.forEach(img => {
+          if (img.complete) { loaded++; if (loaded === total) resolve(); }
+          else { img.onload = img.onerror = () => { loaded++; if (loaded === total) resolve(); }; }
+        });
+      }).then(() => {
+        // measure one set
+        const images = Array.from(track.querySelectorAll('img'));
+        let setWidth = 0;
+        images.forEach(img => { setWidth += img.offsetWidth + GAP; });
+
+        // clone until 3x container
+        const containerW = belt.offsetWidth;
+        const needed = Math.ceil((containerW * 3) / setWidth);
+        for (let c = 0; c < needed; c++) {
+          images.forEach(img => track.appendChild(img.cloneNode(true)));
+        }
+
+        // inject CSS keyframes for this track
+        const animName = 'reel-' + cfg.id;
+        const from = cfg.dir === 'left' ? '0' : '-' + setWidth + 'px';
+        const to = cfg.dir === 'left' ? '-' + setWidth + 'px' : '0';
+        if (!styleEl) { styleEl = document.createElement('style'); document.head.appendChild(styleEl); }
+        styleEl.textContent += '@keyframes ' + animName +
+          '{from{transform:translate3d(' + from + ',0,0)}to{transform:translate3d(' + to + ',0,0)}}';
+        track.style.animation = animName + ' ' + cfg.duration + 's linear infinite';
+
+        // crossfade: track fades in, skeleton fades out simultaneously
+        requestAnimationFrame(() => {
+          track.classList.add('ready');
+          skeleton.style.transition = 'opacity .5s ease';
+          skeleton.style.opacity = '0';
+          skeleton.addEventListener('transitionend', () => skeleton.remove(), { once: true });
+        });
+      });
+    }
+
+    beltData.forEach(cfg => initBelt(cfg));
+
+    // pause/resume CSS animations when not visible
+    const hero = document.getElementById('hero');
+    const reel = document.querySelector('.hero-reel');
+
+    const observer = new IntersectionObserver(([entry]) => {
+      reel.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+      reel.querySelectorAll('.reel-track').forEach(t => {
+        t.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+      });
+    }, { threshold: 0 });
+    observer.observe(hero);
+
+    document.addEventListener('visibilitychange', () => {
+      const paused = document.hidden ? 'paused' : 'running';
+      reel.style.animationPlayState = paused;
+      reel.querySelectorAll('.reel-track').forEach(t => { t.style.animationPlayState = paused; });
+    });
+
   })();
   </script>
 
