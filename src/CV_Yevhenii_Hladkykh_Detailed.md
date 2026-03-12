@@ -5,7 +5,7 @@ Location: Lviv, Ukraine | Format: Remote only
 
 ## Summary
 
-Unity/C# Developer with 5+ years in mobile F2P. 16+ shipped titles across hypercasual, casual, and bingo genres on Google Play and App Store. Production experience with real users, payments, LiveOps, and analytics.
+Unity/C# Developer with 5+ years in mobile F2P. 17+ shipped titles across hypercasual, casual, and bingo genres on Google Play and App Store. Production experience with real users, payments, LiveOps, and analytics.
 
 ## Work Experience
 
@@ -29,7 +29,7 @@ Built from scratch and maintained long-term (1-3 years per title): War Machines 
 
 **Casual**
 
-Feature development on existing titles: Groove Masters (DJ Drum Pad), Drum Pad Stars, Word Ways, Find the Difference, Bingo Home Makeover.
+Feature development on existing titles: Groove Masters (DJ Drum Pad), Drum Pad Stars, Word Ways, Find the Difference, Bingo Home Makeover, Perfect Everything.
 
 - Joined existing projects, added new features and maintained codebase
 - Adapted to different coding styles and architectural decisions of original developers on each project
@@ -125,7 +125,7 @@ Company: krikzz.com -- manufacturer of custom retro console cartridges.
 ## Shipped Titles
 
 **Built from scratch, maintained long-term (hypercasual):** War Machines 3D, Groomer Run 3D, Cats Groomer Runner, Cats Run 3D, Animals Merge
-**Feature development (casual):** Groove Masters, Drum Pad Stars, Word Ways, Find the Difference, Bingo Home Makeover
+**Feature development (casual):** Groove Masters, Drum Pad Stars, Word Ways, Find the Difference, Bingo Home Makeover, Perfect Everything
 **Bingo platform (6 variations):** Bingo Star, Bingo Farm Ways, Bingo Country Boys, Bingo Country Days, Bingo Kingdom Arena, Bingo Country Ways
 
 All titles available on Google Play. Most also on App Store, Windows Store.

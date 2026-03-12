@@ -8,7 +8,7 @@ Location: Lviv, Ukraine | Remote only
 **Playcus** (Mobile F2P Games Studio)
 Unity Developer: jan 2021 - dec 2025
 
-- 16+ shipped titles, 20+ projects total, up to 6 simultaneously
+- 17+ shipped titles, 21+ projects total, up to 6 simultaneously
 - Full-cycle mobile F2P: from prototype to store release and long-term support (1-3 years)
 - Client-server production: real users, payments (IAP, subscriptions), LiveOps
 - UI/UX development, performance optimization, analytics integration

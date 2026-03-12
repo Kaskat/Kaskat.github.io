@@ -183,28 +183,26 @@
     }
     .page-hero-desc strong { color: var(--text); font-weight: 400; }
 
-    /* ══════════════════════════════════
-       ABOUT DETAILS
-    ══════════════════════════════════ */
-    .about-section {
-      padding: 64px;
-      border-bottom: 1px solid var(--border);
-    }
-    .about-details {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px 40px;
-    }
-    .about-detail-label {
-      font-size: 0.82rem;
-      letter-spacing: 0.18em;
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      padding: 10px 24px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 4px;
+      color: var(--bg);
+      background: var(--accent);
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .2s, box-shadow .2s;
     }
-    .about-detail-value {
-      font-size: 0.95rem;
-      color: var(--text);
+    .btn-download:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px var(--glow);
     }
 
     /* ══════════════════════════════════
@@ -502,8 +500,6 @@
     @media (max-width: 768px) {
       .topbar-center { display: none; }
       .page-hero { padding: 72px 24px 40px; }
-      .about-section { padding: 48px 24px; }
-      .about-details { grid-template-columns: 1fr 1fr; }
       .experience-section { padding: 60px 24px; }
       .timeline-item { grid-template-columns: 1fr; gap: 8px; }
       .timeline-item::before, .timeline-item::after { display: none; }
@@ -557,38 +553,12 @@
       <div class="page-hero-tag">About Me</div>
       <h1>Yevhenii<br/><em>Hladkykh</em></h1>
       <p class="page-hero-desc">
-        Unity/C# Developer with <strong>5+ years in mobile F2P</strong>. Shipped <strong>16+ titles</strong> across hypercasual, casual, and bingo genres. Production experience with real users, payments, LiveOps, and analytics. Currently exploring <strong>AI-assisted development</strong>.
+        Unity/C# Developer with <strong>5+ years in mobile F2P</strong>. Shipped <strong>17+ titles</strong> across hypercasual, casual, and bingo genres. Production experience with real users, payments, LiveOps, and analytics. Currently exploring <strong>AI-assisted development</strong>.
       </p>
-    </div>
-
-    <!-- DETAILS -->
-    <div class="about-section">
-      <div class="about-details">
-        <div>
-          <div class="about-detail-label">Location</div>
-          <div class="about-detail-value">Lviv, Ukraine</div>
-        </div>
-        <div>
-          <div class="about-detail-label">Format</div>
-          <div class="about-detail-value">Remote only</div>
-        </div>
-        <div>
-          <div class="about-detail-label">Specialization</div>
-          <div class="about-detail-value">Mobile F2P</div>
-        </div>
-        <div>
-          <div class="about-detail-label">Languages</div>
-          <div class="about-detail-value">Ukrainian, English (B2)</div>
-        </div>
-        <div>
-          <div class="about-detail-label">Email</div>
-          <div class="about-detail-value">kaskat250@gmail.com</div>
-        </div>
-        <div>
-          <div class="about-detail-label">Telegram</div>
-          <div class="about-detail-value">@Kaskat</div>
-        </div>
-      </div>
+      <a class="btn-download" href="assets/CV_Yevhenii_Hladkykh.pdf" download>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>
+        Download CV
+      </a>
     </div>
 
     <!-- EXPERIENCE -->
@@ -609,7 +579,7 @@
           <div class="timeline-role">Unity Developer</div>
           <div class="timeline-company-desc">Mobile F2P Games Studio, Kyiv/Remote</div>
           <ul class="timeline-highlights">
-            <li><strong>16+ shipped titles</strong>, 20+ projects total, up to 6 simultaneously</li>
+            <li><strong>17+ shipped titles</strong>, 21+ projects total, up to 6 simultaneously</li>
             <li>Full-cycle hypercasual: built from scratch, maintained 1-3 years per title</li>
             <li>Bingo platform: 6 product variations, client-server architecture (Unity + PHP backend)</li>
             <li>Refactored legacy IAP billing from hardcoded tables to <strong>SDK API-based architecture</strong></li>
@@ -790,9 +760,9 @@
           <span class="ic-tooltip">Telegram</span>
           <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
         </a>
-        <a class="contact-icon" href="tel:+380989384514" title="Phone">
-          <span class="ic-tooltip">Phone</span>
-          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <a class="contact-icon" href="https://instagram.com/kaskat_III" target="_blank" title="Instagram">
+          <span class="ic-tooltip">Instagram</span>
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
         </a>
         <a class="contact-icon" href="https://github.com/Kaskat" target="_blank" title="GitHub">
           <span class="ic-tooltip">GitHub</span>

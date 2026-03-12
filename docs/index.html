@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Yevhenii Hladkykh — Unity Developer</title>
-  <meta name="description" content="Unity/C# Developer with 5+ years in mobile F2P. 16+ shipped titles. Portfolio & CV."/>
+  <meta name="description" content="Unity/C# Developer with 5+ years in mobile F2P. 17+ shipped titles. Portfolio & CV."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
@@ -455,6 +455,10 @@
       overflow: hidden;
       transition: border-color .35s;
     }
+    .thumb-item.landscape {
+      width: 100px;
+      height: 56px;
+    }
     .thumb-item:hover { border-color: var(--text-dim); }
     .thumb-item.active { border-color: var(--accent); }
 
@@ -520,6 +524,38 @@
       margin-top: 3px;
       transition: color .35s;
     }
+    .preview-links {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .preview-links:empty { display: none; }
+    .plink {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    .plink:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--glow2);
+    }
+    .plink svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
     .preview-tags {
       display: flex;
       flex-wrap: wrap;
@@ -1261,7 +1297,7 @@
         Building<br/><em>mobile games</em><br/>that ship.
       </h1>
       <p class="hero-desc">
-        5+ years in mobile F2P — <strong>16+ shipped titles</strong>,
+        5+ years in mobile F2P — <strong>17+ shipped titles</strong>,
         from hypercasual prototypes to production bingo platforms with real users,
         payments, and LiveOps. Exploring <strong>AI-assisted rapid development</strong>.
       </p>
@@ -1302,7 +1338,7 @@
 
       <div class="hero-stats">
         <div class="stat">
-          <div class="stat-n">16<em>+</em></div>
+          <div class="stat-n">17<em>+</em></div>
           <div class="stat-l">Shipped Titles</div>
         </div>
         <div class="stat">
@@ -1389,6 +1425,7 @@
               <div class="preview-role" id="prole"></div>
             </div>
           </div>
+          <div class="preview-links" id="plinks"></div>
           <div class="preview-tags" id="ptags"></div>
         </div>
 
@@ -1411,13 +1448,13 @@
 
               <!-- Sub-pills -->
               <div class="sub-pills">
-                <button class="sub-pill active" onclick="switchPill(this, 'casual')">Casual</button>
-                <button class="sub-pill" onclick="switchPill(this, 'hyper')">Hypercasual</button>
+                <button class="sub-pill active" onclick="switchPill(this, 'hyper')">Hypercasual</button>
+                <button class="sub-pill" onclick="switchPill(this, 'casual')">Casual</button>
               </div>
 
               <!-- SUB: Casual -->
-              <div class="sub-group active" data-sub="casual">
-                <div class="proj-item featured has-variations" data-name="Bingo Star" data-role="Features + IAP refactor + Analytics redesign — Unity client + PHP backend" data-tags="Unity,Client-Server,IAP,LiveOps,Analytics,Addressables,14+ langs,4 platforms" onclick="selectProject(this)">
+              <div class="sub-group" data-sub="casual">
+                <div class="proj-item featured has-variations" data-name="Bingo Star" data-role="Features + IAP refactor + Analytics redesign — Unity client + PHP backend" data-tags="Unity,Client-Server,IAP,LiveOps,Analytics,Addressables,14+ langs,4 platforms" data-links="gp:https://play.google.com/store/apps/details?id=com.playcus.bingostar,as:https://apps.apple.com/app/bingo-star-bingo-games/id1436625499,ms:https://apps.microsoft.com/detail/9pkv1pl9znvm,fb:https://www.facebook.com/bingostargame/" onclick="selectProject(this)">
                   <div class="particles"></div>
                   <div class="proj-item-left">
                     <span class="proj-item-name">Bingo Star <span class="crown-icon">&#9819;</span></span>
@@ -1432,35 +1469,35 @@
                   </div>
                 </div>
                 <div class="variations-list">
-                  <div class="proj-item variation" data-name="Bingo Farm Ways" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item variation" data-name="Bingo Farm Ways" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=com.playcus.free.bingo.games.country.farm.game,as:https://apps.apple.com/app/bingo-farm-ways-bingo-games/id1385418128,ms:https://apps.microsoft.com/detail/9nm91hvz98h4" onclick="selectProject(this)">
                     <div class="proj-item-left">
                       <span class="proj-item-name">Bingo Farm Ways</span>
                       <span class="proj-item-sub">Platform variation</span>
                     </div>
                     <span class="proj-item-tag">Variation</span>
                   </div>
-                  <div class="proj-item variation" data-name="Bingo Country Boys" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item variation" data-name="Bingo Country Boys" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=air.com.playcus.bingocountryboys,as:https://apps.apple.com/app/bingo-country-boys-bingo-games/id1319846494,ms:https://apps.microsoft.com/detail/9nb3thwg46z0" onclick="selectProject(this)">
                     <div class="proj-item-left">
                       <span class="proj-item-name">Bingo Country Boys</span>
                       <span class="proj-item-sub">Platform variation</span>
                     </div>
                     <span class="proj-item-tag">Variation</span>
                   </div>
-                  <div class="proj-item variation" data-name="Bingo Country Days" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item variation" data-name="Bingo Country Days" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=air.com.playcus.free.bingo.games.casino.slots.country.days.game,as:https://apps.apple.com/app/bingo-country-days-bingo-games/id1312836671,ms:https://apps.microsoft.com/detail/9mwgj08kp8mx" onclick="selectProject(this)">
                     <div class="proj-item-left">
                       <span class="proj-item-name">Bingo Country Days</span>
                       <span class="proj-item-sub">Platform variation</span>
                     </div>
                     <span class="proj-item-tag">Variation</span>
                   </div>
-                  <div class="proj-item variation" data-name="Bingo Kingdom Arena" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item variation" data-name="Bingo Kingdom Arena" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=air.com.playcus.bingokingdomarena,as:https://apps.apple.com/app/bingo-kingdom-arena-bingo-game/id1352343409,ms:https://apps.microsoft.com/detail/9pb8ch7v1qs8" onclick="selectProject(this)">
                     <div class="proj-item-left">
                       <span class="proj-item-name">Bingo Kingdom Arena</span>
                       <span class="proj-item-sub">Platform variation</span>
                     </div>
                     <span class="proj-item-tag">Variation</span>
                   </div>
-                  <div class="proj-item variation" data-name="Bingo Country Ways" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item variation" data-name="Bingo Country Ways" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=air.com.playcus.bingocountryways,as:https://apps.apple.com/app/bingo-country-ways-bingo-live/id1223937103,ms:https://apps.microsoft.com/detail/9p9wbg4wbwc7" onclick="selectProject(this)">
                     <div class="proj-item-left">
                       <span class="proj-item-name">Bingo Country Ways</span>
                       <span class="proj-item-sub">Platform variation</span>
@@ -1468,7 +1505,7 @@
                     <span class="proj-item-tag">Variation</span>
                   </div>
                 </div>
-                <div class="proj-item has-variations" data-name="Groove Masters" data-role="Feature developer — DJ Drum Pad" data-tags="Unity,Casual,Music,Feature dev" onclick="selectProject(this)">
+                <div class="proj-item has-variations" data-name="Groove Masters" data-role="Feature developer — DJ Drum Pad" data-tags="Unity,Casual,Music,Feature dev" data-links="gp:https://play.google.com/store/apps/details?id=com.playcus.groovemasters,as:https://apps.apple.com/app/groove-masters-dj-drum-pad/id1524440598" onclick="selectProject(this)">
                   <div class="proj-item-left">
                     <span class="proj-item-name">Groove Masters</span>
                     <span class="proj-item-sub">Playcus · DJ Drum Pad · music genre</span>
@@ -1482,7 +1519,7 @@
                   </div>
                 </div>
                 <div class="variations-list">
-                  <div class="proj-item variation" data-name="Drum Pad Stars" data-role="Feature developer — Groove Masters variation" data-tags="Unity,Casual,Music,Feature dev" onclick="selectProject(this)">
+                  <div class="proj-item variation" data-name="Drum Pad Stars" data-role="Feature developer — Groove Masters variation" data-tags="Unity,Casual,Music,Feature dev" data-links="gp:https://play.google.com/store/apps/details?id=com.playcus.drumpadstars,as:https://apps.apple.com/app/drum-pad-stars-dj-drum-pad/id6742401827" onclick="selectProject(this)">
                     <div class="proj-item-left">
                       <span class="proj-item-name">Drum Pad Stars</span>
                       <span class="proj-item-sub">Groove Masters variation</span>
@@ -1490,28 +1527,28 @@
                     <span class="proj-item-tag">Variation</span>
                   </div>
                 </div>
-                <div class="proj-item" data-name="Word Ways" data-role="Feature developer — word game" data-tags="Unity,Casual,Word,Feature dev" onclick="selectProject(this)">
+                <div class="proj-item" data-name="Word Ways" data-role="Feature developer — word game" data-tags="Unity,Casual,Word,Feature dev" data-links="gp:https://play.google.com/store/apps/details?id=com.playcus.word.ways,as:https://apps.apple.com/app/word-ways-best-word-game/id1502982594" onclick="selectProject(this)">
                   <div class="proj-item-left">
                     <span class="proj-item-name">Word Ways</span>
                     <span class="proj-item-sub">Playcus · word genre</span>
                   </div>
                   <span class="proj-item-tag">Feature dev</span>
                 </div>
-                <div class="proj-item" data-name="Find the Difference" data-role="Feature developer — hidden object" data-tags="Unity,Casual,Hidden Object,Feature dev" onclick="selectProject(this)">
+                <div class="proj-item" data-name="Find the Difference" data-role="Feature developer — hidden object" data-tags="Unity,Casual,Hidden Object,Feature dev" data-links="gp:https://play.google.com/store/apps/details?id=com.playcus.findthedifferences2,as:https://apps.apple.com/app/find-differences-spot-it-2/id1473418117" onclick="selectProject(this)">
                   <div class="proj-item-left">
                     <span class="proj-item-name">Find the Difference</span>
                     <span class="proj-item-sub">Playcus · hidden object genre</span>
                   </div>
                   <span class="proj-item-tag">Feature dev</span>
                 </div>
-                <div class="proj-item" data-name="Bingo Home Makeover" data-role="Feature developer — bingo/casual" data-tags="Unity,Casual,Bingo,Feature dev" onclick="selectProject(this)">
+                <div class="proj-item" data-name="Bingo Home Makeover" data-role="Feature developer — bingo/casual" data-tags="Unity,Casual,Bingo,Feature dev" data-links="gp:https://play.google.com/store/apps/details?id=com.playcus.bingohomemakover,as:https://apps.apple.com/app/bingo-home-makeover/id1561787798,ms:https://apps.microsoft.com/detail/9pnvlrg8hpzx" onclick="selectProject(this)">
                   <div class="proj-item-left">
                     <span class="proj-item-name">Bingo Home Makeover</span>
                     <span class="proj-item-sub">Playcus · bingo/casual</span>
                   </div>
                   <span class="proj-item-tag">Feature dev</span>
                 </div>
-                <div class="proj-item" data-name="Perfect Everything" data-role="Feature developer — casual" data-tags="Unity,Casual,Feature dev" onclick="selectProject(this)">
+                <div class="proj-item" data-name="Perfect Everything" data-role="Feature developer — casual" data-tags="Unity,Casual,Feature dev" data-links="gp:https://play.google.com/store/apps/details?id=com.playcus.perfecthome,as:https://apps.apple.com/app/perfect-everything/id1512182870" onclick="selectProject(this)">
                   <div class="proj-item-left">
                     <span class="proj-item-name">Perfect Everything</span>
                     <span class="proj-item-sub">Playcus · casual</span>
@@ -1521,8 +1558,8 @@
               </div>
 
               <!-- SUB: Hypercasual -->
-              <div class="sub-group" data-sub="hyper">
-                <div class="proj-item featured" data-name="War Machines 3D" data-role="Primary developer — built from scratch, maintained 1-3 years" data-tags="Unity,Hypercasual,Android,iOS,Built from scratch,Long-term support" onclick="selectProject(this)">
+              <div class="sub-group active" data-sub="hyper">
+                <div class="proj-item featured" data-name="War Machines 3D" data-role="Primary developer — built from scratch, maintained 1-3 years" data-tags="Unity,Hypercasual,Android,iOS,Built from scratch,Long-term support" data-links="gp:https://play.google.com/store/apps/details?id=com.alurum.gear.race.car.drive,as:https://apps.apple.com/app/war-machine-3d/id1558813839" onclick="selectProject(this)">
                   <div class="particles"></div>
                   <div class="proj-item-left">
                     <span class="proj-item-name">War Machines 3D <span class="crown-icon">&#9819;</span></span>
@@ -1530,7 +1567,7 @@
                   </div>
                   <span class="proj-item-tag">Primary dev</span>
                 </div>
-                <div class="proj-item featured has-variations" data-name="Groomer Run 3D" data-role="Primary developer — built from scratch, maintained 1-3 years" data-tags="Unity,Hypercasual,Android,iOS,Built from scratch,Long-term support" onclick="selectProject(this)">
+                <div class="proj-item featured has-variations" data-name="Groomer Run 3D" data-role="Primary developer — built from scratch, maintained 1-3 years" data-tags="Unity,Hypercasual,Android,iOS,Built from scratch,Long-term support" data-links="gp:https://play.google.com/store/apps/details?id=com.alurum.animal.makeup.run,as:https://apps.apple.com/app/groomer-run-3d/id1570255487" onclick="selectProject(this)">
                   <div class="particles"></div>
                   <div class="proj-item-left">
                     <span class="proj-item-name">Groomer Run 3D <span class="crown-icon">&#9819;</span></span>
@@ -1545,14 +1582,14 @@
                   </div>
                 </div>
                 <div class="variations-list">
-                  <div class="proj-item variation" data-name="Cats Groomer Runner" data-role="Primary developer — Groomer Run 3D variation" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item variation" data-name="Cats Groomer Runner" data-role="Primary developer — Groomer Run 3D variation" data-tags="Unity,Hypercasual,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=com.playcus.cats.groomer.runner" onclick="selectProject(this)">
                     <div class="proj-item-left">
                       <span class="proj-item-name">Cats Groomer Runner</span>
                       <span class="proj-item-sub">Groomer Run variation</span>
                     </div>
                     <span class="proj-item-tag">Variation</span>
                   </div>
-                  <div class="proj-item variation" data-name="Cats Run 3D" data-role="Primary developer — Groomer Run 3D variation" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
+                  <div class="proj-item variation" data-name="Cats Run 3D" data-role="Primary developer — Groomer Run 3D variation" data-tags="Unity,Hypercasual,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=com.alurum.cat.makeup.run,as:https://apps.apple.com/app/cats-run-3d/id1630741938" onclick="selectProject(this)">
                     <div class="proj-item-left">
                       <span class="proj-item-name">Cats Run 3D</span>
                       <span class="proj-item-sub">Groomer Run variation</span>
@@ -1560,7 +1597,7 @@
                     <span class="proj-item-tag">Variation</span>
                   </div>
                 </div>
-                <div class="proj-item" data-name="Animals Merge" data-role="Primary developer — built from scratch" data-tags="Unity,Hypercasual,Android,iOS" onclick="selectProject(this)">
+                <div class="proj-item" data-name="Animals Merge" data-role="Primary developer — built from scratch" data-tags="Unity,Hypercasual,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=com.alurum.animals.merge.dna,as:https://apps.apple.com/app/animals-merge/id1606725398" onclick="selectProject(this)">
                   <div class="proj-item-left">
                     <span class="proj-item-name">Animals Merge</span>
                     <span class="proj-item-sub">Playcus · built from scratch</span>
@@ -1690,9 +1727,9 @@
           <span class="ic-tooltip">Telegram</span>
           <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
         </a>
-        <a class="contact-icon" href="tel:+380989384514" title="Phone">
-          <span class="ic-tooltip">Phone</span>
-          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <a class="contact-icon" href="https://instagram.com/kaskat_III" target="_blank" title="Instagram">
+          <span class="ic-tooltip">Instagram</span>
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
         </a>
         <a class="contact-icon" href="https://github.com/Kaskat" target="_blank" title="GitHub">
           <span class="ic-tooltip">GitHub</span>
@@ -1909,7 +1946,7 @@
           pBdVideo.play().catch(() => {});
         }
       } else {
-        pImage.src = item.src;
+          pImage.src = item.src;
         pImage.classList.add('active');
         if (showBd) {
           pBdImg.src = item.src;
@@ -2014,6 +2051,7 @@
             const img = document.createElement('img');
             img.src = dataUrl;
             img.alt = '';
+            img.onload = function() { if (img.naturalWidth > img.naturalHeight) thumb.classList.add('landscape'); };
             thumb.insertBefore(img, thumb.firstChild);
           });
           const badge = document.createElement('div');
@@ -2024,6 +2062,7 @@
           img.src = item.src;
           img.alt = '';
           img.loading = 'lazy';
+          img.onload = function() { if (img.naturalWidth > img.naturalHeight) thumb.classList.add('landscape'); };
           thumb.appendChild(img);
         }
 
@@ -2047,6 +2086,24 @@
       pframe.classList.add('active');
       const tags = (el.dataset.tags || '').split(',').filter(Boolean);
       document.getElementById('ptags').innerHTML = tags.map(t => `<span class="ptag">${t.trim()}</span>`).join('');
+
+      // Platform links
+      const plinksEl = document.getElementById('plinks');
+      const linkIcons = {
+        gp: { label: 'Google Play', svg: '<svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.2 12l2.498-2.492zM5.864 3.458L16.8 9.79l-2.302 2.302-8.634-8.634z"/></svg>' },
+        as: { label: 'App Store', svg: '<svg viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>' },
+        ms: { label: 'Microsoft', svg: '<svg viewBox="0 0 24 24"><path d="M3 3h8.5v8.5H3V3zm9.5 0H21v8.5h-8.5V3zM3 12.5h8.5V21H3v-8.5zm9.5 0H21V21h-8.5v-8.5z"/></svg>' },
+        fb: { label: 'Facebook', svg: '<svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>' },
+        web: { label: 'Web', svg: '<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>' },
+      };
+      const links = (el.dataset.links || '').split(',').filter(Boolean);
+      plinksEl.innerHTML = links.map(entry => {
+        const [platform, ...urlParts] = entry.split(':');
+        const url = urlParts.join(':').trim();
+        const info = linkIcons[platform.trim()];
+        if (!info || !url) return '';
+        return `<a class="plink" href="${url}" target="_blank" rel="noopener">${info.svg}${info.label}</a>`;
+      }).join('');
       buildGallery(name);
 
       // Auto-fold all variations, then unfold if selecting a parent or its child
@@ -2083,6 +2140,10 @@
         container.appendChild(p);
       }
     });
+
+    // ── Auto-select first project in initially open track ──
+    const openTrack = document.querySelector('.track.open');
+    if (openTrack) autoSelectFirst(openTrack);
 
     // ── Scroll reveal ──
     const observer = new IntersectionObserver(entries => {
