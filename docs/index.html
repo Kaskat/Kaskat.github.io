@@ -170,7 +170,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 80px clamp(16px, 5vw, 64px) 60px;
+      padding: 80px clamp(16px, 5vw, 64px) 140px;
       position: relative;
       overflow: hidden;
     }
@@ -863,6 +863,279 @@
     }
 
     /* ══════════════════════════════════
+       ABOUT VIEW (SPA)
+    ══════════════════════════════════ */
+    #view-about { display: none; }
+    body.show-about #view-main { display: none; }
+    body.show-about #view-about { display: block; }
+
+    .page-hero {
+      padding: 80px clamp(16px, 5vw, 64px) 48px;
+      border-bottom: 1px solid var(--border);
+      transition: color .35s, background-color .35s, border-color .35s;
+    }
+    .page-hero-tag {
+      font-size: 0.95rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .page-hero-tag::before {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--accent);
+    }
+    .page-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--accent); }
+    .page-hero-desc {
+      max-width: 560px;
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      line-height: 1.85;
+    }
+    .page-hero-desc strong { color: var(--text); font-weight: 400; }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      padding: 10px 24px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.88rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--accent);
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .btn-download:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px var(--glow);
+    }
+
+    .experience-section {
+      padding: 80px clamp(16px, 5vw, 64px);
+      border-bottom: 1px solid var(--border);
+      transition: color .35s, background-color .35s, border-color .35s;
+    }
+    #view-about .sec-header { padding: 0; }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      transition: color .35s, background-color .35s, border-color .35s;
+    }
+    .timeline-item:last-child { border-bottom: none; }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 218px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: var(--border);
+      transition: background .35s;
+    }
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 214px;
+      top: 40px;
+      width: 9px; height: 9px;
+      background: var(--bg);
+      transition: background .35s, border-color .35s;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .timeline-left {
+      text-align: right;
+      padding-right: 24px;
+    }
+    .timeline-period {
+      font-size: 0.88rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .timeline-duration {
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .timeline-right { padding-left: 24px; }
+    .timeline-company {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+    .timeline-role {
+      font-size: 0.88rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .timeline-company-desc {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .timeline-highlights { list-style: none; }
+    .timeline-highlights li {
+      font-size: 0.92rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+    .timeline-highlights li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 9px;
+      width: 6px; height: 1px;
+      background: var(--accent);
+    }
+    .timeline-highlights li strong { color: var(--text); font-weight: 400; }
+
+    .timeline-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+    .timeline-tag {
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      background: var(--muted);
+      padding: 3px 8px;
+      text-transform: uppercase;
+      transition: background .35s, color .35s;
+    }
+
+    .skills-section {
+      padding: 80px clamp(16px, 5vw, 64px);
+      border-bottom: 1px solid var(--border);
+      transition: color .35s, background-color .35s, border-color .35s;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .skill-group {
+      padding: 24px;
+      border: 1px solid var(--border);
+      transition: color .35s, background-color .35s, border-color .35s;
+    }
+    .skill-group:hover { border-color: var(--accent); }
+    .skill-group-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .skill-group-title::before {
+      content: '';
+      width: 12px; height: 2px;
+      background: var(--accent);
+    }
+    .skill-list { list-style: none; }
+    .skill-list li {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: border-color .35s, color .35s;
+    }
+    .skill-list li:last-child { border-bottom: none; }
+    .skill-name { color: var(--text); }
+    .skill-detail {
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+      text-align: right;
+      max-width: 55%;
+    }
+
+    .education-section {
+      padding: 80px clamp(16px, 5vw, 64px);
+      border-bottom: 1px solid var(--border);
+      transition: color .35s, background-color .35s, border-color .35s;
+    }
+    .education-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .education-card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      transition: color .35s, background-color .35s, border-color .35s;
+    }
+    .education-card:hover { border-color: var(--accent); }
+    .education-degree {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    .education-field {
+      font-size: 0.92rem;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+    .education-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .education-school {
+      font-size: 0.88rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+    }
+    .education-year {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+    }
+
+    /* ══════════════════════════════════
        CONTACT
     ══════════════════════════════════ */
     .contact-section {
@@ -1254,6 +1527,11 @@
       .proj-list-col { padding: 0; border-left: none; order: 1; }
       .contact-section { padding: 48px 16px; flex-direction: column; align-items: flex-start; }
       .contact-icons { flex-wrap: wrap; }
+      .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+      .timeline-item::before, .timeline-item::after { display: none; }
+      .timeline-left { text-align: left; padding-right: 0; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .education-grid { grid-template-columns: 1fr; }
       body { font-size: 16px; }
     }
 
@@ -1280,10 +1558,10 @@
 
   <!-- TOP BAR -->
   <div class="topbar">
-    <a class="topbar-left" href="./">YH_</a>
+    <a class="topbar-left" href="#" data-view="main">YH_</a>
     <nav class="topbar-center">
-      <a href="#projects">Projects</a>
-      <a href="about.html">About Me</a>
+      <a href="#projects" data-view="main">Projects</a>
+      <a href="#about" data-view="about">About Me</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="topbar-right">
@@ -1301,6 +1579,8 @@
 
   <div class="page">
 
+    <div id="view-main">
+
     <!-- HERO -->
     <section class="hero" id="hero">
       <div class="hero-tag">Unity / C# Developer</div>
@@ -1314,7 +1594,7 @@
       </p>
       <div class="hero-btns">
         <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Projects</button>
-        <a class="btn-ghost" href="about.html">About Me</a>
+        <a class="btn-ghost" href="#about" data-view="about">About Me</a>
       </div>
       <!-- HERO REEL (desktop) -->
       <div class="hero-reel">
@@ -1722,6 +2002,204 @@
         </div>
       </div>
     </section>
+
+    </div><!-- /view-main -->
+
+    <!-- ABOUT VIEW (SPA) -->
+    <div id="view-about">
+      <div class="page-hero">
+        <div class="page-hero-tag">About Me</div>
+        <h1>Yevhenii<br/><em>Hladkykh</em></h1>
+        <p class="page-hero-desc">
+          Unity/C# Developer with <strong>5+ years in mobile F2P</strong>. Shipped <strong>17+ titles</strong> across hypercasual, casual, and bingo genres. Production experience with real users, payments, LiveOps, and analytics. Currently exploring <strong>AI-assisted development</strong>.
+        </p>
+        <a class="btn-download" href="assets/CV_Yevhenii_Hladkykh.pdf" download>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>
+          Download CV
+        </a>
+      </div>
+
+      <section class="experience-section reveal" id="experience">
+        <div class="sec-header">
+          <span class="sec-num">01 /</span>
+          <h2 class="sec-title">Experience</h2>
+          <div class="sec-line"></div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <div class="timeline-period">Jan 2021 — Dec 2025</div>
+            <div class="timeline-duration">5 years</div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-company">Playcus</div>
+            <div class="timeline-role">Unity Developer</div>
+            <div class="timeline-company-desc">Mobile F2P Games Studio, Kyiv/Remote</div>
+            <ul class="timeline-highlights">
+              <li><strong>17+ shipped titles</strong>, 21+ projects total, up to 6 simultaneously</li>
+              <li>Full-cycle hypercasual: built from scratch, maintained 1-3 years per title</li>
+              <li>Bingo platform: 6 product variations, client-server architecture (Unity + PHP backend)</li>
+              <li>Refactored legacy IAP billing from hardcoded tables to <strong>SDK API-based architecture</strong></li>
+              <li>Took ownership of analytics: audited events, redesigned funnels, deployed across 6 projects</li>
+              <li>Performance optimization: Unity Profiler, Frame Debugger, GC reduction, low-end devices</li>
+              <li>LiveOps: remote config, feature flags, A/B experiments</li>
+              <li>AI-agent orchestration for game generation using Claude Code (R&D)</li>
+            </ul>
+            <div class="timeline-tags">
+              <span class="timeline-tag">Unity</span>
+              <span class="timeline-tag">C#</span>
+              <span class="timeline-tag">IAP</span>
+              <span class="timeline-tag">LiveOps</span>
+              <span class="timeline-tag">Analytics</span>
+              <span class="timeline-tag">Jenkins</span>
+              <span class="timeline-tag">Addressables</span>
+              <span class="timeline-tag">Firebase</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <div class="timeline-period">May 2020 — Dec 2020</div>
+            <div class="timeline-duration">8 months</div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-company">Freelance</div>
+            <div class="timeline-role">Unity Developer</div>
+            <div class="timeline-company-desc">Independent Game Development</div>
+            <ul class="timeline-highlights">
+              <li>Prototyped <strong>6+ hypercasual games</strong>, 2+ released on App Store / Google Play</li>
+              <li>Full-cycle: game design concepts, art direction, gameplay, analytics/SDK integration</li>
+              <li>Coordinated a team of 3-5 people (dev, art, game design)</li>
+            </ul>
+            <div class="timeline-tags">
+              <span class="timeline-tag">Unity</span>
+              <span class="timeline-tag">Hypercasual</span>
+              <span class="timeline-tag">Full-cycle</span>
+              <span class="timeline-tag">Team Lead</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <div class="timeline-period">Jun 2019 — May 2020</div>
+            <div class="timeline-duration">1 year</div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-company">AMC Bridge LLC</div>
+            <div class="timeline-role">Software Engineer</div>
+            <div class="timeline-company-desc">Engineering Software, Sumy — 200+ employees</div>
+            <ul class="timeline-highlights">
+              <li>Web development (C#, JavaScript) on enterprise platform Aras Innovator</li>
+              <li>UI modules, integrations, and business logic for engineering products</li>
+              <li>CAD engine development (C++)</li>
+            </ul>
+            <div class="timeline-tags">
+              <span class="timeline-tag">C#</span>
+              <span class="timeline-tag">JavaScript</span>
+              <span class="timeline-tag">C++</span>
+              <span class="timeline-tag">Enterprise</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <div class="timeline-period">Feb 2018 — Jan 2019</div>
+            <div class="timeline-duration">1 year</div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-company">Krikzz</div>
+            <div class="timeline-role">Junior Engineer</div>
+            <div class="timeline-company-desc">Retro Console Hardware, Sumy — krikzz.com</div>
+            <ul class="timeline-highlights">
+              <li>FPGA development (Verilog), NES game mapping for EverDrive N8 Pro</li>
+              <li>Software tooling (C#) for hardware product line</li>
+            </ul>
+            <div class="timeline-tags">
+              <span class="timeline-tag">Verilog</span>
+              <span class="timeline-tag">FPGA</span>
+              <span class="timeline-tag">C#</span>
+              <span class="timeline-tag">Hardware</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills-section reveal" id="skills">
+        <div class="sec-header">
+          <span class="sec-num">02 /</span>
+          <h2 class="sec-title">Skills</h2>
+          <div class="sec-line"></div>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-group">
+            <div class="skill-group-title">Core</div>
+            <ul class="skill-list">
+              <li><span class="skill-name">Unity, C#, .NET/Mono</span><span class="skill-detail">Client-side, UI, async</span></li>
+              <li><span class="skill-name">UGUI</span><span class="skill-detail">Canvas optimization, overdraw</span></li>
+              <li><span class="skill-name">Optimization</span><span class="skill-detail">Profiler, Frame Debugger, GC</span></li>
+              <li><span class="skill-name">Analytics</span><span class="skill-detail">DevToDev, GameAnalytics, funnels</span></li>
+              <li><span class="skill-name">IAP</span><span class="skill-detail">Google, Apple, Windows, Facebook</span></li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">Production</div>
+            <ul class="skill-list">
+              <li><span class="skill-name">Architecture</span><span class="skill-detail">PureMVC, ServiceLocator</span></li>
+              <li><span class="skill-name">Asset Delivery</span><span class="skill-detail">Addressables, Asset Bundles</span></li>
+              <li><span class="skill-name">LiveOps</span><span class="skill-detail">Remote config, feature flags, A/B</span></li>
+              <li><span class="skill-name">CI/CD</span><span class="skill-detail">Jenkins builds &amp; deploys</span></li>
+              <li><span class="skill-name">Firebase</span><span class="skill-detail">Crashlytics, Cloud Messaging</span></li>
+              <li><span class="skill-name">Monetization</span><span class="skill-detail">MAX, AdMob, IAP, Subscriptions</span></li>
+              <li><span class="skill-name">Localization</span><span class="skill-detail">I2 + Google Sheets, 14+ langs</span></li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">Additional</div>
+            <ul class="skill-list">
+              <li><span class="skill-name">Animation</span><span class="skill-detail">DOTween, Timeline, Animator</span></li>
+              <li><span class="skill-name">Rendering</span><span class="skill-detail">URP, HLSL basics, Shader Graph</span></li>
+              <li><span class="skill-name">Platforms</span><span class="skill-detail">Android, iOS, Windows, WebGL</span></li>
+              <li><span class="skill-name">AI Dev</span><span class="skill-detail">Claude Code, agent orchestration</span></li>
+              <li><span class="skill-name">Familiar With</span><span class="skill-detail">ECS/DOTS, Zenject, Flutter</span></li>
+              <li><span class="skill-name">Tools</span><span class="skill-detail">Git, Asana, Agile, REST API</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="education-section reveal" id="education">
+        <div class="sec-header">
+          <span class="sec-num">03 /</span>
+          <h2 class="sec-title">Education</h2>
+          <div class="sec-line"></div>
+        </div>
+
+        <div class="education-grid">
+          <div class="education-card">
+            <div class="education-degree">Master's Degree</div>
+            <div class="education-field">Computer Science and Information Technology</div>
+            <div class="education-meta">
+              <span class="education-school">ElIT Faculty, SSU</span>
+              <span class="education-year">2020 — 2021</span>
+            </div>
+          </div>
+          <div class="education-card">
+            <div class="education-degree">Bachelor's Degree</div>
+            <div class="education-field">Computer Science and Information Technology</div>
+            <div class="education-meta">
+              <span class="education-school">ElIT Faculty, SSU</span>
+              <span class="education-year">2016 — 2020</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div><!-- /view-about -->
 
     <!-- CONTACT -->
     <section class="contact-section reveal" id="contact">
@@ -2177,31 +2655,115 @@
     const openTrack = document.querySelector('.track.open');
     if (openTrack) autoSelectFirst(openTrack);
 
-    // ── Active nav link on scroll ──
+    // ── SPA View Router ──
+    history.scrollRestoration = 'manual';
     (function() {
-      const navLinks = document.querySelectorAll('.topbar-center a[href^="#"]');
-      const sections = [];
-      navLinks.forEach(a => {
-        const id = a.getAttribute('href').slice(1);
-        const sec = document.getElementById(id);
-        if (sec) sections.push({ el: sec, link: a });
-      });
-      function updateActiveNav() {
-        let active = null;
-        const atBottom = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 50;
-        if (atBottom) {
-          active = sections[sections.length - 1];
-        } else {
-          sections.forEach(s => {
-            const rect = s.el.getBoundingClientRect();
-            if (rect.top < window.innerHeight * 0.5) active = s;
-          });
-        }
-        sections.forEach(s => s.link.classList.toggle('active', s === active));
+      const viewMain = document.getElementById('view-main');
+      const viewAbout = document.getElementById('view-about');
+
+      function isAbout() {
+        return document.body.classList.contains('show-about');
       }
-      window.addEventListener('scroll', updateActiveNav, { passive: true });
-      updateActiveNav();
+
+      function getViewFromHash() {
+        var h = window.location.hash;
+        if (h === '#about') return 'about';
+        if (h === '' || h === '#' || h === '#projects') return 'main';
+        return null; // #contact or other anchors — don't change view
+      }
+
+      function switchView(target, push) {
+        const current = isAbout() ? 'about' : 'main';
+        if (current === target) return;
+
+        // fade out
+        viewMain.style.transition = 'opacity .2s ease';
+        viewAbout.style.transition = 'opacity .2s ease';
+        if (current === 'main') viewMain.style.opacity = '0';
+        else viewAbout.style.opacity = '0';
+
+        setTimeout(function() {
+          if (target === 'about') {
+            document.body.classList.add('show-about');
+          } else {
+            document.body.classList.remove('show-about');
+          }
+          window.scrollTo(0, 0);
+
+          // re-trigger reveals
+          document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) { observer.observe(el); });
+
+          if (push !== false) {
+            history.pushState({ view: target }, '', target === 'about' ? '#about' : window.location.pathname);
+          }
+
+          updateActiveNav();
+
+          // fade in
+          requestAnimationFrame(function() {
+            viewMain.style.opacity = '';
+            viewAbout.style.opacity = '';
+          });
+        }, 200);
+      }
+
+      // handle data-view clicks
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('[data-view]');
+        if (!link) return;
+        e.preventDefault();
+        switchView(link.dataset.view);
+      });
+
+      // back/forward
+      window.addEventListener('popstate', function() {
+        var v = getViewFromHash();
+        if (v === null) { updateActiveNav(); return; } // anchor within current view
+        var cur = isAbout() ? 'about' : 'main';
+        if (v !== cur) {
+          if (v === 'about') { document.body.classList.add('show-about'); }
+          else { document.body.classList.remove('show-about'); }
+          window.scrollTo(0, 0);
+          document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) { observer.observe(el); });
+          updateActiveNav();
+        }
+      });
+
+      // initial load
+      if (getViewFromHash() === 'about') {
+        document.body.classList.add('show-about');
+      }
+
+      window._switchView = switchView;
     })();
+
+    // ── Active nav link on scroll ──
+    var navProjects = document.querySelector('.topbar-center a[data-view="main"]');
+    var navAbout = document.querySelector('.topbar-center a[data-view="about"]');
+    var navContact = document.querySelector('.topbar-center a[href="#contact"]');
+    function updateActiveNav() {
+      var aboutView = document.body.classList.contains('show-about');
+      var atBottom = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 50;
+      var contactSec = document.getElementById('contact');
+      var contactVisible = contactSec && contactSec.getBoundingClientRect().top < window.innerHeight * 0.5;
+
+      navProjects.classList.remove('active');
+      navAbout.classList.remove('active');
+      navContact.classList.remove('active');
+
+      if (atBottom || contactVisible) {
+        navContact.classList.add('active');
+      } else if (aboutView) {
+        navAbout.classList.add('active');
+      } else {
+        var projSec = document.getElementById('projects');
+        if (projSec && projSec.getBoundingClientRect().top < window.innerHeight * 0.5) {
+          navProjects.classList.add('active');
+        }
+      }
+    }
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
 
     // ── Scroll reveal ──
     const observer = new IntersectionObserver(entries => {
@@ -2226,17 +2788,20 @@
         if (!lastTime) lastTime = now;
         const dt = (now - lastTime) / 1000;
         lastTime = now;
-        offset += speed * dt;
         const setW = firstSet.offsetWidth;
-        if (offset >= setW) offset -= setW;
-        track.style.transform = `translateX(-${offset}px)`;
+        if (setW > 0) {
+          offset += speed * dt;
+          if (offset >= setW) offset -= setW;
+          track.style.transform = `translateX(-${offset}px)`;
+        }
         requestAnimationFrame(tick);
       }
       requestAnimationFrame(tick);
     })();
 
-    // ── Page transitions ──
+    // ── Page transitions (external links only) ──
     document.querySelectorAll('a[href]').forEach(a => {
+      if (a.dataset.view) return;
       const href = a.getAttribute('href');
       if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('tel:') && a.target !== '_blank') {
         a.addEventListener('click', e => {
@@ -2546,13 +3111,14 @@
       let lastTime = 0;
       function tick(now) {
         if (!lastTime) lastTime = now;
-        const dt = (now - lastTime) / 1000;
+        let dt = (now - lastTime) / 1000;
         lastTime = now;
+        if (dt > 0.5) dt = 0; // skip large dt after pause/tab switch
         if (!paused) {
           belts.forEach(b => {
             if (b.setW <= 0) return;
             b.offset += b.speed * dt;
-            if (b.offset >= b.setW) b.offset -= b.setW;
+            b.offset %= b.setW;
             const tx = b.dir === -1 ? -b.offset : -(b.setW - b.offset);
             b.track.style.transform = `translate3d(${tx}px,0,0)`;
           });
@@ -2564,10 +3130,10 @@
 
     // pause/resume when not visible
     const hero = document.getElementById('hero');
-    const observer = new IntersectionObserver(([entry]) => {
+    const reelObserver = new IntersectionObserver(([entry]) => {
       paused = !entry.isIntersecting;
     }, { threshold: 0 });
-    observer.observe(hero);
+    reelObserver.observe(hero);
 
     document.addEventListener('visibilitychange', () => {
       paused = document.hidden;
