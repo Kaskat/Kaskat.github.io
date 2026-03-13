@@ -70,10 +70,10 @@
       z-index: 300;
       background: var(--bg2);
       border-bottom: 1px solid var(--border);
-      padding: 10px 24px;
-      display: flex;
+      padding: 10px clamp(10px, 3vw, 24px);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      justify-content: space-between;
       transition: background .35s, border-color .35s;
     }
 
@@ -86,7 +86,7 @@
 
     .topbar-center {
       display: flex;
-      gap: 24px;
+      gap: clamp(10px, 3vw, 24px);
       align-items: center;
     }
 
@@ -100,7 +100,7 @@
     .topbar-center a:hover,
     .topbar-center a.active { color: var(--accent); }
 
-    .topbar-right { display: flex; align-items: center; gap: 12px; }
+    .topbar-right { display: flex; align-items: center; gap: 12px; justify-content: flex-end; }
 
     .toggle-wrap {
       display: flex;
@@ -110,6 +110,12 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--text-dim);
+    }
+    .toggle-wrap span {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      transition: width .3s, opacity .3s;
     }
 
     .toggle {
@@ -144,7 +150,7 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 0 64px;
+      padding: 0 clamp(16px, 5vw, 64px);
       margin-bottom: 48px;
     }
     .sec-num { font-size: 0.88rem; letter-spacing: 0.22em; color: var(--accent); transition: color .35s; }
@@ -164,7 +170,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 80px 64px 60px;
+      padding: 80px clamp(16px, 5vw, 64px) 60px;
       position: relative;
       overflow: hidden;
     }
@@ -202,7 +208,7 @@
 
     h1.htitle {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4rem, 11vw, 9.5rem);
+      font-size: min(9.5rem, 18.7vw);
       line-height: 0.9;
       letter-spacing: 0.02em;
       text-transform: uppercase;
@@ -272,7 +278,7 @@
 
     .hero-stats {
       position: absolute;
-      bottom: 48px; right: 64px;
+      bottom: 48px; right: clamp(16px, 5vw, 64px);
       display: flex;
       gap: 28px;
       opacity: 0;
@@ -379,10 +385,9 @@
     /* Blurred backdrop — mirrored video/image behind content */
     .pf-backdrop {
       position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      min-width: 100%;
-      min-height: 100%;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       opacity: 0;
       transition: opacity .4s ease;
@@ -397,6 +402,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+      background: transparent;
       opacity: 0;
       transition: opacity .3s ease;
       z-index: 1;
@@ -542,7 +548,7 @@
       color: var(--text-dim);
       border: 1px solid var(--border);
       text-decoration: none;
-      transition: color .2s, border-color .2s, background .2s;
+      transition: color .35s, border-color .35s, background .35s;
     }
     .plink:hover {
       color: var(--accent);
@@ -647,6 +653,7 @@
       display: flex;
       gap: 0;
       border-bottom: 1px solid var(--border);
+      transition: border-color .35s;
     }
     .sub-pill {
       flex: 1;
@@ -660,7 +667,7 @@
       border: none;
       border-right: 1px solid var(--border);
       cursor: pointer;
-      transition: color .2s, background .2s;
+      transition: color .2s, background .2s, border-color .35s, box-shadow .35s;
       text-align: center;
     }
     .sub-pill:last-child { border-right: none; }
@@ -798,7 +805,8 @@
       font-size: 1.15rem;
     }
 
-    /* Featured projects */
+    /* Featured projects — highlight disabled, crown kept */
+    /*
     .proj-item.featured {
       background: linear-gradient(90deg, var(--glow2) 0%, transparent 60%);
       position: relative;
@@ -806,6 +814,18 @@
       animation: featuredGlow 3s ease-in-out infinite;
     }
     .proj-item.featured .proj-item-name { color: var(--text); }
+    .proj-item.featured::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      pointer-events: none;
+    }
+    @keyframes featuredGlow {
+      0%, 100% { box-shadow: inset 0 0 0 1px rgba(255,107,43,0.15), 0 0 0 0 transparent; }
+      50%       { box-shadow: inset 0 0 0 1px rgba(255,107,43,0.45), 0 0 8px 0 rgba(255,107,43,0.08); }
+    }
+    */
 
     .crown-icon {
       font-size: 1.05rem;
@@ -817,19 +837,6 @@
     @keyframes crownPulse {
       0%, 100% { opacity: 0.7; transform: translateY(0); }
       50% { opacity: 1; transform: translateY(-1px); }
-    }
-
-    .proj-item.featured::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border: 1px solid transparent;
-      pointer-events: none;
-    }
-
-    @keyframes featuredGlow {
-      0%, 100% { box-shadow: inset 0 0 0 1px rgba(255,107,43,0.15), 0 0 0 0 transparent; }
-      50%       { box-shadow: inset 0 0 0 1px rgba(255,107,43,0.45), 0 0 8px 0 rgba(255,107,43,0.08); }
     }
 
     .particles {
@@ -859,7 +866,7 @@
        CONTACT
     ══════════════════════════════════ */
     .contact-section {
-      padding: 80px 64px;
+      padding: 80px clamp(16px, 5vw, 64px);
       border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
@@ -1101,47 +1108,31 @@
       font-size: 0.8rem;
     }
 
-    @media (max-width: 768px) {
-      .topbar-center { display: none; }
-      .topbar {
-        position: relative;
-        padding: 8px 16px;
-        padding-top: max(8px, env(safe-area-inset-top));
-      }
-      .hero { padding: 24px 16px 40px; }
-      .hero-stats { position: static; margin-top: 32px; justify-content: flex-start; }
-      .sec-header { padding: 0 16px; }
-      .projects-body { grid-template-columns: 1fr; }
-      .proj-preview-col { display: none; }
-      .proj-list-col { padding: 0; border-left: none; order: 1; }
-      .contact-section { padding: 48px 16px; flex-direction: column; align-items: flex-start; }
-      .contact-icons { flex-wrap: wrap; }
-      body { font-size: 16px; }
-    }
+    /* media queries moved after reel styles for correct cascade */
 
     /* ══════════════════════════════════
        HERO REEL (desktop only)
     ══════════════════════════════════ */
     .hero-reel {
       position: absolute;
-      top: 50%; right: 0;
-      transform: translateY(-50%) rotate(0deg);
+      top: 0; bottom: 0;
+      left: 55%; right: 0;
       display: flex;
       flex-direction: column;
       gap: 14px;
+      justify-content: center;
+      padding: 80px 0;
       pointer-events: none;
       z-index: 0;
-      width: 52%;
       opacity: 0;
       animation: reelFadeIn 1s .4s forwards;
       -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 95%, transparent 100%);
       mask-image: linear-gradient(to right, transparent 0%, black 10%, black 95%, transparent 100%);
     }
 
-
     @keyframes reelFadeIn {
-      from { opacity: 0; transform: translateY(-50%) rotate(0deg) translateX(30px); }
-      to   { opacity: 1; transform: translateY(-50%) rotate(0deg) translateX(0); }
+      from { opacity: 0; }
+      to   { opacity: 1; }
     }
 
     .reel-belt {
@@ -1173,9 +1164,9 @@
     }
 
     /* depth: front belt bigger/brighter, back belt smaller/dimmer */
-    .reel-belt--1 { height: 240px; }
-    .reel-belt--2 { height: 380px; }
-    .reel-belt--3 { height: 270px; }
+    .reel-belt--1 { height: clamp(100px, 18vh, 240px); }
+    .reel-belt--2 { height: clamp(160px, 28vh, 380px); }
+    .reel-belt--3 { height: clamp(110px, 20vh, 270px); }
 
     /* skeleton shimmer placeholders */
     .reel-skeleton-item {
@@ -1201,9 +1192,9 @@
       0%   { transform: translateX(-100%); }
       100% { transform: translateX(100%); }
     }
-    .reel-belt--1 .reel-skeleton-item { width: 280px; height: 180px; }
-    .reel-belt--2 .reel-skeleton-item { width: 400px; height: 300px; }
-    .reel-belt--3 .reel-skeleton-item { width: 330px; height: 210px; }
+    .reel-belt--1 .reel-skeleton-item { width: 280px; height: calc(100% - 16px); }
+    .reel-belt--2 .reel-skeleton-item { width: 400px; height: calc(100% - 16px); }
+    .reel-belt--3 .reel-skeleton-item { width: 330px; height: calc(100% - 16px); }
 
     [data-theme="light"] .reel-skeleton-item {
       background: rgba(0,0,0,0.05);
@@ -1226,7 +1217,9 @@
       padding: 8px 0;
       will-change: transform;
       opacity: 0;
-      transition: opacity .5s ease;
+      transition-property: opacity;
+      transition-duration: .5s;
+      transition-timing-function: ease;
     }
     .reel-track.ready {
       opacity: 1;
@@ -1243,10 +1236,25 @@
     }
 
 
-    /* edge fades — wider on left to protect hero text */
-
-    @media (max-width: 768px) {
+    /* ══════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════ */
+    @media (max-width: 1400px) {
       .hero-reel { display: none; }
+    }
+    @media (max-width: 640px) {
+      .toggle-wrap { gap: 0; }
+      .toggle-wrap span { width: 0; opacity: 0; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding-top: 24px; padding-bottom: 40px; }
+      .hero-stats { display: none; }
+      .projects-body { grid-template-columns: 1fr; }
+      .proj-preview-col { display: none; }
+      .proj-list-col { padding: 0; border-left: none; order: 1; }
+      .contact-section { padding: 48px 16px; flex-direction: column; align-items: flex-start; }
+      .contact-icons { flex-wrap: wrap; }
+      body { font-size: 16px; }
     }
 
     /* ══════════════════════════════════
@@ -1262,7 +1270,10 @@
       transform: translateY(20px);
       transition: opacity .5s ease, transform .5s ease;
     }
-    .reveal.visible { opacity: 1; transform: none; }
+    .reveal.visible {
+      opacity: 1; transform: none;
+      transition: opacity .5s ease, transform .5s ease, color .35s, background-color .35s, border-color .35s, background .35s;
+    }
   </style>
 </head>
 <body>
@@ -1410,9 +1421,9 @@
           <div class="preview-frame" id="pframe">
             <div class="pf-placeholder" id="pf-placeholder">&#8592; Select a project</div>
             <div class="video-loader hidden" id="pf-loader"></div>
-            <video class="pf-backdrop" id="pf-backdrop-video" muted loop playsinline></video>
+            <video class="pf-backdrop" id="pf-backdrop-video" muted playsinline></video>
             <img class="pf-backdrop" id="pf-backdrop-img" alt=""/>
-            <video class="pf-video" id="pf-video" muted loop playsinline></video>
+            <video class="pf-video" id="pf-video" muted playsinline></video>
             <img class="pf-image" id="pf-image" alt=""/>
             <div class="carousel-counter hidden" id="car-counter"></div>
             <div class="preview-thumbs-wrap empty" id="pthumbs-wrap">
@@ -1440,7 +1451,7 @@
                 <span class="track-name">Work</span>
               </div>
               <div style="display:flex;align-items:center;gap:12px">
-                <span class="track-count">Playcus · 5 years</span>
+                <span class="track-count">Playcus</span>
                 <div class="track-arrow"></div>
               </div>
             </div>
@@ -1461,7 +1472,7 @@
                     <span class="proj-item-sub">Client-server · IAP refactor · Analytics redesign</span>
                   </div>
                   <div class="proj-item-right">
-                    <span class="proj-item-tag">Full stack</span>
+                    <span class="proj-item-tag">Full-stack</span>
                     <button class="variations-toggle" onclick="event.stopPropagation(); toggleVariations(this)" title="Show variations">
                       <span class="variations-count">5 variations</span>
                       <span class="variations-arrow"></span>
@@ -1469,38 +1480,38 @@
                   </div>
                 </div>
                 <div class="variations-list">
-                  <div class="proj-item variation" data-name="Bingo Farm Ways" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=com.playcus.free.bingo.games.country.farm.game,as:https://apps.apple.com/app/bingo-farm-ways-bingo-games/id1385418128,ms:https://apps.microsoft.com/detail/9nm91hvz98h4" onclick="selectProject(this)">
+                  <div class="proj-item variation" data-name="Bingo Farm Ways" data-role="Bingo variation" data-tags="Unity,Bingo,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=com.playcus.free.bingo.games.country.farm.game,as:https://apps.apple.com/app/bingo-farm-ways-bingo-games/id1385418128,ms:https://apps.microsoft.com/detail/9nm91hvz98h4" onclick="selectProject(this)">
                     <div class="proj-item-left">
                       <span class="proj-item-name">Bingo Farm Ways</span>
-                      <span class="proj-item-sub">Platform variation</span>
+                      <span class="proj-item-sub">Variation</span>
                     </div>
                     <span class="proj-item-tag">Variation</span>
                   </div>
-                  <div class="proj-item variation" data-name="Bingo Country Boys" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=air.com.playcus.bingocountryboys,as:https://apps.apple.com/app/bingo-country-boys-bingo-games/id1319846494,ms:https://apps.microsoft.com/detail/9nb3thwg46z0" onclick="selectProject(this)">
+                  <div class="proj-item variation" data-name="Bingo Country Boys" data-role="Bingo variation" data-tags="Unity,Bingo,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=air.com.playcus.bingocountryboys,as:https://apps.apple.com/app/bingo-country-boys-bingo-games/id1319846494,ms:https://apps.microsoft.com/detail/9nb3thwg46z0" onclick="selectProject(this)">
                     <div class="proj-item-left">
                       <span class="proj-item-name">Bingo Country Boys</span>
-                      <span class="proj-item-sub">Platform variation</span>
+                      <span class="proj-item-sub">Variation</span>
                     </div>
                     <span class="proj-item-tag">Variation</span>
                   </div>
-                  <div class="proj-item variation" data-name="Bingo Country Days" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=air.com.playcus.free.bingo.games.casino.slots.country.days.game,as:https://apps.apple.com/app/bingo-country-days-bingo-games/id1312836671,ms:https://apps.microsoft.com/detail/9mwgj08kp8mx" onclick="selectProject(this)">
+                  <div class="proj-item variation" data-name="Bingo Country Days" data-role="Bingo variation" data-tags="Unity,Bingo,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=air.com.playcus.free.bingo.games.casino.slots.country.days.game,as:https://apps.apple.com/app/bingo-country-days-bingo-games/id1312836671,ms:https://apps.microsoft.com/detail/9mwgj08kp8mx" onclick="selectProject(this)">
                     <div class="proj-item-left">
                       <span class="proj-item-name">Bingo Country Days</span>
-                      <span class="proj-item-sub">Platform variation</span>
+                      <span class="proj-item-sub">Variation</span>
                     </div>
                     <span class="proj-item-tag">Variation</span>
                   </div>
-                  <div class="proj-item variation" data-name="Bingo Kingdom Arena" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=air.com.playcus.bingokingdomarena,as:https://apps.apple.com/app/bingo-kingdom-arena-bingo-game/id1352343409,ms:https://apps.microsoft.com/detail/9pb8ch7v1qs8" onclick="selectProject(this)">
+                  <div class="proj-item variation" data-name="Bingo Kingdom Arena" data-role="Bingo variation" data-tags="Unity,Bingo,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=air.com.playcus.bingokingdomarena,as:https://apps.apple.com/app/bingo-kingdom-arena-bingo-game/id1352343409,ms:https://apps.microsoft.com/detail/9pb8ch7v1qs8" onclick="selectProject(this)">
                     <div class="proj-item-left">
                       <span class="proj-item-name">Bingo Kingdom Arena</span>
-                      <span class="proj-item-sub">Platform variation</span>
+                      <span class="proj-item-sub">Variation</span>
                     </div>
                     <span class="proj-item-tag">Variation</span>
                   </div>
-                  <div class="proj-item variation" data-name="Bingo Country Ways" data-role="Bingo platform variation" data-tags="Unity,Bingo,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=air.com.playcus.bingocountryways,as:https://apps.apple.com/app/bingo-country-ways-bingo-live/id1223937103,ms:https://apps.microsoft.com/detail/9p9wbg4wbwc7" onclick="selectProject(this)">
+                  <div class="proj-item variation" data-name="Bingo Country Ways" data-role="Bingo variation" data-tags="Unity,Bingo,Android,iOS" data-links="gp:https://play.google.com/store/apps/details?id=air.com.playcus.bingocountryways,as:https://apps.apple.com/app/bingo-country-ways-bingo-live/id1223937103,ms:https://apps.microsoft.com/detail/9p9wbg4wbwc7" onclick="selectProject(this)">
                     <div class="proj-item-left">
                       <span class="proj-item-name">Bingo Country Ways</span>
-                      <span class="proj-item-sub">Platform variation</span>
+                      <span class="proj-item-sub">Variation</span>
                     </div>
                     <span class="proj-item-tag">Variation</span>
                   </div>
@@ -1756,6 +1767,7 @@
 
     // ── Track accordion ──
     function autoSelectFirst(track) {
+      if (window.innerWidth <= 768) return;
       const activeSub = track.querySelector('.sub-group.active');
       if (!activeSub) return;
       const first = activeSub.querySelector('.proj-item:not(.variation)');
@@ -1850,6 +1862,17 @@
     const pThumbsWrap = document.getElementById('pthumbs-wrap');
     const carCounter = document.getElementById('car-counter');
     const pfLoader   = document.getElementById('pf-loader');
+    let galleryTimer = null;
+    let galleryAuto = true;
+
+    function galleryAdvance() {
+      clearTimeout(galleryTimer);
+      galleryTimer = null;
+      const next = (galleryIndex + 1) % galleryItems.length;
+      showGalleryItem(next);
+    }
+
+    pVideo.addEventListener('ended', () => { if (galleryAuto) galleryAdvance(); });
 
     // ── Thumbnail drag-to-scroll ──
     let thumbDrag = { active: false, startX: 0, scrollLeft: 0, moved: false };
@@ -1884,11 +1907,11 @@
       }
       const b = bd || {};
       const blur = b.blur ?? 30;
-      const scale = b.scale ?? 1.3;
+      const scale = b.scale ?? 2;
       const brightness = b.brightness ?? 0.5;
       const saturate = b.saturate ?? 1.4;
       const f = `blur(${blur}px) saturate(${saturate}) brightness(${brightness})`;
-      const tr = `translate(-50%, -50%) scale(${scale})`;
+      const tr = `scale(${scale})`;
       targets.forEach(t => { t.style.filter = f; t.style.transform = tr; });
     }
 
@@ -1898,6 +1921,8 @@
       const item = galleryItems[idx];
 
       // Reset all
+      clearTimeout(galleryTimer);
+      galleryTimer = null;
       pVideo.classList.remove('active');
       pImage.classList.remove('active');
       pBdVideo.classList.remove('active');
@@ -1946,11 +1971,14 @@
           pBdVideo.play().catch(() => {});
         }
       } else {
-          pImage.src = item.src;
+        pImage.src = item.src;
         pImage.classList.add('active');
         if (showBd) {
           pBdImg.src = item.src;
           pBdImg.classList.add('active');
+        }
+        if (galleryAuto && galleryItems.length > 1) {
+          galleryTimer = setTimeout(galleryAdvance, 5000);
         }
       }
 
@@ -1985,6 +2013,9 @@
     }
 
     function buildGallery(name) {
+      clearTimeout(galleryTimer);
+      galleryTimer = null;
+      galleryAuto = true;
       const cfg = mediaConfig[name];
       pThumbs.innerHTML = '';
       pVideo.classList.remove('active');
@@ -2066,7 +2097,7 @@
           thumb.appendChild(img);
         }
 
-        thumb.addEventListener('click', () => { if (!thumbDrag.moved) showGalleryItem(idx); });
+        thumb.addEventListener('click', () => { if (!thumbDrag.moved) { galleryAuto = false; clearTimeout(galleryTimer); showGalleryItem(idx); } });
         pThumbs.appendChild(thumb);
       });
 
@@ -2078,6 +2109,7 @@
 
     // ── Project select ──
     function selectProject(el) {
+      if (el.classList.contains('selected')) return;
       document.querySelectorAll('.proj-item.selected').forEach(i => i.classList.remove('selected'));
       el.classList.add('selected');
       const name = el.dataset.name;
@@ -2145,6 +2177,32 @@
     const openTrack = document.querySelector('.track.open');
     if (openTrack) autoSelectFirst(openTrack);
 
+    // ── Active nav link on scroll ──
+    (function() {
+      const navLinks = document.querySelectorAll('.topbar-center a[href^="#"]');
+      const sections = [];
+      navLinks.forEach(a => {
+        const id = a.getAttribute('href').slice(1);
+        const sec = document.getElementById(id);
+        if (sec) sections.push({ el: sec, link: a });
+      });
+      function updateActiveNav() {
+        let active = null;
+        const atBottom = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 50;
+        if (atBottom) {
+          active = sections[sections.length - 1];
+        } else {
+          sections.forEach(s => {
+            const rect = s.el.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.5) active = s;
+          });
+        }
+        sections.forEach(s => s.link.classList.toggle('active', s === active));
+      }
+      window.addEventListener('scroll', updateActiveNav, { passive: true });
+      updateActiveNav();
+    })();
+
     // ── Scroll reveal ──
     const observer = new IntersectionObserver(entries => {
       entries.forEach((entry, i) => {
@@ -2156,16 +2214,25 @@
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // ── Ticker: exact-pixel loop ──
+    // ── Ticker: JS-driven seamless scroll ──
     (function() {
       const track = document.querySelector('.ticker-track');
       const firstSet = track.querySelector('.ticker-set');
       if (!track || !firstSet) return;
-      const setWidth = firstSet.offsetWidth;
-      const style = document.createElement('style');
-      style.textContent = `@keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-${setWidth}px); } }`;
-      document.head.appendChild(style);
-      track.style.animation = 'ticker-scroll 28s linear infinite';
+      const speed = 60; // pixels per second
+      let offset = 0;
+      let lastTime = 0;
+      function tick(now) {
+        if (!lastTime) lastTime = now;
+        const dt = (now - lastTime) / 1000;
+        lastTime = now;
+        offset += speed * dt;
+        const setW = firstSet.offsetWidth;
+        if (offset >= setW) offset -= setW;
+        track.style.transform = `translateX(-${offset}px)`;
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
     })();
 
     // ── Page transitions ──
@@ -2374,13 +2441,11 @@
   <!-- HERO REEL ENGINE -->
   <script>
   (function() {
-    if (window.innerWidth <= 768) return;
-
     const beltData = [
       {
         id: 'reel-track-1',
-        duration: 40, // seconds for one full loop
-        dir: 'left',
+        speed: 30,
+        dir: -1,
         imgs: [
           'war-machines/1.png','tap-jump/1.png','groomer-run/3.png','magic-sneeze/2.jpg',
           'ball-sorting-ai/1.png','fox-thieve/2.png','war-machines/5.png','groomer-run/7.png',
@@ -2389,8 +2454,8 @@
       },
       {
         id: 'reel-track-2',
-        duration: 60, // slower
-        dir: 'right',
+        speed: 20,
+        dir: 1,
         imgs: [
           'war-machines/3.png','groomer-run/1.png','magic-sneeze/4.jpg','ball-sorting-ai/3.png',
           'war-machines/8.png','fox-thieve/1.png','tap-jump/2.png','groomer-run/5.png',
@@ -2399,8 +2464,8 @@
       },
       {
         id: 'reel-track-3',
-        duration: 48,
-        dir: 'left',
+        speed: 25,
+        dir: -1,
         imgs: [
           'groomer-run/9.png','war-machines/6.png','ball-sorting-ai/5.png','magic-sneeze/3.jpg',
           'war-machines/10.png','groomer-run/4.png','fox-thieve/3.png','ball-sorting-ai/2.png',
@@ -2410,14 +2475,15 @@
     ];
 
     const GAP = 10;
-    let styleEl;
+    const base = 'assets/projects/';
+    const belts = []; // {track, origImages, offset, speed, dir, setW}
+    let paused = false;
 
     function initBelt(cfg) {
       const track = document.getElementById(cfg.id);
       if (!track) return null;
       const belt = track.parentElement;
       const skeleton = belt.querySelector('.reel-skeleton');
-      const base = 'assets/projects/';
 
       // create images
       const fragment = document.createDocumentFragment();
@@ -2439,55 +2505,72 @@
           else { img.onload = img.onerror = () => { loaded++; if (loaded === total) resolve(); }; }
         });
       }).then(() => {
-        // measure one set
-        const images = Array.from(track.querySelectorAll('img'));
-        let setWidth = 0;
-        images.forEach(img => { setWidth += img.offsetWidth + GAP; });
+        const origImages = Array.from(track.querySelectorAll('img'));
+        let setW = 0;
+        origImages.forEach(img => { setW += img.offsetWidth + GAP; });
 
         // clone until 3x container
         const containerW = belt.offsetWidth;
-        const needed = Math.ceil((containerW * 3) / setWidth);
+        const needed = Math.ceil((containerW * 3) / setW);
         for (let c = 0; c < needed; c++) {
-          images.forEach(img => track.appendChild(img.cloneNode(true)));
+          origImages.forEach(img => track.appendChild(img.cloneNode(true)));
         }
 
-        // inject CSS keyframes for this track
-        const animName = 'reel-' + cfg.id;
-        const from = cfg.dir === 'left' ? '0' : '-' + setWidth + 'px';
-        const to = cfg.dir === 'left' ? '-' + setWidth + 'px' : '0';
-        if (!styleEl) { styleEl = document.createElement('style'); document.head.appendChild(styleEl); }
-        styleEl.textContent += '@keyframes ' + animName +
-          '{from{transform:translate3d(' + from + ',0,0)}to{transform:translate3d(' + to + ',0,0)}}';
-        track.style.animation = animName + ' ' + cfg.duration + 's linear infinite';
-
-        // crossfade: track fades in, skeleton fades out simultaneously
-        requestAnimationFrame(() => {
-          track.classList.add('ready');
-          skeleton.style.transition = 'opacity .5s ease';
-          skeleton.style.opacity = '0';
-          skeleton.addEventListener('transitionend', () => skeleton.remove(), { once: true });
-        });
+        belts.push({ track, origImages, offset: 0, speed: cfg.speed, dir: cfg.dir, setW, skeleton });
       });
     }
 
-    beltData.forEach(cfg => initBelt(cfg));
+    // measure setW once, re-measure on resize
+    function measureSetW(b) {
+      let w = 0;
+      b.origImages.forEach(img => { w += img.offsetWidth + GAP; });
+      b.setW = w;
+    }
 
-    // pause/resume CSS animations when not visible
-    const hero = document.getElementById('hero');
-    const reel = document.querySelector('.hero-reel');
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => belts.forEach(measureSetW), 200);
+    });
 
-    const observer = new IntersectionObserver(([entry]) => {
-      reel.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
-      reel.querySelectorAll('.reel-track').forEach(t => {
-        t.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+    // init all belts, then start animation loop
+    Promise.all(beltData.map(cfg => initBelt(cfg))).then(() => {
+      belts.forEach(measureSetW);
+      // reveal tracks
+      belts.forEach(b => {
+        b.track.classList.add('ready');
+        b.skeleton.style.transition = 'opacity .5s ease';
+        b.skeleton.style.opacity = '0';
+        b.skeleton.addEventListener('transitionend', () => b.skeleton.remove(), { once: true });
       });
+      let lastTime = 0;
+      function tick(now) {
+        if (!lastTime) lastTime = now;
+        const dt = (now - lastTime) / 1000;
+        lastTime = now;
+        if (!paused) {
+          belts.forEach(b => {
+            if (b.setW <= 0) return;
+            b.offset += b.speed * dt;
+            if (b.offset >= b.setW) b.offset -= b.setW;
+            const tx = b.dir === -1 ? -b.offset : -(b.setW - b.offset);
+            b.track.style.transform = `translate3d(${tx}px,0,0)`;
+          });
+        }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+
+    // pause/resume when not visible
+    const hero = document.getElementById('hero');
+    const observer = new IntersectionObserver(([entry]) => {
+      paused = !entry.isIntersecting;
     }, { threshold: 0 });
     observer.observe(hero);
 
     document.addEventListener('visibilitychange', () => {
-      const paused = document.hidden ? 'paused' : 'running';
-      reel.style.animationPlayState = paused;
-      reel.querySelectorAll('.reel-track').forEach(t => { t.style.animationPlayState = paused; });
+      paused = document.hidden;
     });
 
   })();
