@@ -22,7 +22,7 @@
       --glow:     rgba(255,107,43,0.35);
       --glow2:    rgba(255,107,43,0.12);
       --text:     #f0ddd0;
-      --text-dim: #7a5a45;
+      --text-dim: #97755f;
       --muted:    #2a1f15;
       --crown:    #f0b429;
     }
@@ -46,6 +46,24 @@
     ══════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+
+    /* Skip link */
+    .skip-link {
+      position: fixed; top: -100%; left: 16px;
+      z-index: 10000; padding: 8px 16px;
+      background: var(--accent); color: #fff;
+      font-family: 'DM Mono', monospace; font-size: 14px;
+      text-decoration: none; border-radius: 0 0 6px 6px;
+      transition: top .2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* Focus-visible */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    :focus:not(:focus-visible) { outline: none; }
 
     body {
       background: var(--bg);
@@ -927,7 +945,6 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 20px var(--glow);
     }
-
     .experience-section {
       padding: 80px clamp(16px, 5vw, 64px);
       border-bottom: 1px solid var(--border);
@@ -1555,9 +1572,10 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- TOP BAR -->
-  <div class="topbar">
+  <header class="topbar">
     <a class="topbar-left" href="#" data-view="main">YH_</a>
     <nav class="topbar-center">
       <a href="#projects" data-view="main">Projects</a>
@@ -1568,16 +1586,16 @@
       <label class="toggle-wrap">
         <span>Dark</span>
         <label class="toggle">
-          <input type="checkbox" id="theme-toggle"/>
+          <input type="checkbox" id="theme-toggle" aria-label="Toggle light/dark theme"/>
           <div class="toggle-track"></div>
           <div class="toggle-thumb"></div>
         </label>
         <span>Light</span>
       </label>
     </div>
-  </div>
+  </header>
 
-  <div class="page">
+  <main class="page" id="main-content" tabindex="-1">
 
     <div id="view-main">
 
@@ -1725,7 +1743,7 @@
 
           <!-- TRACK: Work -->
           <div class="track open" data-track="work">
-            <div class="track-header" onclick="toggleTrack(this)">
+            <div class="track-header" onclick="toggleTrack(this)" role="button" tabindex="0" aria-expanded="true">
               <div class="track-header-left">
                 <span class="track-badge">Professional</span>
                 <span class="track-name">Work</span>
@@ -1753,7 +1771,7 @@
                   </div>
                   <div class="proj-item-right">
                     <span class="proj-item-tag">Full-stack</span>
-                    <button class="variations-toggle" onclick="event.stopPropagation(); toggleVariations(this)" title="Show variations">
+                    <button class="variations-toggle" onclick="event.stopPropagation(); toggleVariations(this)" title="Show variations" aria-expanded="false">
                       <span class="variations-count">5 variations</span>
                       <span class="variations-arrow"></span>
                     </button>
@@ -1803,7 +1821,7 @@
                   </div>
                   <div class="proj-item-right">
                     <span class="proj-item-tag">Feature dev</span>
-                    <button class="variations-toggle" onclick="event.stopPropagation(); toggleVariations(this)" title="Show variations">
+                    <button class="variations-toggle" onclick="event.stopPropagation(); toggleVariations(this)" title="Show variations" aria-expanded="false">
                       <span class="variations-count">1 variation</span>
                       <span class="variations-arrow"></span>
                     </button>
@@ -1866,7 +1884,7 @@
                   </div>
                   <div class="proj-item-right">
                     <span class="proj-item-tag">Primary dev</span>
-                    <button class="variations-toggle" onclick="event.stopPropagation(); toggleVariations(this)" title="Show variations">
+                    <button class="variations-toggle" onclick="event.stopPropagation(); toggleVariations(this)" title="Show variations" aria-expanded="false">
                       <span class="variations-count">2 variations</span>
                       <span class="variations-arrow"></span>
                     </button>
@@ -1902,13 +1920,13 @@
 
           <!-- TRACK: Playground -->
           <div class="track" data-track="playground">
-            <div class="track-header" onclick="toggleTrack(this)">
+            <div class="track-header" onclick="toggleTrack(this)" role="button" tabindex="0" aria-expanded="false">
               <div class="track-header-left">
                 <span class="track-badge">Independent</span>
                 <span class="track-name">Playground</span>
               </div>
               <div style="display:flex;align-items:center;gap:12px">
-                <span class="track-count">9 projects</span>
+                <span class="track-count">11 projects</span>
                 <div class="track-arrow"></div>
               </div>
             </div>
@@ -1976,6 +1994,20 @@
                   </div>
                   <span class="proj-item-tag">R&amp;D</span>
                 </div>
+                <div class="proj-item" data-name="Pet Friend" data-role="Idle game prototype — R&D" data-tags="Unity,C#,Idle,R&D" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Pet Friend</span>
+                    <span class="proj-item-sub">Idle game prototype</span>
+                  </div>
+                  <span class="proj-item-tag">R&amp;D</span>
+                </div>
+                <div class="proj-item" data-name="Bingo Tournament" data-role="AI-created bingo game — sub-agent orchestration with Claude Code" data-tags="Unity,C#,Claude Code,AI Pipeline,Sub-agent Orchestration" onclick="selectProject(this)">
+                  <div class="proj-item-left">
+                    <span class="proj-item-name">Bingo Tournament</span>
+                    <span class="proj-item-sub">AI creation · sub-agent orchestration</span>
+                  </div>
+                  <span class="proj-item-tag">R&amp;D</span>
+                </div>
               </div>
 
               <!-- SUB: Game Jams -->
@@ -2013,7 +2045,7 @@
         <p class="page-hero-desc">
           Unity/C# Developer with <strong>5+ years in mobile F2P</strong>. Shipped <strong>17+ titles</strong> across hypercasual, casual, and bingo genres. Production experience with real users, payments, LiveOps, and analytics. Currently exploring <strong>AI-assisted development</strong>.
         </p>
-        <a class="btn-download" href="assets/CV_Yevhenii_Hladkykh.pdf" download>
+        <a class="btn-download" href="assets/CV_Yevhenii_Hladkykh_Detailed.pdf" download>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>
           Download CV
         </a>
@@ -2202,32 +2234,32 @@
     </div><!-- /view-about -->
 
     <!-- CONTACT -->
-    <section class="contact-section reveal" id="contact">
+    <footer class="contact-section reveal" id="contact">
       <div>
         <h2 class="contact-heading">Let's work<br/><em>together.</em></h2>
         <p class="contact-sub">Open to remote Unity developer roles and indie collaborations. Based in Lviv, Ukraine — working globally.</p>
       </div>
       <div class="contact-icons">
-        <a class="contact-icon" href="mailto:kaskat250@gmail.com" title="Email">
+        <a class="contact-icon" href="mailto:kaskat250@gmail.com" title="Email" aria-label="Email">
           <span class="ic-tooltip">Email</span>
           <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
         </a>
-        <a class="contact-icon" href="https://t.me/Kaskat" target="_blank" title="Telegram">
+        <a class="contact-icon" href="https://t.me/Kaskat" target="_blank" title="Telegram" aria-label="Telegram">
           <span class="ic-tooltip">Telegram</span>
           <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
         </a>
-        <a class="contact-icon" href="https://instagram.com/kaskat_III" target="_blank" title="Instagram">
+        <a class="contact-icon" href="https://www.instagram.com/kaskat_lll?igsh=MXdmajRxMnY2eGxxag%3D%3D&utm_source=qr" target="_blank" title="Instagram" aria-label="Instagram">
           <span class="ic-tooltip">Instagram</span>
           <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
         </a>
-        <a class="contact-icon" href="https://github.com/Kaskat" target="_blank" title="GitHub">
+        <a class="contact-icon" href="https://github.com/Kaskat" target="_blank" title="GitHub" aria-label="GitHub">
           <span class="ic-tooltip">GitHub</span>
           <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
         </a>
       </div>
-    </section>
+    </footer>
 
-  </div>
+  </main>
 
   <script>
     // ── Theme toggle ──
@@ -2256,9 +2288,13 @@
       const track = header.closest('.track');
       const isOpen = track.classList.contains('open');
       document.querySelectorAll('.track.open').forEach(t => {
-        if (t !== track) t.classList.remove('open');
+        if (t !== track) {
+          t.classList.remove('open');
+          t.querySelector('.track-header').setAttribute('aria-expanded', 'false');
+        }
       });
       track.classList.toggle('open', !isOpen);
+      header.setAttribute('aria-expanded', String(!isOpen));
       if (!isOpen) autoSelectFirst(track);
     }
 
@@ -2280,6 +2316,8 @@
       const isOpen = variationsList.classList.contains('open');
       variationsList.classList.toggle('open', !isOpen);
       btn.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      if (typeof updateVariationTabindex === 'function') updateVariationTabindex(variationsList);
     }
 
     // ── Media config ──
@@ -2320,6 +2358,8 @@
         {name:'video',fmt:'webm'}, {name:'video2',fmt:'webm'}, {name:'video3',fmt:'webm'},
         {name:'video4',fmt:'webm'}, {name:'video5',fmt:'webm'}, {name:'video6',fmt:'mp4'}
       ], screens: [] },
+      'Pet Friend': { folder: 'pet-friend', videos: [{name:'video',fmt:'webm'},{name:'video2',fmt:'webm'}], screens: [] },
+      'Bingo Tournament': { folder: 'bingo-tournament-ai', videos: [{name:'video',fmt:'webm'}], screens: [] },
       // videos: [{name:'filename',fmt:'both'|'mp4'|'webm'}]  — all videos shown first
       // screens: ['.ext','.ext'…] → 1.ext, 2.ext — shown after videos
       // backdrop: { blur: 30, scale: 1.3, brightness: 0.5, saturate: 1.4 }
@@ -2593,6 +2633,7 @@
       const name = el.dataset.name;
       document.getElementById('pname').textContent = name;
       document.getElementById('prole').textContent = el.dataset.role;
+      pImage.alt = name + ' screenshot';
       pframe.classList.add('active');
       const tags = (el.dataset.tags || '').split(',').filter(Boolean);
       document.getElementById('ptags').innerHTML = tags.map(t => `<span class="ptag">${t.trim()}</span>`).join('');
@@ -2624,7 +2665,8 @@
         if (!isChild && !isParent) {
           vl.classList.remove('open');
           const btn = parent.querySelector('.variations-toggle');
-          if (btn) btn.classList.remove('open');
+          if (btn) { btn.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+          if (typeof updateVariationTabindex === 'function') updateVariationTabindex(vl);
         }
       });
       if (el.classList.contains('has-variations')) {
@@ -2632,7 +2674,8 @@
         const toggleBtn = el.querySelector('.variations-toggle');
         if (variationsList && variationsList.classList.contains('variations-list')) {
           variationsList.classList.add('open');
-          if (toggleBtn) toggleBtn.classList.add('open');
+          if (toggleBtn) { toggleBtn.classList.add('open'); toggleBtn.setAttribute('aria-expanded', 'true'); }
+          if (typeof updateVariationTabindex === 'function') updateVariationTabindex(variationsList);
         }
       }
     }
@@ -2654,6 +2697,26 @@
     // ── Auto-select first project in initially open track ──
     const openTrack = document.querySelector('.track.open');
     if (openTrack) autoSelectFirst(openTrack);
+
+    // ── Keyboard a11y for interactive divs ──
+    document.querySelectorAll('.proj-item').forEach(el => {
+      el.setAttribute('role', 'button');
+      // hide variation items inside collapsed lists from tab order
+      const inClosedVariations = el.closest('.variations-list') && !el.closest('.variations-list').classList.contains('open');
+      el.setAttribute('tabindex', inClosedVariations ? '-1' : '0');
+    });
+    function updateVariationTabindex(list) {
+      const isOpen = list.classList.contains('open');
+      list.querySelectorAll('.proj-item').forEach(el => {
+        el.setAttribute('tabindex', isOpen ? '0' : '-1');
+      });
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      const el = e.target;
+      if (el.classList.contains('track-header')) { e.preventDefault(); toggleTrack(el); }
+      else if (el.classList.contains('proj-item')) { e.preventDefault(); selectProject(el); }
+    });
 
     // ── SPA View Router ──
     history.scrollRestoration = 'manual';
@@ -2720,13 +2783,7 @@
         var v = getViewFromHash();
         if (v === null) { updateActiveNav(); return; } // anchor within current view
         var cur = isAbout() ? 'about' : 'main';
-        if (v !== cur) {
-          if (v === 'about') { document.body.classList.add('show-about'); }
-          else { document.body.classList.remove('show-about'); }
-          window.scrollTo(0, 0);
-          document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) { observer.observe(el); });
-          updateActiveNav();
-        }
+        if (v !== cur) switchView(v, false);
       });
 
       // initial load
@@ -2786,12 +2843,13 @@
       let lastTime = 0;
       function tick(now) {
         if (!lastTime) lastTime = now;
-        const dt = (now - lastTime) / 1000;
+        let dt = (now - lastTime) / 1000;
         lastTime = now;
+        if (dt > 0.5) dt = 0;
         const setW = firstSet.offsetWidth;
         if (setW > 0) {
           offset += speed * dt;
-          if (offset >= setW) offset -= setW;
+          offset %= setW;
           track.style.transform = `translateX(-${offset}px)`;
         }
         requestAnimationFrame(tick);
@@ -2814,10 +2872,10 @@
   </script>
 
   <!-- Mobile project modal -->
-  <div class="mobile-modal" id="mobile-modal">
+  <div class="mobile-modal" id="mobile-modal" role="dialog" aria-modal="true" aria-labelledby="mm-title">
     <div class="mobile-modal-header">
       <span class="mobile-modal-title" id="mm-title"></span>
-      <button class="mobile-modal-close" onclick="closeMobileModal()">&times;</button>
+      <button class="mobile-modal-close" onclick="closeMobileModal()" aria-label="Close">&times;</button>
     </div>
     <div class="mobile-modal-role" id="mm-role"></div>
     <div class="mobile-modal-gallery">
@@ -2937,7 +2995,7 @@
         v.play().catch(() => {});
       } else {
         const img = document.createElement('img');
-        img.src = item.src; img.alt = '';
+        img.src = item.src; img.alt = (mmTitle.textContent || 'Project') + ' screenshot';
         mmMain.appendChild(img);
       }
 
@@ -3130,13 +3188,15 @@
 
     // pause/resume when not visible
     const hero = document.getElementById('hero');
+    let heroOffScreen = false;
     const reelObserver = new IntersectionObserver(([entry]) => {
-      paused = !entry.isIntersecting;
+      heroOffScreen = !entry.isIntersecting;
+      paused = heroOffScreen || document.hidden;
     }, { threshold: 0 });
     reelObserver.observe(hero);
 
     document.addEventListener('visibilitychange', () => {
-      paused = document.hidden;
+      paused = heroOffScreen || document.hidden;
     });
 
   })();

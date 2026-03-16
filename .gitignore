@@ -4,6 +4,7 @@ drafts/
 # Office files
 *.docx
 *.pdf
+!docs/assets/*.pdf
 
 # OS
 Thumbs.db
